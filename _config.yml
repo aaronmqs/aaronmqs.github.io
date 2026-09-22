@@ -23,7 +23,7 @@ repository               : "aaronmqs/aaronmqs.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "aaron.jpg"
   name             : "Aaron Marques"
   pronouns         : # example: "she/her"  
   bio              : "PhD Candidate in Aerospace & Mechanical Engineering | Computational Fluid Dynamics, Finite Element Methods | Hypersonic & High-Speed Flows"
