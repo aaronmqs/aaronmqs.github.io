@@ -10,6 +10,11 @@ collection: portfolio
 I set up, solved, and verified a steady laminar flat-plate boundary layer with heat transfer in
 **Ansys Fluent**.
 
+<div class="schematic-pair">
+  <img src="/images/flatplate/flatplate_side.svg" alt="Side view of the flat plate: uniform flow from the left, boundary layer growing along the heated plate">
+  <img src="/images/flatplate/flatplate_3d.svg" alt="Three-dimensional view of the flat plate with flow passing over its heated top surface">
+</div>
+
 ## Setup
 
 | Item | Value |

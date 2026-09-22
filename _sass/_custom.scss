@@ -97,6 +97,20 @@ html[data-theme="dark"] {
   hyphens: auto;
 }
 
+/* Two schematics side by side; they stack on a narrow screen */
+.schematic-pair {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 1em 0;
+}
+
+.schematic-pair img {
+  flex: 1 1 300px;
+  min-width: 0;
+  max-width: 100%;
+}
+
 /* The hamburger icon bars */
 .navicon,
 .navicon:before,
