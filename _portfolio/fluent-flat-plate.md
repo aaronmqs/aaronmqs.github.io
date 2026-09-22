@@ -18,7 +18,7 @@ I set up, solved, and verified a steady laminar flat-plate boundary layer with h
 The plate is held at 350 K in a 300 K stream, so heat flows from the wall into the flow. This is
 the situation of air cooling a warm surface, such as a circuit board in electronics cooling or a
 fin in a heat exchanger. The fluid is air-like: it has the Prandtl number of air, 0.72, but its
-density and viscosity are constant and rounded, which keeps the exact solution below exact.
+density and viscosity are constant and rounded, which keeps the reference solution exact.
 
 ## The situation
 
@@ -72,6 +72,10 @@ the one the similarity solution describes, so the reference stays exact and any 
 solver's. The values also make $$\mathrm{Re}_x = x/10^{-5}$$, with $$x$$ in meters. The Prandtl
 number is that of air, because it sets the heat transfer.
 
+![Domain and boundary conditions](/images/flatplate/flatplate_domain.svg)
+*The domain and its boundary conditions. The inset shows what "graded cells" means: the cells are
+smallest at the wall and at the leading edge, where the solution changes fastest.*
+
 Boundary conditions:
 
 - **Inlet** ($$x = -0.5$$): uniform velocity and temperature.
@@ -79,6 +83,14 @@ Boundary conditions:
   edge undisturbed.
 - **Wall** on $$y = 0$$, $$0 \le x \le 1$$: no slip, fixed temperature.
 - **Pressure outlets** at the exit ($$x = 1$$) and on the top ($$y = 0.2$$).
+
+**The top boundary matters.** I first set the top to symmetry, which looked harmless: the domain
+is twelve boundary-layer thicknesses tall. But a symmetry plane is a slip wall. The fluid that the
+boundary layer pushes upward cannot leave, so the stream above the plate accelerates, and the wall
+shear comes out too high. The error grew along the plate, from $$+2.8\%$$ to $$+10.9\%$$, which
+looks like a mesh problem. Dividing each error by the local displacement thickness over the
+channel height gave a constant, 3.3 to 4.0, which is the signature of blockage. A pressure outlet
+on the top removed it.
 
 **The reverse-flow problem.** The boundary layer displaces fluid upward, so fluid leaves through
 the top boundary. With default settings, Fluent let fluid *enter* through 30–51% of the top
@@ -89,11 +101,6 @@ Momentum tab, which is off by default. With it on, continuity dropped to $$8 \ti
 400 iterations.
 
 ## Mesh
-
-<!-- Mesh picture: add the Fluent screenshot here when it exists.
-![Medium mesh](/images/flatplate/flatplate_mesh.png)
-*Medium mesh near the leading edge.*
--->
 
 The mesh is structured quadrilaterals in three levels. Each level has twice the cells of the
 previous one in each direction:
@@ -196,6 +203,9 @@ one only by predicting a number and checking it.
 - **A wall-spacing error was invisible in the interface.** A grading factor of 20 where 70 was
   needed made the first wall cell 2.6 times too large. I found it from the exported node
   coordinates.
+- **A passing average hid a wrong boundary condition.** With the symmetry top, the mean wall heat
+  flux was still only 1.04% off, because the average is weighted toward the leading edge, where
+  the blockage is small. The local profile exposed the error at once.
 - **Eleven silent exits.** Fluent closed with no message eleven times on this small 2D case, so
   each restart had to be checked against a known number.
 

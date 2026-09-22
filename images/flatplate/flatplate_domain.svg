@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" width="900" height="580">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f5fa8"/></marker>
+<marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0b2545"/></marker>
+</defs>
+<style>text{font-family:Helvetica,Arial,sans-serif;font-size:19px;fill:#0b2545}
+.s{font-size:16px;fill:#6b7a90} .i{font-style:italic} .b{font-weight:bold}</style>
+<rect width="900" height="580" rx="10" fill="#ffffff"/>
+<rect x="150" y="110" width="640" height="176" fill="#f2f6fb" stroke="#6b7a90" stroke-width="1.2"/>
+<line x1="150" y1="110" x2="150" y2="286" stroke="#1f5fa8" stroke-width="4"/>
+<line x1="92" y1="135" x2="142" y2="135" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="92" y1="172" x2="142" y2="172" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="92" y1="209" x2="142" y2="209" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="92" y1="246" x2="142" y2="246" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
+<text x="90" y="84">velocity inlet</text>
+<text x="90" y="104" class="s"><tspan class="i">U</tspan><tspan dy="4" font-size="12">∞</tspan><tspan dy="-4"> = 1 m/s, </tspan><tspan class="i">T</tspan><tspan dy="4" font-size="12">∞</tspan><tspan dy="-4"> = 300 K</tspan></text>
+<line x1="150" y1="110" x2="790" y2="110" stroke="#2e7d5b" stroke-width="4"/>
+<line x1="790" y1="110" x2="790" y2="286" stroke="#2e7d5b" stroke-width="4"/>
+<text x="780" y="98" text-anchor="end">pressure outlet</text>
+<text x="802" y="194.0">pressure</text>
+<text x="802" y="216.0">outlet</text>
+<line x1="150" y1="286" x2="363.33333333333337" y2="286" stroke="#6b7a90" stroke-width="4" stroke-dasharray="10 6"/>
+<line x1="363.33333333333337" y1="286" x2="790" y2="286" stroke="#c0591c" stroke-width="6"/>
+<text x="256.6666666666667" y="312" text-anchor="middle" class="s">symmetry</text>
+<text x="576.6666666666667" y="312" text-anchor="middle">no-slip wall, <tspan class="i">T</tspan><tspan dy="4" font-size="12">w</tspan><tspan dy="-4"> = 350 K</tspan></text>
+<text x="363.33333333333337" y="334" text-anchor="middle" class="s">leading edge, <tspan class="i">x</tspan> = 0</text>
+<line x1="150" y1="360" x2="363.33333333333337" y2="360" stroke="#0b2545" stroke-width="1" marker-start="url(#ak)" marker-end="url(#ak)"/>
+<rect x="226.66666666666669" y="348" width="60" height="24" fill="#ffffff"/>
+<text x="256.6666666666667" y="366" text-anchor="middle" class="s">0.5 m</text>
+<line x1="363.33333333333337" y1="360" x2="790" y2="360" stroke="#0b2545" stroke-width="1" marker-start="url(#ak)" marker-end="url(#ak)"/>
+<rect x="546.6666666666667" y="348" width="60" height="24" fill="#ffffff"/>
+<text x="576.6666666666667" y="366" text-anchor="middle" class="s">1.0 m</text>
+<line x1="72" y1="110" x2="72" y2="286" stroke="#0b2545" stroke-width="1" marker-start="url(#ak)" marker-end="url(#ak)"/>
+<text x="64" y="204.0" text-anchor="end" class="s">0.2 m</text>
+<text x="790" y="334" text-anchor="end" class="s">vertical scale × 2</text>
+<rect x="337.33333333333337" y="240" width="92.0" height="46" fill="none" stroke="#0b2545" stroke-width="1.4"/>
+<line x1="429.33333333333337" y1="240" x2="470" y2="432" stroke="#0b2545" stroke-width="0.8" stroke-dasharray="4 4"/>
+<line x1="429.33333333333337" y1="286" x2="470" y2="552" stroke="#0b2545" stroke-width="0.8" stroke-dasharray="4 4"/>
+<rect x="470" y="432" width="390" height="120" fill="#ffffff" stroke="#0b2545" stroke-width="1.4"/>
+<line x1="475.7" y1="432" x2="475.7" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="482.5" y1="432" x2="482.5" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="491.0" y1="432" x2="491.0" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="501.2" y1="432" x2="501.2" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="513.7" y1="432" x2="513.7" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="529.0" y1="432" x2="529.0" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="547.6" y1="432" x2="547.6" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="570.4" y1="432" x2="570.4" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="598.1" y1="432" x2="598.1" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="632.0" y1="432" x2="632.0" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="673.2" y1="432" x2="673.2" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="723.6" y1="432" x2="723.6" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="785.0" y1="432" x2="785.0" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="860.0" y1="432" x2="860.0" y2="552" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="470" y1="549.9" x2="860" y2="549.9" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="470" y1="547.1" x2="860" y2="547.1" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="470" y1="543.5" x2="860" y2="543.5" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="470" y1="538.8" x2="860" y2="538.8" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="470" y1="532.8" x2="860" y2="532.8" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="470" y1="524.9" x2="860" y2="524.9" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="470" y1="514.6" x2="860" y2="514.6" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="470" y1="501.2" x2="860" y2="501.2" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="470" y1="483.9" x2="860" y2="483.9" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="470" y1="461.3" x2="860" y2="461.3" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="470" y1="432.0" x2="860" y2="432.0" stroke="#6b7a90" stroke-width="0.7"/>
+<line x1="470" y1="552" x2="860" y2="552" stroke="#c0591c" stroke-width="5"/>
+<line x1="470" y1="432" x2="470" y2="552" stroke="#0b2545" stroke-width="2"/>
+<text x="470" y="398" class="b">Cell spacing near the wall</text>
+<text x="470" y="420" class="s">schematic, not the real mesh</text>
+</svg>
