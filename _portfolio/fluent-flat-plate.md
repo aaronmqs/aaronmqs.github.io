@@ -8,10 +8,7 @@ collection: portfolio
 {: .notice--warning}
 
 I set up, solved, and verified a steady laminar flat-plate boundary layer with heat transfer in
-**Ansys Fluent**. The reference is the exact Blasius (velocity) and Pohlhausen (temperature)
-similarity solution. On the finest of three meshes, skin friction is within 1.2% and wall heat
-flux within 0.4% of the exact values over the judged range $$x \geq 0.1$$ m, and the observed
-order of accuracy is close to the formal second order of the scheme.
+**Ansys Fluent**.
 
 ## Setup
 
