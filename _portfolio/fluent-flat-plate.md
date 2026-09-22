@@ -1,6 +1,6 @@
 ---
 title: "Laminar flat plate in Ansys Fluent: verification against Blasius"
-excerpt: "Skin friction and wall heat flux on a heated flat plate, verified against the exact similarity solution on three meshes.<br/><img src='/images/flatplate/flatplate_cf.png' width='400'>"
+excerpt: "Skin friction and wall heat flux on a heated flat plate, verified against the exact similarity solution on three meshes.<br/><img src='/images/flatplate/flatplate_similarity.png' width='400'>"
 collection: portfolio
 ---
 
