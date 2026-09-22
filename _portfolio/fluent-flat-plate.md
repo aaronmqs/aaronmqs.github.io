@@ -15,9 +15,10 @@ I set up, solved, and verified a steady laminar flat-plate boundary layer with h
   <img src="/images/flatplate/flatplate_3d.svg" alt="Three-dimensional view of the flat plate with flow passing over its heated top surface">
 </div>
 
-The plate is held at 350 K in a 300 K stream of an air-like fluid, so heat flows from the wall into
-the flow. This is the situation of air cooling a warm surface, such as a circuit board in
-electronics cooling or a fin in a heat exchanger.
+The plate is held at 350 K in a 300 K stream, so heat flows from the wall into the flow. This is
+the situation of air cooling a warm surface, such as a circuit board in electronics cooling or a
+fin in a heat exchanger. The fluid is air-like: it has the Prandtl number of air, 0.72, but its
+density and viscosity are constant and rounded, which keeps the exact solution below exact.
 
 ## The situation
 
@@ -65,8 +66,11 @@ discretization error measured below, so a correlation cannot serve as the refere
 | Domain | $$x \in [-0.5, 1.0]$$ m, $$y \in [0, 0.2]$$ m |
 | Solver | pressure-based, coupled; second-order upwind for momentum and energy |
 
-Constant properties keep the problem exactly the one the similarity solution describes. The
-values are chosen so that $$\mathrm{Re}_x = x/10^{-5}$$ with $$x$$ in meters.
+Real air at 300 K has $$\rho = 1.18$$ kg/m³ and $$\mu = 1.85 \times 10^{-5}$$ kg/(m·s), and both
+change with temperature. Here they are rounded and held constant. That keeps the problem exactly
+the one the similarity solution describes, so the reference stays exact and any difference is the
+solver's. The values also make $$\mathrm{Re}_x = x/10^{-5}$$, with $$x$$ in meters. The Prandtl
+number is that of air, because it sets the heat transfer.
 
 Boundary conditions:
 

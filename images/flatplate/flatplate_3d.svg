@@ -19,5 +19,5 @@
 <text x="225.0" y="279.0" text-anchor="middle" class="i">L</text>
 <line x1="372.0" y1="233.0" x2="454.5" y2="173.0" stroke="#0b2545" stroke-width="1" marker-start="url(#ak)" marker-end="url(#ak)"/>
 <text x="427.2" y="217.0" class="s">span</text>
-<text x="508" y="30" text-anchor="end" class="s">very wide span: 2D model</text>
+<text x="508" y="30" text-anchor="end" class="s">span: infinite (2D model)</text>
 </svg>
