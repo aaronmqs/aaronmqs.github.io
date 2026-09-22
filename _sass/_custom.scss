@@ -89,6 +89,14 @@ html[data-theme="dark"] {
   display: none;
 }
 
+/* Justified body text; hyphens stop large gaps between words on a phone */
+.page__content p,
+.page__content li,
+.archive__item-excerpt {
+  text-align: justify;
+  hyphens: auto;
+}
+
 /* The hamburger icon bars */
 .navicon,
 .navicon:before,
