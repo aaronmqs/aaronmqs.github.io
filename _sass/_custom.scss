@@ -1,0 +1,74 @@
+/* ==========================================================================
+   CUSTOM COLORS - dark blue menu bar, white page, dark blue headings/links
+   Imported last in assets/css/main.scss, so it overrides the theme files.
+   ========================================================================== */
+
+$navy        : #0b2545;
+$navy-light  : #1f5fa8;
+$bar-hover   : #9cc4f0;
+
+/* Light mode: blue links, navy headings */
+:root {
+  --global-base-color          : #{$navy};
+  --global-link-color          : #{$navy-light};
+  --global-link-color-hover    : #{$navy};
+  --global-link-color-visited  : #{$navy-light};
+}
+
+html:not([data-theme="dark"]) {
+  h1, h2, h3, h4, h5, h6,
+  .page__title, .archive__item-title {
+    color: $navy;
+  }
+}
+
+/* Menu bar: navy with white text, in both light and dark mode */
+.masthead,
+.greedy-nav,
+.greedy-nav button,
+.greedy-nav .hidden-links,
+.masthead__menu-item {
+  background: $navy;
+  background-color: $navy;
+}
+
+.masthead::after {
+  background: $navy;
+}
+
+.greedy-nav a,
+.greedy-nav button,
+.masthead__menu-item.selected a,
+.masthead__menu-item.selected a:hover {
+  color: #fff;
+}
+
+.greedy-nav a:hover,
+.greedy-nav .hidden-links a:hover {
+  color: $bar-hover;
+  background: transparent;
+}
+
+.masthead__menu-item.selected a,
+.masthead__menu-item.selected a:hover {
+  border-bottom-color: #fff;
+}
+
+.greedy-nav .visible-links a:before {
+  background: $bar-hover;
+}
+
+.greedy-nav .hidden-links:after {
+  border-color: $navy transparent;
+}
+
+.greedy-nav .hidden-links li {
+  border-bottom-color: $navy-light;
+}
+
+/* The hamburger icon bars */
+.navicon,
+.navicon:before,
+.navicon:after {
+  background: #fff;
+}
