@@ -22,7 +22,7 @@ function determineComputedTheme() {
   if (themeSetting != "system") {
     return themeSetting;
   }
-  return browserPref ? "dark" : "light";
+  return "light"; // default to light; dark only when the visitor picks it
 }
 
 // Set the theme on page load or when explicitly called. Without an argument the
@@ -146,7 +146,7 @@ $(document).ready(function () {
   window.matchMedia('(prefers-color-scheme: dark)')
         .addEventListener("change", (e) => {
           if (!localStorage.getItem("theme")) {
-            setTheme(e.matches ? "dark" : "light");
+            setTheme();
           }
         });
 

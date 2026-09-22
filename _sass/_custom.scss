@@ -22,6 +22,24 @@ html:not([data-theme="dark"]) {
   }
 }
 
+/* Dark mode (only when the visitor clicks the sun/moon icon): dark blue, not gray */
+html[data-theme="dark"] {
+  --global-bg-color            : #12305a;
+  --global-footer-bg-color     : #12305a;
+  --global-border-color        : #2a4d7d;
+  --global-dark-border-color   : #2a4d7d;
+  --global-thead-color         : #1a3d6d;
+  --global-text-color          : #ffffff;
+  --global-text-color-light    : #d6e4f5;
+  --global-fig-caption-color   : #d6e4f5;
+  --global-base-color          : #{$bar-hover};
+  --global-link-color          : #{$bar-hover};
+  --global-link-color-hover    : #ffffff;
+  --global-link-color-visited  : #{$bar-hover};
+  --global-masthead-link-color : #ffffff;
+  --global-masthead-link-color-hover : #{$bar-hover};
+}
+
 /* Menu bar: navy with white text, in both light and dark mode */
 .masthead,
 .greedy-nav,
