@@ -66,6 +66,11 @@ html:not([data-theme="dark"]) {
   border-bottom-color: $navy-light;
 }
 
+/* No footer (GitHub/Feed links, credits, sitemap) */
+.page__footer {
+  display: none;
+}
+
 /* The hamburger icon bars */
 .navicon,
 .navicon:before,
