@@ -36,6 +36,19 @@ document.addEventListener('DOMContentLoaded', function () {
     return d;
   });
 
+  function photoCentre() {
+    var body = document.body;
+    var wasHidden = body.classList.contains('sidebar-hidden');
+    if (wasHidden) body.classList.remove('sidebar-hidden');
+    var best = null;
+    Array.prototype.forEach.call(document.querySelectorAll('.sidebar img'), function (im) {
+      var r = im.getBoundingClientRect();
+      if (r.height > 0 && r.width > 0 && (!best || r.height > best.height)) best = r;
+    });
+    if (wasHidden) body.classList.add('sidebar-hidden');
+    return best ? best.top + best.height / 2 : window.innerHeight / 2;
+  }
+
   function place() {
     var hidden = document.body.classList.contains('sidebar-hidden');
     var main = document.querySelector('.page') || document.querySelector('.archive');
@@ -54,16 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var left = Math.max(4, x);
     btn.style.left = left + 'px';
 
-    /* centre the handle on the profile photo, and cut the divider around it */
-    var y = window.innerHeight / 2;
-    if (!hidden) {
-      var best = null;
-      Array.prototype.forEach.call(document.querySelectorAll('.sidebar img'), function (im) {
-        var r = im.getBoundingClientRect();
-        if (r.height > 0 && r.width > 0 && (!best || r.height > best.height)) best = r;
-      });
-      if (best) y = best.top + best.height / 2;
-    }
+    /* keep the handle level with the photo, in both states */
+    var y = photoCentre();
     btn.style.top = y + 'px';
 
     var head = document.querySelector('.masthead');
