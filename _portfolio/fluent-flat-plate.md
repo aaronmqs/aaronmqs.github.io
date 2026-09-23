@@ -19,16 +19,19 @@ seen; in the model the plate has none.*
 
 A uniform stream flows over a flat plate aligned with it. In the model the plate has no thickness:
 it is the lower boundary of the domain. The fluid must stop at the wall, so a thin layer of slow
-fluid, the **boundary layer**, grows from the leading edge downstream. The heated wall warms a
-thermal layer in the same way.
+fluid, the **boundary layer**, grows from the leading edge downstream. The plate sits at 350 K in
+a 300 K stream, so the wall also warms a thermal layer next to it. This is air cooling a warm
+surface, such as a circuit board.
 
 Two wall quantities matter. The **wall shear stress** gives the skin-friction drag, and the **wall
 heat flux** is the cooling rate. Both are largest at the leading edge, where the layers are
-thinnest.
+thinnest. The velocity profile across the layer is the third quantity, because the wall values
+alone can be right for the wrong reason.
 
-Here the plate sits at 350 K in a 300 K stream: air cooling a warm surface, such as a circuit
-board. The fluid is air-like, with the Prandtl number of air, 0.72, but its density and viscosity
-are constant and rounded, which keeps the reference solution exact.
+All three have an exact answer here. The fluid is air-like, with the Prandtl number of air, 0.72,
+but its density and viscosity are constant and rounded. That makes the similarity solution of
+Blasius and Pohlhausen exact rather than approximate, so every difference from it belongs to the
+solver or to the mesh.
 
 ## The exact solution
 
