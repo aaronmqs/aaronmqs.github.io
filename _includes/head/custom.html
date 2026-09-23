@@ -19,24 +19,49 @@
 <link rel="icon" href="/images/favicon.ico"/>
 <meta name="theme-color" content="var(--global-bg-color)"/>
 
-<!-- Button that hides or shows the author sidebar; the choice is kept in this browser.
+<!-- Handle that hides or shows the author sidebar; the choice is kept in this browser.
      It is built here, not in the footer, because the footer is hidden by the custom styles. -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  var LEFT = '<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M6.5 1.5 L3 5 L6.5 8.5"/></svg>';
+  var RIGHT = '<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M3.5 1.5 L7 5 L3.5 8.5"/></svg>';
   var btn = document.createElement('button');
   btn.id = 'sidebar-toggle';
   btn.type = 'button';
   document.body.appendChild(btn);
+
+  function place() {
+    var hidden = document.body.classList.contains('sidebar-hidden');
+    var main = document.querySelector('.page') || document.querySelector('.archive');
+    var bar = document.querySelector('.sidebar');
+    var x;
+    if (hidden && main) {
+      x = main.getBoundingClientRect().left - 26;
+    } else if (bar) {
+      var r = bar.getBoundingClientRect();
+      x = r.right + 4;
+      if (main) {
+        x = Math.min(x, main.getBoundingClientRect().left - 22);
+      }
+    }
+    if (x !== undefined) {
+      btn.style.left = Math.max(4, x) + 'px';
+    }
+  }
+
   function paint(hidden) {
     document.body.classList.toggle('sidebar-hidden', hidden);
-    btn.innerHTML = hidden ? '&#9654;' : '&#9664;';
+    btn.innerHTML = hidden ? RIGHT : LEFT;
     var label = hidden ? 'Show the profile column' : 'Hide the profile column';
     btn.title = label;
     btn.setAttribute('aria-label', label);
+    place();
   }
+
   var saved = false;
   try { saved = localStorage.getItem('sidebarHidden') === '1'; } catch (e) {}
   paint(saved);
+  window.addEventListener('resize', place);
   btn.addEventListener('click', function () {
     paint(!document.body.classList.contains('sidebar-hidden'));
     try { localStorage.setItem('sidebarHidden', document.body.classList.contains('sidebar-hidden') ? '1' : '0'); } catch (e) {}
