@@ -112,7 +112,8 @@ html[data-theme="dark"] {
 }
 
 /* Slim handle between the profile column and the text; it hides or shows the column */
-#sidebar-toggle {
+#sidebar-toggle,
+.sidebar-divider {
   display: none;
 }
 
@@ -151,6 +152,28 @@ html[data-theme="dark"] {
     stroke-linejoin: round;
   }
 
+  .sidebar-divider {
+    display: block;
+    position: fixed;
+    z-index: 19;
+    width: 1px;
+    background: rgba(11, 37, 69, 0.35);
+  }
+
+  .sidebar-divider.is-top {
+    top: 4.6em;
+    height: calc(50% - 4.6em - 54px);
+  }
+
+  .sidebar-divider.is-bottom {
+    top: calc(50% + 54px);
+    bottom: 0;
+  }
+
+  body.sidebar-hidden .sidebar-divider {
+    display: none;
+  }
+
   body.sidebar-hidden .sidebar {
     display: none;
   }
@@ -168,6 +191,10 @@ html[data-theme="dark"] {
 html[data-theme="dark"] #sidebar-toggle {
   border-color: rgba(156, 196, 240, 0.7);
   background: rgba(156, 196, 240, 0.25);
+}
+
+html[data-theme="dark"] .sidebar-divider {
+  background: rgba(156, 196, 240, 0.35);
 }
 
 html[data-theme="dark"] #sidebar-toggle svg {

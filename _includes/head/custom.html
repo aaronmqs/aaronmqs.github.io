@@ -29,6 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
   btn.id = 'sidebar-toggle';
   btn.type = 'button';
   document.body.appendChild(btn);
+  var lines = ['is-top', 'is-bottom'].map(function (cls) {
+    var d = document.createElement('div');
+    d.className = 'sidebar-divider ' + cls;
+    document.body.appendChild(d);
+    return d;
+  });
 
   function place() {
     var hidden = document.body.classList.contains('sidebar-hidden');
@@ -45,7 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
     if (x !== undefined) {
-      btn.style.left = Math.max(4, x) + 'px';
+      var left = Math.max(4, x);
+      btn.style.left = left + 'px';
+      lines.forEach(function (d) { d.style.left = (left + 9) + 'px'; });
     }
   }
 
