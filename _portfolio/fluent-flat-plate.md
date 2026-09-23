@@ -25,8 +25,9 @@ The quantities of interest are the skin friction $$C_f$$, the wall heat flux $$q
 velocity profile across the layer. The first two integrate to the plate drag and the mean cooling
 rate.
 
-Each is measured against the similarity solution on three systematically refined meshes, which
-separates the discretization error from the terms that boundary-layer theory omits.
+All three are measured against the similarity solution. The wall quantities are computed on three
+systematically refined meshes, which separates the discretization error from the terms that
+boundary-layer theory omits; the profiles come from the medium mesh.
 
 ## The exact solution
 
