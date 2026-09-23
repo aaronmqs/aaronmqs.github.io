@@ -17,22 +17,18 @@ I set up, solved, and verified a steady laminar flat-plate boundary layer with h
 *Side view and three-dimensional view. Both drawings give the plate a thickness so that it can be
 seen; in the model the plate has none.*
 
-The plate is held at 350 K in a 300 K stream, so heat flows from the wall into the flow. This is
-the situation of air cooling a warm surface, such as a circuit board in electronics cooling. The
-fluid is air-like: it has the Prandtl number of air, 0.72, but its
-density and viscosity are constant and rounded, which keeps the reference solution exact.
+A uniform stream flows over a flat plate aligned with it. In the model the plate has no thickness:
+it is the lower boundary of the domain. The fluid must stop at the wall, so a thin layer of slow
+fluid, the **boundary layer**, grows from the leading edge downstream. The heated wall warms a
+thermal layer in the same way.
 
-## The situation
+Two wall quantities matter. The **wall shear stress** gives the skin-friction drag, and the **wall
+heat flux** is the cooling rate. Both are largest at the leading edge, where the layers are
+thinnest.
 
-A uniform stream flows over a flat plate aligned with it. The plate has no thickness in the model:
-it is the lower boundary of the domain, starting at the leading edge. At the plate the fluid must stop
-(no slip), so a thin layer of slow fluid forms near the wall: the **boundary layer**. It starts
-with zero thickness at the leading edge and grows downstream. The same happens to temperature:
-the heated wall warms a thin thermal layer of fluid next to it.
-
-Two wall quantities matter in practice. The **wall shear stress** pulls the plate downstream and
-gives the skin-friction drag. The **wall heat flux** is the rate at which the flow cools the plate.
-Both are largest at the leading edge, where the layer is thinnest.
+Here the plate sits at 350 K in a 300 K stream: air cooling a warm surface, such as a circuit
+board. The fluid is air-like, with the Prandtl number of air, 0.72, but its density and viscosity
+are constant and rounded, which keeps the reference solution exact.
 
 ## The exact solution
 
