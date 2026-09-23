@@ -50,11 +50,26 @@ document.addEventListener('DOMContentLoaded', function () {
         x = Math.min(x, main.getBoundingClientRect().left - 22);
       }
     }
-    if (x !== undefined) {
-      var left = Math.max(4, x);
-      btn.style.left = left + 'px';
-      lines.forEach(function (d) { d.style.left = (left + 9) + 'px'; });
+    if (x === undefined) return;
+    var left = Math.max(4, x);
+    btn.style.left = left + 'px';
+
+    // centre the handle on the profile photo, and cut the divider around it
+    var photo = document.querySelector('.sidebar .author__avatar img');
+    var y = window.innerHeight / 2;
+    if (photo && !hidden) {
+      var pr = photo.getBoundingClientRect();
+      if (pr.height > 0) y = pr.top + pr.height / 2;
     }
+    btn.style.top = y + 'px';
+
+    var head = document.querySelector('.masthead');
+    var top0 = head ? head.getBoundingClientRect().bottom + 10 : 70;
+    var half = btn.offsetHeight / 2 + 10;
+    lines.forEach(function (d) { d.style.left = (left + 9) + 'px'; });
+    lines[0].style.top = top0 + 'px';
+    lines[0].style.height = Math.max(0, y - half - top0) + 'px';
+    lines[1].style.top = (y + half) + 'px';
   }
 
   function paint(hidden) {
@@ -70,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
   try { saved = localStorage.getItem('sidebarHidden') === '1'; } catch (e) {}
   paint(saved);
   window.addEventListener('resize', place);
+  window.addEventListener('load', place);
   btn.addEventListener('click', function () {
     paint(!document.body.classList.contains('sidebar-hidden'));
     try { localStorage.setItem('sidebarHidden', document.body.classList.contains('sidebar-hidden') ? '1' : '0'); } catch (e) {}

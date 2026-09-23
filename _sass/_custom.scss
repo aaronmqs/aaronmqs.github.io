@@ -160,13 +160,7 @@ html[data-theme="dark"] {
     background: rgba(11, 37, 69, 0.35);
   }
 
-  .sidebar-divider.is-top {
-    top: 4.6em;
-    height: calc(50% - 4.6em - 54px);
-  }
-
   .sidebar-divider.is-bottom {
-    top: calc(50% + 54px);
     bottom: 0;
   }
 
