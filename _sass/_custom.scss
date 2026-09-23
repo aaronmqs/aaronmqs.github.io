@@ -111,11 +111,24 @@ html[data-theme="dark"] {
   max-width: 100%;
 }
 
-/* Table of contents: keep it in view while the page scrolls */
+/* Table of contents: in view while scrolling, and out of the text column */
 @media screen and (min-width: 64em) {
   .sidebar__right {
     position: sticky;
     top: 5em;
+  }
+}
+
+@media screen and (min-width: 80em) {
+  .sidebar__right {
+    position: fixed;
+    top: 6em;
+    right: 0.8em;
+    float: none;
+    width: 15em;
+    margin-left: 0;
+    max-height: 76vh;
+    overflow-y: auto;
   }
 }
 
