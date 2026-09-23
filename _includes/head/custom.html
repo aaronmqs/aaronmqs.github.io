@@ -55,11 +55,14 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.style.left = left + 'px';
 
     // centre the handle on the profile photo, and cut the divider around it
-    var photo = document.querySelector('.sidebar .author__avatar img');
     var y = window.innerHeight / 2;
-    if (photo && !hidden) {
-      var pr = photo.getBoundingClientRect();
-      if (pr.height > 0) y = pr.top + pr.height / 2;
+    if (!hidden) {
+      var best = null;
+      Array.prototype.forEach.call(document.querySelectorAll('.sidebar img'), function (im) {
+        var r = im.getBoundingClientRect();
+        if (r.height > 0 && r.width > 0 && (!best || r.height > best.height)) best = r;
+      });
+      if (best) y = best.top + best.height / 2;
     }
     btn.style.top = y + 'px';
 
@@ -86,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
   paint(saved);
   window.addEventListener('resize', place);
   window.addEventListener('load', place);
+  setTimeout(place, 400);
   btn.addEventListener('click', function () {
     paint(!document.body.classList.contains('sidebar-hidden'));
     try { localStorage.setItem('sidebarHidden', document.body.classList.contains('sidebar-hidden') ? '1' : '0'); } catch (e) {}
