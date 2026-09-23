@@ -14,24 +14,19 @@ I set up, solved, and verified a steady laminar flat-plate boundary layer with h
   <img src="/images/flatplate/flatplate_side.svg" alt="Side view of the flat plate: uniform flow from the left, boundary layer growing along the heated plate">
   <img src="/images/flatplate/flatplate_3d.svg" alt="Three-dimensional view of the flat plate with flow passing over its heated top surface">
 </div>
-*Side view and three-dimensional view. Both drawings give the plate a thickness so that it can be
-seen; in the model the plate has none.*
+*Side and three-dimensional views. The plate is drawn with thickness for visibility only.*
 
-A uniform stream flows over a flat plate aligned with it. In the model the plate has no thickness:
-it is the lower boundary of the domain. The fluid must stop at the wall, so a thin layer of slow
-fluid, the **boundary layer**, grows from the leading edge downstream. The plate sits at 350 K in
-a 300 K stream, so the wall also warms a thermal layer next to it. This is air cooling a warm
-surface, such as a circuit board.
+Steady laminar flow over an isothermal flat plate of zero thickness, at
+$$\mathrm{Re}_L = 10^5$$, with heat transfer. The wall is at 350 K in a 300 K stream. The fluid is
+air-like: $$\mathrm{Pr} = 0.72$$, with constant density and viscosity, so the Blasius and
+Pohlhausen similarity solution is exact and not approximate.
 
-Two wall quantities matter. The **wall shear stress** gives the skin-friction drag, and the **wall
-heat flux** is the cooling rate. Both are largest at the leading edge, where the layers are
-thinnest. The velocity profile across the layer is the third quantity, because the wall values
-alone can be right for the wrong reason.
+The quantities of interest are the skin friction $$C_f$$, the wall heat flux $$q_w$$, and the
+velocity profile across the layer. The first two integrate to the plate drag and the mean cooling
+rate.
 
-All three have an exact answer here. The fluid is air-like, with the Prandtl number of air, 0.72,
-but its density and viscosity are constant and rounded. That makes the similarity solution of
-Blasius and Pohlhausen exact rather than approximate, so every difference from it belongs to the
-solver or to the mesh.
+Each is measured against the similarity solution on three systematically refined meshes, which
+separates the discretization error from the terms that boundary-layer theory omits.
 
 ## The exact solution
 
