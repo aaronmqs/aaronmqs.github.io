@@ -114,18 +114,11 @@ html[data-theme="dark"] {
 /* Table of contents: in view while scrolling, and out of the text column */
 @media screen and (min-width: 64em) {
   .sidebar__right {
-    position: sticky;
-    top: 5em;
-  }
-}
-
-@media screen and (min-width: 80em) {
-  .sidebar__right {
     position: fixed;
     top: 6em;
     right: 1em;
     float: none;
-    width: 14em;
+    width: 13em;
     margin-left: 0;
     max-height: 76vh;
     overflow-y: auto;
@@ -135,7 +128,7 @@ html[data-theme="dark"] {
      only on pages that actually carry a contents box */
   .page:has(.sidebar__right),
   body.sidebar-hidden .page:has(.sidebar__right) {
-    padding-right: 16em;
+    padding-right: 15em;
   }
 
   /* handle that hides the contents box, mirroring the profile-column one */
@@ -145,7 +138,7 @@ html[data-theme="dark"] {
     justify-content: center;
     position: fixed;
     top: 8.5em;
-    right: 15.4em;
+    right: 14.4em;
     z-index: 20;
     width: 18px;
     height: 84px;
