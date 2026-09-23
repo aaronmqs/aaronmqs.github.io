@@ -123,12 +123,19 @@ html[data-theme="dark"] {
   .sidebar__right {
     position: fixed;
     top: 6em;
-    right: 0.8em;
+    right: 1em;
     float: none;
-    width: 15em;
+    width: 14em;
     margin-left: 0;
     max-height: 76vh;
     overflow-y: auto;
+  }
+
+  /* narrow the text column so the contents box has its own strip;
+     only on pages that actually carry a contents box */
+  .page:has(.sidebar__right),
+  body.sidebar-hidden .page:has(.sidebar__right) {
+    padding-right: 16em;
   }
 }
 
