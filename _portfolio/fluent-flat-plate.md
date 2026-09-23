@@ -14,15 +14,18 @@ I set up, solved, and verified a steady laminar flat-plate boundary layer with h
   <img src="/images/flatplate/flatplate_side.svg" alt="Side view of the flat plate: uniform flow from the left, boundary layer growing along the heated plate">
   <img src="/images/flatplate/flatplate_3d.svg" alt="Three-dimensional view of the flat plate with flow passing over its heated top surface">
 </div>
+*Side view and three-dimensional view. Both drawings give the plate a thickness so that it can be
+seen; in the model the plate has none.*
 
 The plate is held at 350 K in a 300 K stream, so heat flows from the wall into the flow. This is
-the situation of air cooling a warm surface, such as a circuit board in electronics cooling or a
-fin in a heat exchanger. The fluid is air-like: it has the Prandtl number of air, 0.72, but its
+the situation of air cooling a warm surface, such as a circuit board in electronics cooling. The
+fluid is air-like: it has the Prandtl number of air, 0.72, but its
 density and viscosity are constant and rounded, which keeps the reference solution exact.
 
 ## The situation
 
-A uniform stream flows over a thin plate aligned with it. At the plate the fluid must stop
+A uniform stream flows over a flat plate aligned with it. The plate has no thickness in the model:
+it is the lower boundary of the domain, starting at the leading edge. At the plate the fluid must stop
 (no slip), so a thin layer of slow fluid forms near the wall: the **boundary layer**. It starts
 with zero thickness at the leading edge and grows downstream. The same happens to temperature:
 the heated wall warms a thin thermal layer of fluid next to it.
