@@ -139,6 +139,32 @@ html[data-theme="dark"] {
   }
 }
 
+/* Contents box: a visible edge and a light tint, in both themes */
+.toc {
+  border: 1px solid rgba(11, 37, 69, 0.45);
+  border-radius: 6px;
+  background-color: rgba(11, 37, 69, 0.03);
+  box-shadow: 0 1px 4px rgba(11, 37, 69, 0.12);
+}
+
+.toc .nav__title {
+  background: $navy;
+  color: #fff;
+  margin: -1em -1em 0.6em -1em;
+  padding: 0.5em 0.8em;
+  border-radius: 5px 5px 0 0;
+}
+
+html[data-theme="dark"] .toc {
+  border-color: rgba(156, 196, 240, 0.6);
+  background-color: rgba(156, 196, 240, 0.08);
+}
+
+html[data-theme="dark"] .toc .nav__title {
+  background: #1a3d6d;
+  color: #fff;
+}
+
 /* Slim handle between the profile column and the text; it hides or shows the column */
 #sidebar-toggle,
 .sidebar-divider {
