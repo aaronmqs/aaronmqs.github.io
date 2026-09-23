@@ -137,9 +137,7 @@ html[data-theme="dark"] {
     align-items: center;
     justify-content: center;
     position: fixed;
-    top: 8.5em;
-    right: 14.4em;
-    z-index: 20;
+    z-index: 100;
     width: 18px;
     height: 84px;
     padding: 0;
@@ -149,10 +147,6 @@ html[data-theme="dark"] {
     cursor: pointer;
     opacity: 0.85;
     transition: opacity 0.15s ease-in-out, background 0.15s ease-in-out;
-  }
-
-  body.toc-hidden #toc-toggle {
-    right: 0.5em;
   }
 
   body.toc-hidden .sidebar__right {
@@ -206,7 +200,7 @@ html[data-theme="dark"] .toc .nav__title {
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 20;
+    z-index: 100;
     width: 18px;
     height: 84px;
     padding: 0;

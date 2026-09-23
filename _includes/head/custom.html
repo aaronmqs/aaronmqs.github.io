@@ -99,6 +99,18 @@ document.addEventListener('DOMContentLoaded', function () {
     tocBtn.id = 'toc-toggle';
     tocBtn.type = 'button';
     document.body.appendChild(tocBtn);
+    var placeToc = function () {
+      var hidden = document.body.classList.contains('toc-hidden');
+      var box = document.querySelector('.sidebar__right');
+      var r = box ? box.getBoundingClientRect() : null;
+      if (hidden || !r || r.width === 0) {
+        tocBtn.style.left = (window.innerWidth - 28) + 'px';
+        tocBtn.style.top = '140px';
+      } else {
+        tocBtn.style.left = (r.left - 24) + 'px';
+        tocBtn.style.top = (r.top + 30) + 'px';
+      }
+    };
     var paintToc = function (hidden) {
       document.body.classList.toggle('toc-hidden', hidden);
       tocBtn.innerHTML = hidden ? LEFT : RIGHT;
@@ -106,16 +118,24 @@ document.addEventListener('DOMContentLoaded', function () {
       tocBtn.title = lab;
       tocBtn.setAttribute('aria-label', lab);
       place();
+      placeToc();
     };
     var savedToc = false;
     try { savedToc = localStorage.getItem('tocHidden') === '1'; } catch (e) {}
     paintToc(savedToc);
+    tocBtn.addEventListener('reposition', placeToc);
+    window.addEventListener('load', placeToc);
+    setTimeout(placeToc, 400);
     tocBtn.addEventListener('click', function () {
       paintToc(!document.body.classList.contains('toc-hidden'));
       try { localStorage.setItem('tocHidden', document.body.classList.contains('toc-hidden') ? '1' : '0'); } catch (e) {}
     });
   }
-  window.addEventListener('resize', place);
+  window.addEventListener('resize', function () {
+    place();
+    var b = document.getElementById('toc-toggle');
+    if (b) b.dispatchEvent(new Event('reposition'));
+  });
   window.addEventListener('load', place);
   setTimeout(place, 400);
   btn.addEventListener('click', function () {
