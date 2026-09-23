@@ -111,6 +111,14 @@ html[data-theme="dark"] {
   max-width: 100%;
 }
 
+/* Table of contents: keep it in view while the page scrolls */
+@media screen and (min-width: 64em) {
+  .sidebar__right {
+    position: sticky;
+    top: 5em;
+  }
+}
+
 /* Slim handle between the profile column and the text; it hides or shows the column */
 #sidebar-toggle,
 .sidebar-divider {
