@@ -92,6 +92,29 @@ document.addEventListener('DOMContentLoaded', function () {
   var saved = false;
   try { saved = localStorage.getItem('sidebarHidden') === '1'; } catch (e) {}
   paint(saved);
+
+  /* the same control for the contents box, when the page has one */
+  if (document.querySelector('.sidebar__right')) {
+    var tocBtn = document.createElement('button');
+    tocBtn.id = 'toc-toggle';
+    tocBtn.type = 'button';
+    document.body.appendChild(tocBtn);
+    var paintToc = function (hidden) {
+      document.body.classList.toggle('toc-hidden', hidden);
+      tocBtn.innerHTML = hidden ? LEFT : RIGHT;
+      var lab = hidden ? 'Show the contents' : 'Hide the contents';
+      tocBtn.title = lab;
+      tocBtn.setAttribute('aria-label', lab);
+      place();
+    };
+    var savedToc = false;
+    try { savedToc = localStorage.getItem('tocHidden') === '1'; } catch (e) {}
+    paintToc(savedToc);
+    tocBtn.addEventListener('click', function () {
+      paintToc(!document.body.classList.contains('toc-hidden'));
+      try { localStorage.setItem('tocHidden', document.body.classList.contains('toc-hidden') ? '1' : '0'); } catch (e) {}
+    });
+  }
   window.addEventListener('resize', place);
   window.addEventListener('load', place);
   setTimeout(place, 400);
