@@ -19,4 +19,29 @@
 <link rel="icon" href="/images/favicon.ico"/>
 <meta name="theme-color" content="var(--global-bg-color)"/>
 
+<!-- Button that hides or shows the author sidebar; the choice is kept in this browser.
+     It is built here, not in the footer, because the footer is hidden by the custom styles. -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var btn = document.createElement('button');
+  btn.id = 'sidebar-toggle';
+  btn.type = 'button';
+  document.body.appendChild(btn);
+  function paint(hidden) {
+    document.body.classList.toggle('sidebar-hidden', hidden);
+    btn.innerHTML = hidden ? '&#9654;' : '&#9664;';
+    var label = hidden ? 'Show the profile column' : 'Hide the profile column';
+    btn.title = label;
+    btn.setAttribute('aria-label', label);
+  }
+  var saved = false;
+  try { saved = localStorage.getItem('sidebarHidden') === '1'; } catch (e) {}
+  paint(saved);
+  btn.addEventListener('click', function () {
+    paint(!document.body.classList.contains('sidebar-hidden'));
+    try { localStorage.setItem('sidebarHidden', document.body.classList.contains('sidebar-hidden') ? '1' : '0'); } catch (e) {}
+  });
+});
+</script>
+
 <!-- end custom head snippets -->

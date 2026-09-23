@@ -3,28 +3,4 @@
 <!-- Support for MathJax -->
 <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
 
-<!-- Button that hides or shows the author sidebar; the choice is kept in this browser -->
-<button id="sidebar-toggle" type="button" title="Hide the profile column" aria-label="Hide the profile column">&#9664;</button>
-<script>
-(function () {
-  var btn = document.getElementById('sidebar-toggle');
-  if (!btn) return;
-  function paint(hidden) {
-    document.body.classList.toggle('sidebar-hidden', hidden);
-    btn.innerHTML = hidden ? '&#9654;' : '&#9664;';
-    var label = hidden ? 'Show the profile column' : 'Hide the profile column';
-    btn.title = label;
-    btn.setAttribute('aria-label', label);
-  }
-  var saved = false;
-  try { saved = localStorage.getItem('sidebarHidden') === '1'; } catch (e) {}
-  paint(saved);
-  btn.addEventListener('click', function () {
-    var hidden = !document.body.classList.contains('sidebar-hidden');
-    paint(hidden);
-    try { localStorage.setItem('sidebarHidden', hidden ? '1' : '0'); } catch (e) {}
-  });
-})();
-</script>
-
 <!-- end custom footer snippets -->
