@@ -260,6 +260,20 @@ html[data-theme="dark"] #sidebar-toggle svg {
     transition: opacity 0.15s ease-in-out, background 0.15s ease-in-out;
   }
 
+  /* solid fill: the handle sits across the box edge, so the edge must not show through */
+  #toc-toggle {
+    background: #dde0e5;
+    opacity: 1;
+  }
+
+  #toc-toggle:hover {
+    background: #c0c6cf;
+  }
+
+  html[data-theme="dark"] #toc-toggle {
+    background: #35557f;
+  }
+
   body.toc-hidden .sidebar__right {
     display: none;
   }
