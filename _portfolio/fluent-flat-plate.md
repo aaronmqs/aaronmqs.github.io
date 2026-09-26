@@ -18,15 +18,17 @@ I set up, solved, and verified a steady laminar flat-plate boundary layer with h
   <img src="/images/flatplate/flatplate_side.svg" alt="Side view of the flat plate: uniform flow from the left, boundary layer growing along the heated plate">
   <img src="/images/flatplate/flatplate_3d.svg" alt="Three-dimensional view of the flat plate with flow passing over its heated top surface">
 </div>
+
 *Side and three-dimensional views. The plate is drawn with thickness for visibility only.*
+{: .caption}
 
 Steady laminar flow over an isothermal flat plate of zero thickness, at
-$$\mathrm{Re}_L = 10^5$$, with heat transfer. The wall is at 350 K in a 300 K stream. The fluid is
+$$\mathrm{Re}_L = 10^5$$. The wall is at 350 K in a 300 K stream. The fluid is
 air-like: $$\mathrm{Pr} = 0.72$$, with constant density and viscosity, so the Blasius and
 Pohlhausen similarity solution is exact and not approximate.
 
 The quantities of interest are the skin friction $$C_f$$, the wall heat flux $$q_w$$, and the
-velocity profile across the layer. The first two integrate to the plate drag and the mean cooling
+velocity profile across the boundary layer. The first two integrate to the plate drag and the mean cooling
 rate.
 
 All three are measured against the similarity solution. The wall quantities are computed on three
@@ -38,8 +40,10 @@ boundary-layer theory omits; the profiles come from the medium mesh.
 ### Domain and boundary conditions
 
 ![Domain and boundary conditions](/images/flatplate/flatplate_domain.svg)
+
 *The domain and its boundary conditions. The inset shows what "graded cells" means: the cells are
 smallest at the wall and at the leading edge, where the solution changes fastest.*
+{: .caption}
 
 Boundary conditions:
 
@@ -100,15 +104,21 @@ number is that of air, because it sets the heat transfer.
 ### Solution and quantities of interest
 
 ![Streamwise velocity](/images/flatplate/flatplate_u.png)
+
 *Streamwise velocity $$u$$, full domain to scale.*
+{: .caption}
 
 ![Gauge pressure](/images/flatplate/flatplate_p.png)
+
 *Gauge pressure. It is flat everywhere except at a peak at the leading edge. A flat pressure is
 the assumption that the Blasius solution rests on.*
+{: .caption}
 
 ![Boundary layer close-up](/images/flatplate/flatplate_u_bl.png)
+
 *The same velocity field near the wall, vertical scale $$\times 4$$. The layer grows from zero
 thickness at $$x = 0$$, as $$\sqrt{x}$$.*
+{: .caption}
 
 The error in any computed quantity $$\phi$$ is $$E = (\phi - \phi_\mathrm{exact})/\phi_\mathrm{exact}$$,
 in percent. Pass criteria are judged for $$x \ge 0.1$$ m. Closer to the leading edge, the exact
@@ -120,9 +130,11 @@ Skin friction gives the drag on the plate. It depends on the velocity gradient a
 it is the most sensitive test of the near-wall mesh.
 
 ![Skin friction](/images/flatplate/flatplate_cf.png)
+
 *Top: $$C_f$$ on the fine mesh against Blasius. Middle and bottom: error in percent, with the
 $$\pm 2\%$$ band shaded. The large error near $$x = 0$$ comes from the $$x^{-1/2}$$ singularity of
 the exact solution at the leading edge, not from a mesh failure.*
+{: .caption}
 
 #### Wall heat flux
 
@@ -130,16 +142,20 @@ The wall heat flux is the cooling rate, the number an engineer designs with. It 
 temperature gradient at the wall, and it tests the energy equation.
 
 ![Wall heat flux](/images/flatplate/flatplate_qw.png)
+
 *Wall heat flux on the fine mesh against the exact $$65.339/\sqrt{x}$$ W/m², with the $$\pm 3\%$$
 band shaded. The error is about $$-0.2\%$$ and flat over the judged range.*
+{: .caption}
 
 #### Velocity profiles
 
 Wall values test only the first cells. The profiles test the whole layer.
 
 ![Velocity profiles](/images/flatplate/flatplate_similarity.png)
+
 *Velocity profiles at five stations, medium mesh, plotted against $$\eta$$. They collapse onto
 the Blasius profile within 0.29%.*
+{: .caption}
 
 #### Mesh convergence
 
@@ -147,8 +163,10 @@ A match with the exact solution on one mesh can be luck. Three meshes show how t
 with the cell size, and whether it shrinks at the rate the numerical scheme promises.
 
 ![Mesh convergence](/images/flatplate/flatplate_convergence.png)
+
 *Error in $$C_f$$ and $$q_w$$ on all three meshes. The dotted line is the error extrapolated to
 zero cell size.*
+{: .caption}
 
 The order of accuracy and the grid convergence index follow the standard procedure [4, 5].
 The observed order of accuracy is 1.56 to 2.01, close to the formal second order of the scheme.

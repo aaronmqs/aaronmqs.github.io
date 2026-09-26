@@ -111,6 +111,33 @@ html[data-theme="dark"] {
   max-width: 100%;
 }
 
+/* Figure captions: smaller, muted, and numbered, so they do not read as body text */
+.page__content {
+  counter-reset: figure;
+}
+
+.page__content p.caption {
+  counter-increment: figure;
+  margin: 0.4em 0 1.8em 0;
+  font-size: 0.85em;
+  line-height: 1.45;
+  color: #4a5a70;
+}
+
+.page__content p.caption::before {
+  content: "Figure " counter(figure) ". ";
+  font-weight: bold;
+  color: $navy;
+}
+
+html[data-theme="dark"] .page__content p.caption {
+  color: #b8c8dc;
+}
+
+html[data-theme="dark"] .page__content p.caption::before {
+  color: #fff;
+}
+
 /* Contents box: a visible edge and a light tint, in both themes */
 .toc {
   border: 1px solid rgba(11, 37, 69, 0.45);
