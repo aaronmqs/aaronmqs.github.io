@@ -53,13 +53,10 @@ Boundary conditions:
 - **Wall** on $$y = 0$$, $$0 \le x \le 1$$: no slip, fixed temperature.
 - **Pressure outlets** at the exit ($$x = 1$$) and on the top ($$y = 0.2$$).
 
-**The reverse-flow problem.** The boundary layer displaces fluid upward, so fluid leaves through
-the top boundary. With default settings, Fluent let fluid *enter* through 30–51% of the top
-outlet at every iteration. The continuity residual stalled at $$1.4 \times 10^{-1}$$ for 1000
-iterations. The only diagnosis was a console note, "Reversed flow on 83 faces", printed as
-information, not as a warning. The fix was one option, **Prevent Reverse Flow** on the outlet's
-Momentum tab, which is off by default. With it on, continuity dropped to $$8 \times 10^{-12}$$ in
-400 iterations.
+The **Prevent Reverse Flow** option (off by default) was used on the top outlet. The boundary
+layer pushes fluid out through the top; without the option, fluid also entered there, and the
+continuity residual stalled at $$1.4 \times 10^{-1}$$. With it, the residual reached
+$$8 \times 10^{-12}$$ in 400 iterations.
 
 ### Mesh
 
