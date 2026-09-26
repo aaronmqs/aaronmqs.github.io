@@ -274,6 +274,7 @@ html[data-theme="dark"] #sidebar-toggle svg {
   #toc-toggle {
     background: #dde0e5;
     opacity: 1;
+    transform: translateY(-50%);
   }
 
   #toc-toggle:hover {

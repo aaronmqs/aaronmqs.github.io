@@ -103,13 +103,17 @@ document.addEventListener('DOMContentLoaded', function () {
       var hidden = document.body.classList.contains('toc-hidden');
       var box = document.querySelector('.sidebar__right');
       var r = box ? box.getBoundingClientRect() : null;
+      /* level with the profile-column handle, but never over the CONTENTS title */
+      var y = photoCentre();
       if (hidden || !r || r.width === 0) {
         tocBtn.style.left = (window.innerWidth - 28) + 'px';
-        tocBtn.style.top = '140px';
       } else {
         tocBtn.style.left = (r.left - 9) + 'px';
-        tocBtn.style.top = (r.top + 30) + 'px';
+        var title = box.querySelector('.nav__title');
+        var floor = title ? title.getBoundingClientRect().bottom + tocBtn.offsetHeight / 2 + 6 : 0;
+        y = Math.max(y, floor);
       }
+      tocBtn.style.top = y + 'px';
     };
     var paintToc = function (hidden) {
       document.body.classList.toggle('toc-hidden', hidden);
