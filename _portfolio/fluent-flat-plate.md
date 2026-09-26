@@ -53,14 +53,6 @@ Boundary conditions:
 - **Wall** on $$y = 0$$, $$0 \le x \le 1$$: no slip, fixed temperature.
 - **Pressure outlets** at the exit ($$x = 1$$) and on the top ($$y = 0.2$$).
 
-**The top boundary matters.** I first set the top to symmetry, which looked harmless: the domain
-is twelve boundary-layer thicknesses tall. But a symmetry plane is a slip wall. The fluid that the
-boundary layer pushes upward cannot leave, so the stream above the plate accelerates, and the wall
-shear comes out too high. The error grew along the plate, from $$+2.8\%$$ to $$+10.9\%$$, which
-looks like a mesh problem. Dividing each error by the local displacement thickness over the
-channel height gave a constant, 3.3 to 4.0, which is the signature of blockage. A pressure outlet
-on the top removed it.
-
 **The reverse-flow problem.** The boundary layer displaces fluid upward, so fluid leaves through
 the top boundary. With default settings, Fluent let fluid *enter* through 30–51% of the top
 outlet at every iteration. The continuity residual stalled at $$1.4 \times 10^{-1}$$ for 1000
@@ -202,9 +194,6 @@ one only by predicting a number and checking it.
 - **A wall-spacing error was invisible in the interface.** A grading factor of 20 where 70 was
   needed made the first wall cell 2.6 times too large. I found it from the exported node
   coordinates.
-- **A passing average hid a wrong boundary condition.** With the symmetry top, the mean wall heat
-  flux was still only 1.04% off, because the average is weighted toward the leading edge, where
-  the blockage is small. The local profile exposed the error at once.
 - **Eleven silent exits.** Fluent closed with no message eleven times on this small 2D case, so
   each restart had to be checked against a known number.
 
