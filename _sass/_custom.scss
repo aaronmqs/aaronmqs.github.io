@@ -193,6 +193,16 @@ html[data-theme="dark"] .toc .nav__title {
     bottom: 0;
   }
 
+  /* the profile column still scrolls with the wheel, but its scroll bar
+     no longer sits on the divider line and the handle */
+  .sidebar {
+    scrollbar-width: none;
+  }
+
+  .sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
   body.sidebar-hidden .sidebar {
     display: none;
   }
