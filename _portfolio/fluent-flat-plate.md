@@ -87,9 +87,9 @@ so the meshes differ only in cell size, and the error can be measured under refi
 | Solver | pressure-based, coupled; second-order upwind for momentum and energy |
 
 Real air at 300 K has $$\rho = 1.18$$ kg/m³ and $$\mu = 1.85 \times 10^{-5}$$ kg/(m·s), and both
-change with temperature. Here they are rounded and held constant. That keeps the problem exactly
-the one the similarity solution describes, so the reference stays exact and any difference is the
-solver's. The values also make $$\mathrm{Re}_x = x/10^{-5}$$, with $$x$$ in meters. The Prandtl
+change with temperature. Here they are rounded and held constant, which is the assumption of the
+similarity solution. The comparison then contains only the discretization error and the terms
+that boundary-layer theory omits. The values also make $$\mathrm{Re}_x = x/10^{-5}$$, with $$x$$ in meters. The Prandtl
 number is that of air, because it sets the heat transfer.
 
 ### Solution and quantities of interest
