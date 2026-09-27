@@ -31,10 +31,7 @@ The quantities of interest are the skin friction $$C_f$$, the wall heat flux $$q
 velocity profile across the boundary layer. The first two integrate to the plate drag and the mean cooling
 rate.
 
-All three are measured against the similarity solution. The wall quantities are computed on three
-systematically refined meshes, which separates the discretization error from the terms that
-boundary-layer theory omits. The plots of each quantity use the medium mesh; the mesh
-convergence section compares all three.
+All three are measured against the similarity solution.
 
 ## The computational model
 
@@ -63,17 +60,9 @@ $$8 \times 10^{-12}$$ in 400 iterations.
 
 ### Mesh
 
-Three structured quadrilateral meshes, each with twice the cells of the previous one in each
-direction. Cells = (along the plate + ahead of the plate) × normal to the wall:
-
-| Level | Cells | First cell height at the wall |
-|---|---|---|
-| Coarse | $$(60 + 30) \times 30 = 2{,}700$$ | $$3.9 \times 10^{-4}$$ m |
-| Medium | $$(120 + 60) \times 60 = 10{,}800$$ | $$2.0 \times 10^{-4}$$ m |
-| Fine | $$(240 + 120) \times 120 = 43{,}200$$ | $$1.0 \times 10^{-4}$$ m |
-
-Cells are clustered toward the wall and the leading edge. The grading is the same on all levels,
-so the meshes differ only in cell size, and the error can be measured under refinement.
+The mesh is structured quadrilaterals: 120 cells along the plate plus 60 ahead of it, times 60
+normal to the wall, so $$(120 + 60) \times 60 = 10{,}800$$ cells. The first cell at the wall is
+$$2.0 \times 10^{-4}$$ m high. Cells are clustered toward the wall and the leading edge.
 
 ### Setup in Fluent
 
@@ -107,12 +96,12 @@ $$C_f = \frac{\tau_w}{\tfrac{1}{2}\rho U_\infty^2}, \qquad \tau_w = \mu \left.\f
 
 The shear stress is the force per unit area that the fluid applies along the plate, so its
 integral over the plate is the drag. The average of $$C_f$$ over the plate is the drag coefficient, $$C_d = \frac{1}{L}\int_0^L C_f\,\mathrm{d}x$$. Because
-$$C_f$$ depends on the velocity gradient at the wall, it is the most sensitive test of the
-near-wall mesh.
+$$C_f$$ depends on the velocity gradient at the wall, its error shows if the cells next to the
+wall are small enough.
 
 ![Skin friction](/images/flatplate/flatplate_cf.png)
 
-*Top: $$C_f$$ on the medium mesh against Blasius. Middle and bottom: error in percent, with the
+*Top: $$C_f$$ against Blasius. Middle and bottom: error in percent, with the
 $$\pm 2\%$$ band shaded. The large error near $$x = 0$$ comes from the $$x^{-1/2}$$ singularity of
 the exact solution at the leading edge, not from a mesh failure.*
 {: .caption}
@@ -124,7 +113,7 @@ temperature gradient at the wall, and it tests the energy equation.
 
 ![Wall heat flux](/images/flatplate/flatplate_qw.png)
 
-*Wall heat flux on the medium mesh against the exact $$65.339/\sqrt{x}$$ W/m², with the $$\pm 3\%$$
+*Wall heat flux against the exact $$65.339/\sqrt{x}$$ W/m², with the $$\pm 3\%$$
 band shaded. The error is between $$-0.27\%$$ and $$-0.54\%$$ over the judged range.*
 {: .caption}
 
@@ -134,18 +123,29 @@ Wall values test only the first cells. The profiles test the whole layer.
 
 ![Velocity profiles](/images/flatplate/flatplate_similarity.png)
 
-*Velocity profiles at five stations, medium mesh, plotted against $$\eta$$. They collapse onto
+*Velocity profiles at five stations, plotted against $$\eta$$. They collapse onto
 the Blasius profile within 0.29%.*
 {: .caption}
 
 #### Mesh convergence
 
-A match with the exact solution on one mesh can be luck. Three meshes show how the error shrinks
-with the cell size, and whether it shrinks at the rate the numerical scheme promises.
+A match with the exact solution on one mesh can be luck. To check convergence, the case was
+also solved on a coarser and a finer mesh, with half and twice the cells in each direction and the
+same grading:
+
+| Mesh | Cells | First cell height at the wall |
+|---|---|---|
+| Coarser | $$(60 + 30) \times 30 = 2{,}700$$ | $$3.9 \times 10^{-4}$$ m |
+| Results above | $$(120 + 60) \times 60 = 10{,}800$$ | $$2.0 \times 10^{-4}$$ m |
+| Finer | $$(240 + 120) \times 120 = 43{,}200$$ | $$1.0 \times 10^{-4}$$ m |
+
+The three meshes show how the error shrinks with the cell size, and whether it shrinks at the
+rate the numerical scheme promises. This separates the discretization error from the terms that
+boundary-layer theory omits.
 
 ![Mesh convergence](/images/flatplate/flatplate_convergence.png)
 
-*Error in $$C_f$$ and $$q_w$$ on all three meshes. The dotted line is the error extrapolated to
+*Error in $$C_f$$ and $$q_w$$ on the three meshes, labeled by cell count. The dotted line is the error extrapolated to
 zero cell size.*
 {: .caption}
 
@@ -158,7 +158,7 @@ solution contains and boundary-layer theory leaves out: terms of order $$\mathrm
 
 #### Summary
 
-| Quantity | Criterion | Medium mesh | Result |
+| Quantity | Criterion | Computed | Result |
 |---|---|---|---|
 | Skin friction error, $$x \geq 0.1$$ | $$\lvert E \rvert < 2\%$$ | $$+0.08\%$$ to $$-1.25\%$$ | pass |
 | Wall heat flux error, $$x \geq 0.1$$ | $$\lvert E \rvert < 3\%$$ | $$-0.27\%$$ to $$-0.54\%$$ | pass |
@@ -189,8 +189,8 @@ one only by predicting a number and checking it.
 #### Possible improvements
 
 - Rerun with real air properties at the film temperature (325 K) instead of the air-like values.
-- Extract the velocity profiles on the fine mesh. A mesh replacement silently dropped the sampling
-  lines, so the plots show the medium mesh.
+- Extract the velocity profiles on the finer mesh too. A mesh replacement there silently dropped
+  the sampling lines.
 - Next cases: variable properties and compressibility, then a turbulent flat plate.
 
 ## The exact solution
