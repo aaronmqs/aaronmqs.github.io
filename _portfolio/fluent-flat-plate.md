@@ -60,8 +60,8 @@ $$8 \times 10^{-12}$$ in 400 iterations.
 
 ### Mesh
 
-The mesh is structured quadrilaterals in three levels. Each level has twice the cells of the
-previous one in each direction:
+Three structured quadrilateral meshes, each with twice the cells of the previous one in each
+direction. Cells = (along the plate + ahead of the plate) × normal to the wall:
 
 | Level | Cells | First cell height at the wall |
 |---|---|---|
@@ -69,9 +69,8 @@ previous one in each direction:
 | Medium | $$(120 + 60) \times 60 = 10{,}800$$ | $$2.0 \times 10^{-4}$$ m |
 | Fine | $$(240 + 120) \times 120 = 43{,}200$$ | $$1.0 \times 10^{-4}$$ m |
 
-The cells are clustered toward the wall, where the velocity changes fastest, and toward the leading
-edge, where the layer starts. The grading factors are the same on all levels, so the three meshes
-differ only in cell size. This lets the error be measured as the mesh is refined.
+Cells are clustered toward the wall and the leading edge. The grading is the same on all levels,
+so the meshes differ only in cell size, and the error can be measured under refinement.
 
 ### Setup in Fluent
 
