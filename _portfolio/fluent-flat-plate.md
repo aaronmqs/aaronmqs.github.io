@@ -101,10 +101,12 @@ wall are small enough.
 
 ![Skin friction](/images/flatplate/flatplate_cf.png)
 
-*Top: $$C_f$$ against Blasius. Bottom: error in percent, with the $$\pm 2\%$$ band shaded. Two
-points near the leading edge are off the scale ($$+50\%$$ and $$+17\%$$). The large error near
+*Top: $$C_f$$ against Blasius. Bottom: error in percent, with the $$\pm 2\%$$ band shaded. The first
+two points ($$x < 0.005$$ m, errors $$+50\%$$ and $$+17\%$$) are above the range of the bottom plot
+and are not shown there. The large error near
 $$x = 0$$ comes from the $$x^{-1/2}$$ singularity of the exact solution at the leading edge, not
-from a mesh failure.*
+from a mesh failure. Each marker is a mesh node on the wall. Fluent computes node values from the
+surrounding cell values, so the markers are not at the cell centers.*
 {: .caption}
 
 #### Wall heat flux
@@ -115,8 +117,10 @@ temperature gradient at the wall, and it tests the energy equation.
 ![Wall heat flux](/images/flatplate/flatplate_qw.png)
 
 *Wall heat flux against the exact $$65.339/\sqrt{x}$$ W/m², with the $$\pm 3\%$$
-band shaded. The error is between $$-0.27\%$$ and $$-0.54\%$$ over the judged range. One point
-near the leading edge is off the scale ($$+48\%$$).*
+band shaded. The error is between $$-0.27\%$$ and $$-0.54\%$$ over the judged range. The first
+point ($$x < 0.003$$ m, error $$+48\%$$) is above the range of the bottom plot and is not shown
+there. As for $$C_f$$, each marker is a mesh node on
+the wall.*
 {: .caption}
 
 #### Velocity profiles
@@ -128,7 +132,9 @@ Wall values test only the first cells. The profiles test the whole layer.
 *Top: velocity profiles at five stations, plotted against $$\eta$$, against the Blasius profile.
 Bottom: error $$u/U_e - f'(\eta)$$ in percent, with the $$\pm 1\%$$ band shaded. The velocity is
 divided by the local edge velocity $$U_e$$, so the comparison tests the shape of the profile. The
-largest error is $$0.32\%$$.*
+largest error is $$0.32\%$$. Each marker is a point where the vertical sampling line crosses a mesh
+line. Fluent interpolates the value there from the two mesh nodes of the crossed edge. The markers
+are not at the cell centers.*
 {: .caption}
 
 #### Mesh convergence
