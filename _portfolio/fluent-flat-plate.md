@@ -14,6 +14,11 @@ collection: portfolio
 I set up, solved, and verified a steady laminar flat-plate boundary layer with heat transfer in
 **Ansys Fluent**.
 
+Steady laminar flow over an isothermal flat plate of zero thickness (Figure 1), at
+$$\mathrm{Re}_L = 10^5$$. The wall is at 350 K in a 300 K stream. The fluid is
+air-like: $$\mathrm{Pr} = 0.72$$, with constant density and viscosity, so the Blasius and
+Pohlhausen similarity solution is exact and not approximate.
+
 <div class="schematic-pair">
   <img src="/images/flatplate/flatplate_side.svg" alt="Side view of the flat plate: uniform flow from the left, boundary layer growing along the heated plate">
   <img src="/images/flatplate/flatplate_3d.svg" alt="Three-dimensional view of the flat plate with flow passing over its heated top surface">
@@ -21,11 +26,6 @@ I set up, solved, and verified a steady laminar flat-plate boundary layer with h
 
 *Side and three-dimensional views. The plate is drawn with thickness for visibility only.*
 {: .caption}
-
-Steady laminar flow over an isothermal flat plate of zero thickness, at
-$$\mathrm{Re}_L = 10^5$$. The wall is at 350 K in a 300 K stream. The fluid is
-air-like: $$\mathrm{Pr} = 0.72$$, with constant density and viscosity, so the Blasius and
-Pohlhausen similarity solution is exact and not approximate.
 
 The quantities of interest are the skin friction $$C_f$$, the wall heat flux $$q_w$$, and the
 velocity profile across the boundary layer. The first two integrate to the plate drag and the mean cooling
@@ -38,6 +38,8 @@ boundary-layer theory omits; the profiles come from the medium mesh.
 ## The computational model
 
 ### Domain and boundary conditions
+
+Figure 2 shows the computational domain and its boundary conditions.
 
 ![Domain and boundary conditions](/images/flatplate/flatplate_domain.svg)
 
