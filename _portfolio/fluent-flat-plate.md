@@ -53,8 +53,8 @@ Boundary conditions:
 - **Wall** on $$y = 0$$, $$0 \le x \le 1$$: no slip, fixed temperature.
 - **Pressure outlets** at the exit ($$x = 1$$) and on the top ($$y = 0.2$$).
 
-The **Prevent Reverse Flow** option (off by default) was used on the top outlet. The boundary
-layer pushes fluid out through the top; without the option, fluid also entered there, and the
+**Prevent Reverse Flow** (off by default) was turned on at the top outlet. The boundary layer
+pushes fluid out through the top. Without the option, fluid also entered there, and the
 continuity residual stalled at $$1.4 \times 10^{-1}$$. With it, the residual reached
 $$8 \times 10^{-12}$$ in 400 iterations.
 
