@@ -95,13 +95,20 @@ number is kept at the value for air, so the heat-transfer result applies to air.
 ### Solution and quantities of interest
 
 The error in any computed quantity $$\phi$$ is $$E = (\phi - \phi_\mathrm{exact})/\phi_\mathrm{exact}$$,
-in percent. Pass criteria are judged for $$x \ge 0.1$$ m. Closer to the leading edge, the exact
-solution itself is singular, and no mesh resolves it.
+in percent. The error is checked only for $$x \ge 0.1$$ m, because the exact solution is singular
+at the leading edge and no mesh resolves it.
 
 #### Skin friction
 
-Skin friction gives the drag on the plate. It depends on the velocity gradient at the wall, so
-it is the most sensitive test of the near-wall mesh.
+The skin friction coefficient is the wall shear stress, made nondimensional with the dynamic
+pressure of the stream:
+
+$$C_f = \frac{\tau_w}{\tfrac{1}{2}\rho U_\infty^2}, \qquad \tau_w = \mu \left.\frac{\partial u}{\partial y}\right|_{y=0}.$$
+
+The shear stress is the force per unit area that the fluid applies along the plate, so its
+integral over the plate is the drag. The average of $$C_f$$ over the plate is the drag coefficient, $$C_d = \frac{1}{L}\int_0^L C_f\,\mathrm{d}x$$. Because
+$$C_f$$ depends on the velocity gradient at the wall, it is the most sensitive test of the
+near-wall mesh.
 
 ![Skin friction](/images/flatplate/flatplate_cf.png)
 
