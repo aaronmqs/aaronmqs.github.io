@@ -90,26 +90,9 @@ Real air at 300 K has $$\rho = 1.18$$ kg/m³ and $$\mu = 1.85 \times 10^{-5}$$ k
 change with temperature. Here they are rounded and held constant, which is the assumption of the
 similarity solution. The comparison then contains only the discretization error and the terms
 that boundary-layer theory omits. The values also make $$\mathrm{Re}_x = x/10^{-5}$$, with $$x$$ in meters. The Prandtl
-number is that of air, because it sets the heat transfer.
+number is kept at the value for air, so the heat-transfer result applies to air.
 
 ### Solution and quantities of interest
-
-![Streamwise velocity](/images/flatplate/flatplate_u.png)
-
-*Streamwise velocity $$u$$, full domain to scale.*
-{: .caption}
-
-![Gauge pressure](/images/flatplate/flatplate_p.png)
-
-*Gauge pressure. It is flat everywhere except at a peak at the leading edge. A flat pressure is
-the assumption that the Blasius solution rests on.*
-{: .caption}
-
-![Boundary layer close-up](/images/flatplate/flatplate_u_bl.png)
-
-*The same velocity field near the wall, vertical scale $$\times 4$$. The layer grows from zero
-thickness at $$x = 0$$, as $$\sqrt{x}$$.*
-{: .caption}
 
 The error in any computed quantity $$\phi$$ is $$E = (\phi - \phi_\mathrm{exact})/\phi_\mathrm{exact}$$,
 in percent. Pass criteria are judged for $$x \ge 0.1$$ m. Closer to the leading edge, the exact
