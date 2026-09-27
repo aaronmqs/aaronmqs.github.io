@@ -14,8 +14,8 @@ collection: portfolio
 I set up, solved, and verified a steady laminar flat-plate boundary layer with heat transfer in
 **Ansys Fluent**.
 
-Steady laminar flow over an isothermal flat plate of zero thickness (Figure 1), at
-$$\mathrm{Re}_L = 10^5$$. The wall is at 350 K in a 300 K stream. The fluid is
+The case is a steady laminar flow over an isothermal flat plate of zero thickness (Figure 1),
+at $$\mathrm{Re}_L = 10^5$$. The wall is at 350 K in a 300 K stream. The fluid is
 air-like: $$\mathrm{Pr} = 0.72$$, with constant density and viscosity, so the Blasius and
 Pohlhausen similarity solution is exact and not approximate.
 
