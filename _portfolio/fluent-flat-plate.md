@@ -1,6 +1,6 @@
 ---
 title: "Laminar flat plate in Ansys Fluent: verification against Blasius"
-excerpt: "<em>Work in progress.</em> Velocity profiles at five stations collapse onto the exact Blasius solution within 0.29%. Skin friction and wall heat flux are verified the same way on three meshes.<br/><img src='/images/flatplate/flatplate_similarity.png' width='400'>"
+excerpt: "<em>Work in progress.</em> Velocity profiles at five stations collapse onto the exact Blasius solution within 0.32%. Skin friction and wall heat flux are verified the same way on three meshes.<br/><img src='/images/flatplate/flatplate_similarity.png' width='400'>"
 collection: portfolio
 ---
 
@@ -101,9 +101,10 @@ wall are small enough.
 
 ![Skin friction](/images/flatplate/flatplate_cf.png)
 
-*Top: $$C_f$$ against Blasius. Middle and bottom: error in percent, with the
-$$\pm 2\%$$ band shaded. The large error near $$x = 0$$ comes from the $$x^{-1/2}$$ singularity of
-the exact solution at the leading edge, not from a mesh failure.*
+*Top: $$C_f$$ against Blasius. Bottom: error in percent, with the $$\pm 2\%$$ band shaded. Two
+points near the leading edge are off the scale ($$+50\%$$ and $$+17\%$$). The large error near
+$$x = 0$$ comes from the $$x^{-1/2}$$ singularity of the exact solution at the leading edge, not
+from a mesh failure.*
 {: .caption}
 
 #### Wall heat flux
@@ -114,7 +115,8 @@ temperature gradient at the wall, and it tests the energy equation.
 ![Wall heat flux](/images/flatplate/flatplate_qw.png)
 
 *Wall heat flux against the exact $$65.339/\sqrt{x}$$ W/m², with the $$\pm 3\%$$
-band shaded. The error is between $$-0.27\%$$ and $$-0.54\%$$ over the judged range.*
+band shaded. The error is between $$-0.27\%$$ and $$-0.54\%$$ over the judged range. One point
+near the leading edge is off the scale ($$+48\%$$).*
 {: .caption}
 
 #### Velocity profiles
@@ -123,8 +125,10 @@ Wall values test only the first cells. The profiles test the whole layer.
 
 ![Velocity profiles](/images/flatplate/flatplate_similarity.png)
 
-*Velocity profiles at five stations, plotted against $$\eta$$. They collapse onto
-the Blasius profile within 0.29%.*
+*Top: velocity profiles at five stations, plotted against $$\eta$$, against the Blasius profile.
+Bottom: error $$u/U_e - f'(\eta)$$ in percent, with the $$\pm 1\%$$ band shaded. The velocity is
+divided by the local edge velocity $$U_e$$, so the comparison tests the shape of the profile. The
+largest error is $$0.32\%$$.*
 {: .caption}
 
 #### Mesh convergence
@@ -162,7 +166,7 @@ solution contains and boundary-layer theory leaves out: terms of order $$\mathrm
 |---|---|---|---|
 | Skin friction error, $$x \geq 0.1$$ | $$\lvert E \rvert < 2\%$$ | $$+0.08\%$$ to $$-1.25\%$$ | pass |
 | Wall heat flux error, $$x \geq 0.1$$ | $$\lvert E \rvert < 3\%$$ | $$-0.27\%$$ to $$-0.54\%$$ | pass |
-| Velocity profile error, 5 stations | $$< 1\%$$ | $$0.29\%$$ | pass |
+| Velocity profile error, 5 stations | $$< 1\%$$ | $$0.32\%$$ | pass |
 | Plate drag coefficient | — | $$4.2086 \times 10^{-3}$$ ($$+0.20\%$$) | |
 | Mean wall heat flux | — | 130.58 W/m² ($$-0.07\%$$) | |
 
@@ -209,7 +213,7 @@ $$f''' + \tfrac{1}{2} f f'' = 0, \qquad f(0) = f'(0) = 0, \quad f'(\infty) = 1,$
 $$\theta'' + \tfrac{1}{2}\,\mathrm{Pr}\, f\, \theta' = 0, \qquad \theta(0) = 0, \quad \theta(\infty) = 1.$$
 
 I integrated both numerically, and recovered $$f''(0) = 0.332057$$ and, at
-$$\mathrm{Pr} = 0.72$$, $$	heta'(0) = 0.295635$$. The first agrees with the tabulated value [2];
+$$\mathrm{Pr} = 0.72$$, $$\theta'(0) = 0.295635$$. The first agrees with the tabulated value [2];
 Blasius himself obtained 0.3317 by hand [1]. The wall values give skin friction and heat transfer along the
 plate, with $$\mathrm{Re}_x = U_\infty x/\nu$$:
 
