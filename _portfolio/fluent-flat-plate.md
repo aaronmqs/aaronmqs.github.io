@@ -14,7 +14,7 @@ collection: portfolio
 I set up, solved, and verified a steady laminar flat-plate boundary layer with heat transfer in
 **Ansys Fluent**.
 
-The case is a steady laminar flow over an isothermal flat plate of zero thickness (Figure 1),
+The case is a steady laminar flow over an isothermal flat plate (Figure 1),
 at $$\mathrm{Re}_L = 10^5$$. The wall is at 350 K in a 300 K stream. The fluid is
 air-like: $$\mathrm{Pr} = 0.72$$, with constant density and viscosity, so the Blasius and
 Pohlhausen similarity solution is exact and not approximate.
@@ -33,7 +33,8 @@ rate.
 
 All three are measured against the similarity solution. The wall quantities are computed on three
 systematically refined meshes, which separates the discretization error from the terms that
-boundary-layer theory omits; the profiles come from the medium mesh.
+boundary-layer theory omits. The plots of each quantity use the medium mesh; the mesh
+convergence section compares all three.
 
 ## The computational model
 
@@ -121,7 +122,7 @@ it is the most sensitive test of the near-wall mesh.
 
 ![Skin friction](/images/flatplate/flatplate_cf.png)
 
-*Top: $$C_f$$ on the fine mesh against Blasius. Middle and bottom: error in percent, with the
+*Top: $$C_f$$ on the medium mesh against Blasius. Middle and bottom: error in percent, with the
 $$\pm 2\%$$ band shaded. The large error near $$x = 0$$ comes from the $$x^{-1/2}$$ singularity of
 the exact solution at the leading edge, not from a mesh failure.*
 {: .caption}
@@ -133,8 +134,8 @@ temperature gradient at the wall, and it tests the energy equation.
 
 ![Wall heat flux](/images/flatplate/flatplate_qw.png)
 
-*Wall heat flux on the fine mesh against the exact $$65.339/\sqrt{x}$$ W/m², with the $$\pm 3\%$$
-band shaded. The error is about $$-0.2\%$$ and flat over the judged range.*
+*Wall heat flux on the medium mesh against the exact $$65.339/\sqrt{x}$$ W/m², with the $$\pm 3\%$$
+band shaded. The error is between $$-0.27\%$$ and $$-0.54\%$$ over the judged range.*
 {: .caption}
 
 #### Velocity profiles
@@ -167,13 +168,13 @@ solution contains and boundary-layer theory leaves out: terms of order $$\mathrm
 
 #### Summary
 
-| Quantity | Criterion | Fine mesh | Result |
+| Quantity | Criterion | Medium mesh | Result |
 |---|---|---|---|
-| Skin friction error, $$x \geq 0.1$$ | $$\lvert E \rvert < 2\%$$ | $$+0.20\%$$ to $$-1.15\%$$ | pass |
-| Wall heat flux error, $$x \geq 0.1$$ | $$\lvert E \rvert < 3\%$$ | $$-0.13\%$$ to $$-0.36\%$$ | pass |
+| Skin friction error, $$x \geq 0.1$$ | $$\lvert E \rvert < 2\%$$ | $$+0.08\%$$ to $$-1.25\%$$ | pass |
+| Wall heat flux error, $$x \geq 0.1$$ | $$\lvert E \rvert < 3\%$$ | $$-0.27\%$$ to $$-0.54\%$$ | pass |
 | Velocity profile error, 5 stations | $$< 1\%$$ | $$0.29\%$$ | pass |
-| Plate drag coefficient | — | $$4.2136 \times 10^{-3}$$ ($$+0.32\%$$) | |
-| Mean wall heat flux | — | 130.68 W/m² ($$+0.002\%$$) | |
+| Plate drag coefficient | — | $$4.2086 \times 10^{-3}$$ ($$+0.20\%$$) | |
+| Mean wall heat flux | — | 130.58 W/m² ($$-0.07\%$$) | |
 
 ### Issues and possible improvements
 
@@ -199,7 +200,7 @@ one only by predicting a number and checking it.
 
 - Rerun with real air properties at the film temperature (325 K) instead of the air-like values.
 - Extract the velocity profiles on the fine mesh. A mesh replacement silently dropped the sampling
-  lines, so the profiles are one level behind the other results.
+  lines, so the plots show the medium mesh.
 - Next cases: variable properties and compressibility, then a turbulent flat plate.
 
 ## The exact solution
