@@ -163,13 +163,12 @@ and a finer mesh, with half and twice the cells in each direction and the same g
 | Results above | $$(120 + 60) \times 60 = 10{,}800$$ | $$2.0 \times 10^{-4}$$ m |
 | Finer | $$(240 + 120) \times 120 = 43{,}200$$ | $$1.0 \times 10^{-4}$$ m |
 
-With each refinement, the error curves come closer (Figure 6), but they approach about
-$$-0.45\%$$ for $$C_f$$ and $$-0.17\%$$ for $$q_w$$, not zero.
+With each refinement, the error curves move less (Figure 6). They settle at a small error that is
+not zero; the extrapolation below finds where.
 
 ![Mesh convergence along the plate](/images/flatplate/flatplate_convergence.png)
 
-*Error in $$C_f$$ and $$q_w$$ along the plate on the three meshes, labeled by cell count. Dotted:
-the average error over $$x \ge 0.1$$, extrapolated to zero cell size.*
+*Error in $$C_f$$ and $$q_w$$ along the plate on the three meshes, labeled by cell count.*
 {: .caption}
 
 **Richardson extrapolation [4, 5].** The error on a mesh with cell size $$h$$ is modeled as
