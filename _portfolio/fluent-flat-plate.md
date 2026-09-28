@@ -77,8 +77,8 @@ $$2.0 \times 10^{-4}$$ m high. Cells are clustered toward the wall and the leadi
 
 Real air at 300 K has $$\rho = 1.18$$ kg/m³ and $$\mu = 1.85 \times 10^{-5}$$ kg/(m·s), and both
 change with temperature. Here they are rounded and held constant, which is the assumption of the
-similarity solution. The comparison then contains only the discretization error and the terms
-that boundary-layer theory omits. The values also make $$\mathrm{Re}_x = x/10^{-5}$$, with $$x$$ in meters. The Prandtl
+similarity solution. The comparison then contains only the discretization error, the terms that
+boundary-layer theory omits, and the effect of the finite domain. The values also make $$\mathrm{Re}_x = x/10^{-5}$$, with $$x$$ in meters. The Prandtl
 number is kept at the value for air, so the heat-transfer result applies to air.
 
 ### Solution and quantities of interest
@@ -165,8 +165,8 @@ same grading:
 | Finer | $$(240 + 120) \times 120 = 43{,}200$$ | $$1.0 \times 10^{-4}$$ m |
 
 The three meshes show how the error shrinks with the cell size, and whether it shrinks at the
-rate the numerical scheme promises. This separates the discretization error from the terms that
-boundary-layer theory omits.
+rate the numerical scheme promises. This separates the discretization error from the other two
+sources of difference.
 
 ![Mesh convergence](/images/flatplate/flatplate_convergence.png)
 
@@ -177,9 +177,25 @@ zero cell size.*
 The order of accuracy and the grid convergence index follow the standard procedure [4, 5].
 The observed order of accuracy is 1.56 to 2.01, close to the formal second order of the scheme.
 The grid convergence index (GCI), an estimate of the remaining numerical error, is at most 0.077%.
-The extrapolated errors, $$-0.45\%$$ for $$C_f$$ and $$-0.17\%$$ for $$q_w$$, are much larger than
-the GCI. So the remaining difference is not numerical error. It is physics that the Navier–Stokes
-solution contains and boundary-layer theory leaves out: terms of order $$\mathrm{Re}_x^{-1/2}$$.
+The extrapolated errors, averaged over $$x \ge 0.1$$, are $$-0.45\%$$ for $$C_f$$ and $$-0.17\%$$ for
+$$q_w$$. They are much larger than
+the GCI. So the remaining difference is not numerical error. It comes from terms that the
+Navier–Stokes solution contains and boundary-layer theory leaves out (of order
+$$\mathrm{Re}_x^{-1/2}$$), or from the finite domain: the outlet is at the end of the plate and the
+top boundary is at $$y = 0.2$$ m. The bend in the $$C_f$$ error near $$x = 1$$ suggests an outlet
+effect. A run on a larger domain would separate the two causes.
+
+The plate drag coefficient $$C_d$$ and the mean wall heat flux $$\bar{q}_w$$ integrate over the
+whole plate, leading edge included. The error in $$C_d$$ changes sign between the meshes, so a small
+error on one mesh alone does not prove convergence. Extrapolated to zero cell size, the error is
+$$+0.38\%$$ for $$C_d$$, larger than its GCI of 0.077%, and $$+0.03\%$$ for $$\bar{q}_w$$, inside
+its GCI of 0.040%.
+
+![Convergence of the plate drag and the mean heat flux](/images/flatplate/flatplate_integrated.png)
+
+*Error in $$C_d$$ and $$\bar{q}_w$$ against the cell size, relative to the finest mesh. The curve
+$$E_0 + C h^p$$ passes through the three meshes. The circle is its value at zero cell size.*
+{: .caption}
 
 #### Summary
 
@@ -213,6 +229,8 @@ one only by predicting a number and checking it.
 
 #### Possible improvements
 
+- Rerun on a larger domain, with the plate and the outlet extended past $$x = 1$$ and a higher top
+  boundary, to separate the domain effect from the boundary-layer-theory terms.
 - Rerun with real air properties at the film temperature (325 K) instead of the air-like values.
 - Extract the velocity profiles on the finer mesh too. A mesh replacement there silently dropped
   the sampling lines.
