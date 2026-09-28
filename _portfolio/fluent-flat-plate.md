@@ -154,9 +154,8 @@ $$u/U_e - f'(\eta)$$ in percent, with the $$\pm 1\%$$ band shaded.*
 
 #### Mesh convergence
 
-A match with the exact solution on one mesh can be luck. To check convergence, the case was
-also solved on a coarser and a finer mesh, with half and twice the cells in each direction and the
-same grading:
+A match with the exact solution on one mesh can be luck, so the case was also solved on a coarser
+and a finer mesh, with half and twice the cells in each direction and the same grading:
 
 | Mesh | Cells | First cell height at the wall |
 |---|---|---|
@@ -164,50 +163,37 @@ same grading:
 | Results above | $$(120 + 60) \times 60 = 10{,}800$$ | $$2.0 \times 10^{-4}$$ m |
 | Finer | $$(240 + 120) \times 120 = 43{,}200$$ | $$1.0 \times 10^{-4}$$ m |
 
-**Two kinds of error.** The difference between Fluent and the exact solution has two parts. The
-*mesh error* comes from the finite cell size, and it goes to zero as the cells shrink. The rest
-does not depend on the mesh: the terms that boundary-layer theory omits, and the effect of the
-finite domain. No mesh refinement removes it. The three meshes separate the two parts.
+With each refinement, the error curves come closer (Figure 6), but they approach about
+$$-0.45\%$$ for $$C_f$$ and $$-0.17\%$$ for $$q_w$$, not zero.
 
-**The model.** For a scheme of order $$p$$, the error on a mesh with cell size $$h$$ behaves as
+![Mesh convergence along the plate](/images/flatplate/flatplate_convergence.png)
+
+*Error in $$C_f$$ and $$q_w$$ along the plate on the three meshes, labeled by cell count. Dotted:
+the average error over $$x \ge 0.1$$, extrapolated to zero cell size.*
+{: .caption}
+
+**Richardson extrapolation [4, 5].** The error on a mesh with cell size $$h$$ is modeled as
 
 $$E(h) = E_0 + C\,h^p,$$
 
-where $$E_0$$ is the error at zero cell size and $$C\,h^p$$ is the mesh error. Each mesh here has
-half the cell size of the previous one, so each refinement divides the mesh error by $$2^p$$. With
-the errors $$E_c$$, $$E_m$$, $$E_f$$ on the coarse, medium, and fine meshes, the three unknowns
-follow (Richardson extrapolation [4, 5]):
+a mesh error $$C\,h^p$$ that vanishes as $$h \to 0$$, plus a remainder $$E_0$$ that no mesh
+removes. With the cell size halved at each refinement, the errors $$E_c$$, $$E_m$$, $$E_f$$ on the
+three meshes give
 
-$$2^p = \frac{E_c - E_m}{E_m - E_f}, \qquad D = \frac{E_m - E_f}{2^p - 1}, \qquad E_0 = E_f - D.$$
+$$2^p = \frac{E_c - E_m}{E_m - E_f}, \qquad D = \frac{E_m - E_f}{2^p - 1}, \qquad E_0 = E_f - D,$$
 
-$$D$$ is the mesh error that remains on the fine mesh. The cell size itself cancels, so only the
-ratio of 2 between the meshes enters. That matters here, because a graded mesh has no single cell
-size. The grid convergence index, $$\mathrm{GCI} = 1.25\,\lvert D \rvert$$, is a conservative
-estimate of this remaining mesh error.
+where $$D$$ is the mesh error left on the fine mesh. The grid convergence index,
+$$\mathrm{GCI} = 1.25\,\lvert D \rvert$$, bounds it conservatively.
 
-**Example: the drag coefficient.** $$C_d$$ integrates the skin friction over the whole plate.
-
-| Mesh | Coarser | Results above | Finer |
-|---|---|---|---|
-| Error in $$C_d$$ | $$-0.151\%$$ | $$+0.199\%$$ | $$+0.318\%$$ |
-
-The changes between the meshes are $$+0.350$$ and $$+0.119$$, so $$2^p = 2.94$$ and $$p = 1.56$$.
-The fine mesh still has a mesh error $$D = -0.061\%$$, so $$E_0 = 0.318 + 0.061 = +0.38\%$$, with
-a GCI of 0.077%.
-
-Two facts follow. First, the mesh error on the fine mesh is small. Second, the error does not go
-to zero: with finer meshes, $$C_d$$ moves to $$+0.38\%$$, farther from Blasius. The middle mesh
-looks the closest ($$+0.20\%$$) only because its negative mesh error cancels part of the positive
-$$E_0$$. This is why the signs of the errors are kept: with absolute values, the finer mesh would
-look worse.
+For $$C_d$$, the errors $$-0.151\%$$, $$+0.199\%$$, $$+0.318\%$$ give $$p = 1.56$$,
+$$D = -0.061\%$$, and $$E_0 = +0.38\%$$ (Figure 7). The middle mesh looks the closest only because
+its negative mesh error cancels part of the positive $$E_0$$; this is why the errors keep their sign.
 
 ![Convergence of the plate drag and the mean heat flux](/images/flatplate/flatplate_integrated.png)
 
 *Error in $$C_d$$ and $$\bar{q}_w$$ against the cell size, relative to the finest mesh. The curve
-$$E_0 + C h^p$$ passes through the three meshes. The circle is its value at zero cell size.*
+$$E_0 + C h^p$$ passes through the three meshes; the circle is its value at zero cell size.*
 {: .caption}
-
-**All quantities.** The same procedure gives:
 
 | Quantity | Coarser | Results above | Finer | $$p$$ | $$E_0$$ | GCI |
 |---|---|---|---|---|---|---|
@@ -216,22 +202,12 @@ $$E_0 + C h^p$$ passes through the three meshes. The circle is its value at zero
 | $$C_f$$, average over $$x \ge 0.1$$ | $$-0.868\%$$ | $$-0.564\%$$ | $$-0.481\%$$ | 1.88 | $$-0.450\%$$ | 0.039% |
 | $$q_w$$, average over $$x \ge 0.1$$ | $$-0.614\%$$ | $$-0.303\%$$ | $$-0.210\%$$ | 1.74 | $$-0.170\%$$ | 0.050% |
 
-The observed order is 1.56 to 1.88, close to the formal second order of the scheme. It is lower
-than 2 because the leading-edge singularity affects these averages. At mid-plate, $$p = 2.01$$.
-
-The GCI is below 0.08% in every row, so the fine-mesh results carry little mesh error. The mean
-heat flux reaches the exact value within its GCI. For the other three quantities, $$E_0$$ is much
-larger than the GCI, so the remaining difference is not mesh error. It comes from terms that the
-Navier–Stokes solution contains and boundary-layer theory leaves out (of order
-$$\mathrm{Re}_x^{-1/2}$$), or from the finite domain: the outlet is at the end of the plate and the
-top boundary is at $$y = 0.2$$ m. The bend in the error near $$x = 1$$ in the figure below suggests
-an outlet effect. A run on a larger domain would separate the two causes.
-
-![Mesh convergence along the plate](/images/flatplate/flatplate_convergence.png)
-
-*Error in $$C_f$$ and $$q_w$$ along the plate on the three meshes, labeled by cell count. The dotted
-line is $$E_0$$ of the average over $$x \ge 0.1$$.*
-{: .caption}
+The observed order, 1.56 to 1.88, is close to the formal second order; the leading-edge
+singularity lowers it ($$p = 2.01$$ at mid-plate). The GCI is below 0.08% everywhere. The mean heat
+flux reaches the exact value within its GCI. For the other three, $$E_0$$ exceeds the GCI, so the
+difference is not mesh error. It comes from terms that boundary-layer theory omits (of order
+$$\mathrm{Re}_x^{-1/2}$$), or from the finite domain: the bend near $$x = 1$$ in Figure 6 suggests
+an effect of the outlet at the end of the plate. A larger domain would separate the two causes.
 
 #### Summary
 
