@@ -87,6 +87,9 @@ The error in any computed quantity $$\phi$$ is $$E = (\phi - \phi_\mathrm{exact}
 in percent. The error is checked only for $$x \ge 0.1$$ m, because the exact solution is singular
 at the leading edge and no mesh resolves it.
 
+In the figures below, each marker is a value that Fluent interpolates from the mesh nodes, and
+each node value is an average of the surrounding cells. No marker is at a cell center.
+
 #### Skin friction
 
 The skin friction coefficient is the wall shear stress, made nondimensional with the dynamic
@@ -99,42 +102,54 @@ integral over the plate is the drag. The average of $$C_f$$ over the plate is th
 $$C_f$$ depends on the velocity gradient at the wall, its error shows if the cells next to the
 wall are small enough.
 
+The markers in the figure are the mesh nodes on the wall. Near the leading edge the error is large,
+up to $$+50\%$$ at the first node. It comes from the $$x^{-1/2}$$ singularity of the exact
+solution, not from a mesh failure.
+
 ![Skin friction](/images/flatplate/flatplate_cf.png)
 
-*Top: $$C_f$$ against Blasius. Bottom: error in percent, with the $$\pm 2\%$$ band shaded. The first
-two points ($$x < 0.005$$ m, errors $$+50\%$$ and $$+17\%$$) are above the range of the bottom plot
-and are not shown there. The large error near
-$$x = 0$$ comes from the $$x^{-1/2}$$ singularity of the exact solution at the leading edge, not
-from a mesh failure. Each marker is a mesh node on the wall. Fluent computes node values from the
-surrounding cell values, so the markers are not at the cell centers.*
+*Top: $$C_f$$ against Blasius. Bottom: error in percent, with the $$\pm 2\%$$ band shaded. The
+first two points ($$+50\%$$ and $$+17\%$$) are above the range of the bottom plot.*
 {: .caption}
 
 #### Wall heat flux
 
-The wall heat flux is the cooling rate, the number an engineer designs with. It depends on the
-temperature gradient at the wall, and it tests the energy equation.
+The wall heat flux is the heat per unit area that the plate gives to the fluid, by conduction
+through the fluid at the wall:
+
+$$q_w = -k \left.\frac{\partial T}{\partial y}\right|_{y=0}.$$
+
+It is the cooling rate, the number an engineer designs with. Its integral over the plate is the
+total heat transfer. Because $$q_w$$ depends on the temperature gradient at the wall, it tests the
+energy equation. With the Pohlhausen solution, the exact value is
+
+$$q_w = k\,(T_w - T_\infty)\,\theta'(0)\sqrt{\frac{U_\infty}{\nu x}} = \frac{65.339}{\sqrt{x}}\ \mathrm{W/m^2},$$
+
+with $$k = 0.013978$$ W/(m·K), the value that gives $$\mathrm{Pr} = 0.72$$ with Fluent's
+$$c_p = 1006.43$$ J/(kg·K).
+
+As for $$C_f$$, the markers are the mesh nodes on the wall. Over the judged range, the error is
+between $$-0.27\%$$ and $$-0.54\%$$.
 
 ![Wall heat flux](/images/flatplate/flatplate_qw.png)
 
-*Wall heat flux against the exact $$65.339/\sqrt{x}$$ W/m², with the $$\pm 3\%$$
-band shaded. The error is between $$-0.27\%$$ and $$-0.54\%$$ over the judged range. The first
-point ($$x < 0.003$$ m, error $$+48\%$$) is above the range of the bottom plot and is not shown
-there. As for $$C_f$$, each marker is a mesh node on
-the wall.*
+*Top: $$q_w$$ against the exact solution. Bottom: error in percent, with the $$\pm 3\%$$ band
+shaded. The first point ($$+48\%$$) is above the range of the bottom plot.*
 {: .caption}
 
 #### Velocity profiles
 
 Wall values test only the first cells. The profiles test the whole layer.
 
+The velocity is divided by the local edge velocity $$U_e$$, so the comparison tests the shape of
+the profile. Each marker is a point where a vertical sampling line crosses a mesh line. Fluent
+interpolates the value there from the two mesh nodes of the crossed edge. The largest error is
+$$0.32\%$$.
+
 ![Velocity profiles](/images/flatplate/flatplate_similarity.png)
 
-*Top: velocity profiles at five stations, plotted against $$\eta$$, against the Blasius profile.
-Bottom: error $$u/U_e - f'(\eta)$$ in percent, with the $$\pm 1\%$$ band shaded. The velocity is
-divided by the local edge velocity $$U_e$$, so the comparison tests the shape of the profile. The
-largest error is $$0.32\%$$. Each marker is a point where the vertical sampling line crosses a mesh
-line. Fluent interpolates the value there from the two mesh nodes of the crossed edge. The markers
-are not at the cell centers.*
+*Top: velocity profiles at five stations against the Blasius profile $$f'(\eta)$$. Bottom: error
+$$u/U_e - f'(\eta)$$ in percent, with the $$\pm 1\%$$ band shaded.*
 {: .caption}
 
 #### Mesh convergence
