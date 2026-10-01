@@ -182,7 +182,7 @@ three meshes give
 $$2^p = \frac{E_c - E_m}{E_m - E_f}, \qquad D = \frac{E_m - E_f}{2^p - 1}, \qquad E_0 = E_f - D,$$
 
 where $$D$$ is the mesh error left on the fine mesh. The grid convergence index,
-$$\mathrm{GCI} = 1.25\,\lvert D \rvert$$, bounds it conservatively.
+$$\mathrm{GCI} = 1.25\,\lvert D \rvert$$, is the standard conservative error band for it [4].
 
 For $$C_d$$, the errors $$-0.151\%$$, $$+0.199\%$$, $$+0.318\%$$ give $$p = 1.56$$,
 $$D = -0.061\%$$, and $$E_0 = +0.38\%$$ (Figure 7). The middle mesh looks the closest only because
