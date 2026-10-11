@@ -159,58 +159,34 @@ $$u/U_e - f'(\eta)$$ in percent, with the $$\pm 1\%$$ band shaded.*
 #### Mesh convergence
 
 A match with the exact solution on one mesh can be luck, so the case was also solved on a coarser
-and a finer mesh, with half and twice the cells in each direction and the same grading:
-
-| Mesh | Cells | First cell height at the wall |
-|---|---|---|
-| Coarser | $$(60 + 30) \times 30 = 2{,}700$$ | $$3.9 \times 10^{-4}$$ m |
-| Results above | $$(120 + 60) \times 60 = 10{,}800$$ | $$2.0 \times 10^{-4}$$ m |
-| Finer | $$(240 + 120) \times 120 = 43{,}200$$ | $$1.0 \times 10^{-4}$$ m |
-
-With each refinement, the error curves move less (Figure 6). They settle at a small error that is
-not zero; the extrapolation below finds where.
+and a finer mesh, with half and twice the cells in each direction and the same grading. With each
+refinement, the error curves move less (Figure 6).
 
 ![Mesh convergence along the plate](/images/flatplate/flatplate_convergence.png)
 
 *Error in $$C_f$$ and $$q_w$$ along the plate on the three meshes, labeled by cell count.*
 {: .caption}
 
-**Richardson extrapolation [4, 5].** The error on a mesh with cell size $$h$$ is modeled as
+The plate drag coefficient $$C_d$$ and the integrated heat flux $$Q$$ summarize each mesh in one
+number. Both integrals run over the whole plate, from the leading edge to $$x = L$$.
 
-$$E(h) = E_0 + C\,h^p,$$
-
-a mesh error $$C\,h^p$$ that vanishes as $$h \to 0$$, plus a remainder $$E_0$$ that no mesh
-removes. With the cell size halved at each refinement, the errors $$E_c$$, $$E_m$$, $$E_f$$ on the
-three meshes give
-
-$$2^p = \frac{E_c - E_m}{E_m - E_f}, \qquad D = \frac{E_m - E_f}{2^p - 1}, \qquad E_0 = E_f - D,$$
-
-where $$D$$ is the mesh error left on the fine mesh. The grid convergence index,
-$$\mathrm{GCI} = 1.25\,\lvert D \rvert$$, is the standard conservative error band for it [4].
-
-For $$C_d$$, the errors $$-0.151\%$$, $$+0.199\%$$, $$+0.318\%$$ give $$p = 1.56$$,
-$$D = -0.061\%$$, and $$E_0 = +0.38\%$$ (Figure 7). The middle mesh looks the closest only because
-its negative mesh error cancels part of the positive $$E_0$$; this is why the errors keep their sign.
-
-![Convergence of the plate drag and the integrated heat flux](/images/flatplate/flatplate_integrated.png)
-
-*Error in $$C_d$$ and $$Q$$ against the cell size, relative to the finest mesh. The curve
-$$E_0 + C h^p$$ passes through the three meshes; the circle is its value at zero cell size.*
-{: .caption}
-
-| Quantity | Coarser | Results above | Finer | $$p$$ | $$E_0$$ | GCI |
+| Mesh | Cells | First cell at the wall | $$C_d \times 10^3$$ | Error | $$Q$$ (W/m) | Error |
 |---|---|---|---|---|---|---|
-| Plate drag coefficient $$C_d$$ | $$-0.151\%$$ | $$+0.199\%$$ | $$+0.318\%$$ | 1.56 | $$+0.380\%$$ | 0.077% |
-| Integrated wall heat flux $$Q$$ | $$-0.335\%$$ | $$-0.075\%$$ | $$+0.002\%$$ | 1.77 | $$+0.034\%$$ | 0.040% |
-| $$C_f$$, average over $$x \ge 0.1$$ | $$-0.868\%$$ | $$-0.564\%$$ | $$-0.481\%$$ | 1.88 | $$-0.450\%$$ | 0.039% |
-| $$q_w$$, average over $$x \ge 0.1$$ | $$-0.614\%$$ | $$-0.303\%$$ | $$-0.210\%$$ | 1.74 | $$-0.170\%$$ | 0.050% |
+| Coarser | 2,700 | $$3.9 \times 10^{-4}$$ m | 4.1939 | $$-0.15\%$$ | 130.24 | $$-0.34\%$$ |
+| Results above | 10,800 | $$2.0 \times 10^{-4}$$ m | 4.2086 | $$+0.20\%$$ | 130.58 | $$-0.08\%$$ |
+| Finer | 43,200 | $$1.0 \times 10^{-4}$$ m | 4.2136 | $$+0.32\%$$ | 130.68 | $$+0.00\%$$ |
+| Extrapolated to zero cell size | | | 4.2162 | $$+0.38\%$$ | 130.72 | $$+0.03\%$$ |
+| Exact (Blasius, Pohlhausen) | | | 4.2002 | | 130.68 | |
 
-The observed order, 1.56 to 1.88, is close to the formal second order; the leading-edge
-singularity lowers it ($$p = 2.01$$ at mid-plate). The GCI is below 0.08% everywhere. The integrated heat
-flux reaches the exact value within its GCI. For the other three, $$E_0$$ exceeds the GCI, so the
-difference is not mesh error. It comes from terms that boundary-layer theory omits (of order
-$$\mathrm{Re}_x^{-1/2}$$), or from the finite domain: the bend near $$x = 1$$ in Figure 6 suggests
-an effect of the outlet at the end of the plate. A larger domain would separate the two causes.
+Richardson extrapolation [4, 5] gives an observed order of accuracy $$p = 1.56$$ for $$C_d$$ and
+$$1.77$$ for $$Q$$, against a formal order of 2. The grid convergence index on the finer mesh,
+the standard conservative band for its mesh error [4], is 0.077% for $$C_d$$ and 0.040% for $$Q$$.
+
+$$Q$$ converges to the exact value within its GCI. $$C_d$$ converges to a value 0.38% above
+Blasius, which is not mesh error. Blasius theory omits a leading-edge correction of order
+$$1/\mathrm{Re}_L$$; Imai [7] gives $$C_d = 1.328/\sqrt{\mathrm{Re}_L} + 2.326/\mathrm{Re}_L$$, a
+correction of $$+0.55\%$$ here, of the same sign and size. The bend near $$x = 1$$ in Figure 6
+suggests a smaller effect of the outlet at the end of the plate.
 
 #### Summary
 
@@ -220,7 +196,7 @@ an effect of the outlet at the end of the plate. A larger domain would separate 
 | Wall heat flux error, $$x \geq 0.1$$ | $$\lvert E \rvert < 3\%$$ | $$-0.27\%$$ to $$-0.54\%$$ | pass |
 | Velocity profile error, 5 stations | $$< 1\%$$ | $$0.32\%$$ | pass |
 | Plate drag coefficient | — | $$4.2086 \times 10^{-3}$$ ($$+0.20\%$$) | |
-| Integrated wall heat flux $$Q$$ | — | 130.58 W/m ($$-0.07\%$$) | |
+| Integrated wall heat flux $$Q$$ | — | 130.58 W/m ($$-0.08\%$$) | |
 
 ### Issues and possible improvements
 
@@ -297,3 +273,5 @@ discretization error measured below, so a correlation cannot serve as the refere
    1580–1591.
 6. NPARC Alliance CFD Verification and Validation Archive, *Laminar Flat Plate: Study #1*
    (case fplam01), NASA Glenn Research Center. The same case, used as a cross-check.
+7. I. Imai, *Second approximation to the laminar boundary-layer flow over a flat plate*, Journal
+   of the Aeronautical Sciences **24** (1957), 155–156. The leading-edge correction to the plate drag.
