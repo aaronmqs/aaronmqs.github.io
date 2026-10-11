@@ -122,7 +122,7 @@ $$q_w = -k \left.\frac{\partial T}{\partial y}\right|_{y=0}.$$
 It is the cooling rate, the number an engineer designs with. Its integral over the plate is the
 total heat transfer, per unit depth of the plate:
 
-$$Q' = \int_0^L q_w\,\mathrm{d}x \quad \mathrm{W/m}.$$
+$$Q = \int_0^L q_w\,\mathrm{d}x \quad \mathrm{W/m}.$$
 
 Because $$q_w$$ depends on the temperature gradient at the wall, it tests the energy equation.
 With the Pohlhausen solution, the exact value is
@@ -194,14 +194,14 @@ its negative mesh error cancels part of the positive $$E_0$$; this is why the er
 
 ![Convergence of the plate drag and the integrated heat flux](/images/flatplate/flatplate_integrated.png)
 
-*Error in $$C_d$$ and $$Q'$$ against the cell size, relative to the finest mesh. The curve
+*Error in $$C_d$$ and $$Q$$ against the cell size, relative to the finest mesh. The curve
 $$E_0 + C h^p$$ passes through the three meshes; the circle is its value at zero cell size.*
 {: .caption}
 
 | Quantity | Coarser | Results above | Finer | $$p$$ | $$E_0$$ | GCI |
 |---|---|---|---|---|---|---|
 | Plate drag coefficient $$C_d$$ | $$-0.151\%$$ | $$+0.199\%$$ | $$+0.318\%$$ | 1.56 | $$+0.380\%$$ | 0.077% |
-| Integrated wall heat flux $$Q'$$ | $$-0.335\%$$ | $$-0.075\%$$ | $$+0.002\%$$ | 1.77 | $$+0.034\%$$ | 0.040% |
+| Integrated wall heat flux $$Q$$ | $$-0.335\%$$ | $$-0.075\%$$ | $$+0.002\%$$ | 1.77 | $$+0.034\%$$ | 0.040% |
 | $$C_f$$, average over $$x \ge 0.1$$ | $$-0.868\%$$ | $$-0.564\%$$ | $$-0.481\%$$ | 1.88 | $$-0.450\%$$ | 0.039% |
 | $$q_w$$, average over $$x \ge 0.1$$ | $$-0.614\%$$ | $$-0.303\%$$ | $$-0.210\%$$ | 1.74 | $$-0.170\%$$ | 0.050% |
 
@@ -220,7 +220,7 @@ an effect of the outlet at the end of the plate. A larger domain would separate 
 | Wall heat flux error, $$x \geq 0.1$$ | $$\lvert E \rvert < 3\%$$ | $$-0.27\%$$ to $$-0.54\%$$ | pass |
 | Velocity profile error, 5 stations | $$< 1\%$$ | $$0.32\%$$ | pass |
 | Plate drag coefficient | — | $$4.2086 \times 10^{-3}$$ ($$+0.20\%$$) | |
-| Integrated wall heat flux $$Q'$$ | — | 130.58 W/m ($$-0.07\%$$) | |
+| Integrated wall heat flux $$Q$$ | — | 130.58 W/m ($$-0.07\%$$) | |
 
 ### Issues and possible improvements
 
