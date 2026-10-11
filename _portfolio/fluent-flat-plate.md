@@ -28,8 +28,8 @@ Pohlhausen similarity solution is exact and not approximate.
 {: .caption}
 
 The quantities of interest are the skin friction $$C_f$$, the wall heat flux $$q_w$$, and the
-velocity profile across the boundary layer. The first two integrate to the plate drag and the mean cooling
-rate.
+velocity profile across the boundary layer. The first two integrate to the plate drag and the total
+heat transfer.
 
 All three are measured against the similarity solution.
 
@@ -120,8 +120,12 @@ through the fluid at the wall:
 $$q_w = -k \left.\frac{\partial T}{\partial y}\right|_{y=0}.$$
 
 It is the cooling rate, the number an engineer designs with. Its integral over the plate is the
-total heat transfer. Because $$q_w$$ depends on the temperature gradient at the wall, it tests the
-energy equation. With the Pohlhausen solution, the exact value is
+total heat transfer, per unit depth of the plate:
+
+$$Q' = \int_0^L q_w\,\mathrm{d}x \quad \mathrm{W/m}.$$
+
+Because $$q_w$$ depends on the temperature gradient at the wall, it tests the energy equation.
+With the Pohlhausen solution, the exact value is
 
 $$q_w = k\,(T_w - T_\infty)\,\theta'(0)\sqrt{\frac{U_\infty}{\nu x}} = \frac{65.339}{\sqrt{x}}\ \mathrm{W/m^2},$$
 
@@ -188,21 +192,21 @@ For $$C_d$$, the errors $$-0.151\%$$, $$+0.199\%$$, $$+0.318\%$$ give $$p = 1.56
 $$D = -0.061\%$$, and $$E_0 = +0.38\%$$ (Figure 7). The middle mesh looks the closest only because
 its negative mesh error cancels part of the positive $$E_0$$; this is why the errors keep their sign.
 
-![Convergence of the plate drag and the mean heat flux](/images/flatplate/flatplate_integrated.png)
+![Convergence of the plate drag and the integrated heat flux](/images/flatplate/flatplate_integrated.png)
 
-*Error in $$C_d$$ and $$\bar{q}_w$$ against the cell size, relative to the finest mesh. The curve
+*Error in $$C_d$$ and $$Q'$$ against the cell size, relative to the finest mesh. The curve
 $$E_0 + C h^p$$ passes through the three meshes; the circle is its value at zero cell size.*
 {: .caption}
 
 | Quantity | Coarser | Results above | Finer | $$p$$ | $$E_0$$ | GCI |
 |---|---|---|---|---|---|---|
 | Plate drag coefficient $$C_d$$ | $$-0.151\%$$ | $$+0.199\%$$ | $$+0.318\%$$ | 1.56 | $$+0.380\%$$ | 0.077% |
-| Mean wall heat flux $$\bar{q}_w$$ | $$-0.335\%$$ | $$-0.075\%$$ | $$+0.002\%$$ | 1.77 | $$+0.034\%$$ | 0.040% |
+| Integrated wall heat flux $$Q'$$ | $$-0.335\%$$ | $$-0.075\%$$ | $$+0.002\%$$ | 1.77 | $$+0.034\%$$ | 0.040% |
 | $$C_f$$, average over $$x \ge 0.1$$ | $$-0.868\%$$ | $$-0.564\%$$ | $$-0.481\%$$ | 1.88 | $$-0.450\%$$ | 0.039% |
 | $$q_w$$, average over $$x \ge 0.1$$ | $$-0.614\%$$ | $$-0.303\%$$ | $$-0.210\%$$ | 1.74 | $$-0.170\%$$ | 0.050% |
 
 The observed order, 1.56 to 1.88, is close to the formal second order; the leading-edge
-singularity lowers it ($$p = 2.01$$ at mid-plate). The GCI is below 0.08% everywhere. The mean heat
+singularity lowers it ($$p = 2.01$$ at mid-plate). The GCI is below 0.08% everywhere. The integrated heat
 flux reaches the exact value within its GCI. For the other three, $$E_0$$ exceeds the GCI, so the
 difference is not mesh error. It comes from terms that boundary-layer theory omits (of order
 $$\mathrm{Re}_x^{-1/2}$$), or from the finite domain: the bend near $$x = 1$$ in Figure 6 suggests
@@ -216,7 +220,7 @@ an effect of the outlet at the end of the plate. A larger domain would separate 
 | Wall heat flux error, $$x \geq 0.1$$ | $$\lvert E \rvert < 3\%$$ | $$-0.27\%$$ to $$-0.54\%$$ | pass |
 | Velocity profile error, 5 stations | $$< 1\%$$ | $$0.32\%$$ | pass |
 | Plate drag coefficient | — | $$4.2086 \times 10^{-3}$$ ($$+0.20\%$$) | |
-| Mean wall heat flux | — | 130.58 W/m² ($$-0.07\%$$) | |
+| Integrated wall heat flux $$Q'$$ | — | 130.58 W/m ($$-0.07\%$$) | |
 
 ### Issues and possible improvements
 
