@@ -14,8 +14,7 @@ collection: portfolio
 I set up, solved, and verified a steady laminar flat-plate boundary layer with heat transfer in
 **Ansys Fluent**.
 
-The case is a steady laminar flow over an isothermal flat plate (Figure 1),
-at $$\mathrm{Re}_L = 10^5$$. The wall is at 350 K in a 300 K stream. The fluid is
+The case is a steady laminar flow over an isothermal flat plate (Figure 1), at $$\mathrm{Re}_L = 10^5$$. The wall is at 350 K in a 300 K stream. The fluid is
 air-like: $$\mathrm{Pr} = 0.72$$, with constant density and viscosity, so the Blasius and
 Pohlhausen similarity solution is exact and not approximate.
 
@@ -78,14 +77,15 @@ $$2.0 \times 10^{-4}$$ m high. Cells are clustered toward the wall and the leadi
 Real air at 300 K has $$\rho = 1.18$$ kg/m³ and $$\mu = 1.85 \times 10^{-5}$$ kg/(m·s), and both
 change with temperature. Here they are rounded and held constant, which is the assumption of the
 similarity solution. The comparison then contains only the discretization error, the terms that
-boundary-layer theory omits, and the effect of the finite domain. The values also make $$\mathrm{Re}_x = x/10^{-5}$$, with $$x$$ in meters. The Prandtl
-number is kept at the value for air, so the heat-transfer result applies to air.
+boundary-layer theory omits, and the effect of the finite domain. The values also make
+$$\mathrm{Re}_x = x/10^{-5}$$, with $$x$$ in meters. The Prandtl number is kept at the value for air, so the heat-transfer result applies to air.
 
 ### Solution and quantities of interest
 
 The error in any computed quantity $$\phi$$ is $$E = (\phi - \phi_\mathrm{exact})/\phi_\mathrm{exact}$$,
-in percent. The error is checked only for $$x \ge 0.1$$ m, because the exact solution is singular
-at the leading edge and no mesh resolves it.
+in percent. The local errors in $$C_f$$ and $$q_w$$ are judged only for $$x \ge 0.1$$ m, because the
+exact solution is singular at the leading edge and no mesh resolves it. The plate integrals
+$$C_d$$ and $$Q$$ include the leading edge.
 
 In the figures below, each marker is a value that Fluent interpolates from the mesh nodes, and
 each node value is an average of the surrounding cells. No marker is at a cell center.
@@ -98,8 +98,8 @@ pressure of the stream:
 $$C_f = \frac{\tau_w}{\tfrac{1}{2}\rho U_\infty^2}, \qquad \tau_w = \mu \left.\frac{\partial u}{\partial y}\right|_{y=0}.$$
 
 The shear stress is the force per unit area that the fluid applies along the plate, so its
-integral over the plate is the drag. The average of $$C_f$$ over the plate is the drag coefficient, $$C_d = \frac{1}{L}\int_0^L C_f\,\mathrm{d}x$$. Because
-$$C_f$$ depends on the velocity gradient at the wall, its error shows if the cells next to the
+integral over the plate is the drag. The average of $$C_f$$ over the plate is the drag coefficient,
+$$C_d = \frac{1}{L}\int_0^L C_f\,\mathrm{d}x$$. Because $$C_f$$ depends on the velocity gradient at the wall, its error shows if the cells next to the
 wall are small enough.
 
 The markers in the figure are the mesh nodes on the wall. Near the leading edge the error is large,
@@ -125,14 +125,14 @@ total heat transfer, per unit depth of the plate:
 $$Q = \int_0^L q_w\,\mathrm{d}x \quad \mathrm{W/m}.$$
 
 Because $$q_w$$ depends on the temperature gradient at the wall, it tests the energy equation.
-With the Pohlhausen solution, the exact value is
+With the Pohlhausen solution, the exact wall heat flux is
 
 $$q_w = k\,(T_w - T_\infty)\,\theta'(0)\sqrt{\frac{U_\infty}{\nu x}} = \frac{65.339}{\sqrt{x}}\ \mathrm{W/m^2},$$
 
 with $$k = 0.013978$$ W/(m·K), the value that gives $$\mathrm{Pr} = 0.72$$ with Fluent's
-$$c_p = 1006.43$$ J/(kg·K).
+$$c_p = 1006.43$$ J/(kg·K). Its integral is $$Q = 2 \times 65.339\sqrt{L} = 130.68$$ W/m.
 
-As for $$C_f$$, the markers are the mesh nodes on the wall. Over the judged range, the error is
+As for $$C_f$$, the markers are the mesh nodes on the wall. For $$x \ge 0.1$$, the error is
 between $$-0.27\%$$ and $$-0.54\%$$.
 
 ![Wall heat flux](/images/flatplate/flatplate_qw.png)
@@ -170,13 +170,13 @@ refinement, the error curves move less (Figure 6).
 The plate drag coefficient $$C_d$$ and the integrated heat flux $$Q$$ summarize each mesh in one
 number. Both integrals run over the whole plate, from the leading edge to $$x = L$$.
 
-| Mesh | Cells | First cell at the wall | $$C_d \times 10^3$$ | Error | $$Q$$ (W/m) | Error |
+| Mesh | Cells | First cell at the wall | $$C_d \times 10^3$$ | $$C_d$$ error | $$Q$$ (W/m) | $$Q$$ error |
 |---|---|---|---|---|---|---|
 | Coarser | 2,700 | $$3.9 \times 10^{-4}$$ m | 4.1939 | $$-0.15\%$$ | 130.24 | $$-0.34\%$$ |
-| Results above | 10,800 | $$2.0 \times 10^{-4}$$ m | 4.2086 | $$+0.20\%$$ | 130.58 | $$-0.08\%$$ |
+| Medium (results above) | 10,800 | $$2.0 \times 10^{-4}$$ m | 4.2086 | $$+0.20\%$$ | 130.58 | $$-0.08\%$$ |
 | Finer | 43,200 | $$1.0 \times 10^{-4}$$ m | 4.2136 | $$+0.32\%$$ | 130.68 | $$+0.00\%$$ |
 | Extrapolated to zero cell size | | | 4.2162 | $$+0.38\%$$ | 130.72 | $$+0.03\%$$ |
-| Exact (Blasius, Pohlhausen) | | | 4.2002 | | 130.68 | |
+| Exact (Blasius, Pohlhausen) | | | 4.2002 | — | 130.68 | — |
 
 Richardson extrapolation [4, 5] gives an observed order of accuracy $$p = 1.56$$ for $$C_d$$ and
 $$1.77$$ for $$Q$$, against a formal order of 2. The grid convergence index on the finer mesh,
@@ -185,7 +185,7 @@ the standard conservative band for its mesh error [4], is 0.077% for $$C_d$$ and
 $$Q$$ converges to the exact value within its GCI. $$C_d$$ converges to a value 0.38% above
 Blasius, which is not mesh error. Blasius theory omits a leading-edge correction of order
 $$1/\mathrm{Re}_L$$; Imai [7] gives $$C_d = 1.328/\sqrt{\mathrm{Re}_L} + 2.326/\mathrm{Re}_L$$, a
-correction of $$+0.55\%$$ here, of the same sign and size. The bend near $$x = 1$$ in Figure 6
+correction of $$+0.55\%$$ here, with the same sign and a similar size. The bend near $$x = 1$$ in Figure 6
 suggests a smaller effect of the outlet at the end of the plate.
 
 #### Summary
@@ -195,7 +195,7 @@ suggests a smaller effect of the outlet at the end of the plate.
 | Skin friction error, $$x \geq 0.1$$ | $$\lvert E \rvert < 2\%$$ | $$+0.08\%$$ to $$-1.25\%$$ | pass |
 | Wall heat flux error, $$x \geq 0.1$$ | $$\lvert E \rvert < 3\%$$ | $$-0.27\%$$ to $$-0.54\%$$ | pass |
 | Velocity profile error, 5 stations | $$< 1\%$$ | $$0.32\%$$ | pass |
-| Plate drag coefficient | — | $$4.2086 \times 10^{-3}$$ ($$+0.20\%$$) | |
+| Plate drag coefficient $$C_d$$ | — | $$4.2086 \times 10^{-3}$$ ($$+0.20\%$$) | |
 | Integrated wall heat flux $$Q$$ | — | 130.58 W/m ($$-0.08\%$$) | |
 
 ### Issues and possible improvements
@@ -244,15 +244,15 @@ $$\theta'' + \tfrac{1}{2}\,\mathrm{Pr}\, f\, \theta' = 0, \qquad \theta(0) = 0, 
 
 I integrated both numerically, and recovered $$f''(0) = 0.332057$$ and, at
 $$\mathrm{Pr} = 0.72$$, $$\theta'(0) = 0.295635$$. The first agrees with the tabulated value [2];
-Blasius himself obtained 0.3317 by hand [1]. The wall values give skin friction and heat transfer along the
-plate, with $$\mathrm{Re}_x = U_\infty x/\nu$$:
+Blasius himself obtained 0.3317 by hand [1]. The wall values give skin friction and heat transfer
+along the plate, with $$\mathrm{Re}_x = U_\infty x/\nu$$:
 
 $$C_f = \frac{\tau_w}{\tfrac{1}{2}\rho U_\infty^2} = \frac{2 f''(0)}{\sqrt{\mathrm{Re}_x}} = \frac{0.664115}{\sqrt{\mathrm{Re}_x}}, \qquad \mathrm{Nu}_x = \frac{q_w\, x}{k\,(T_w - T_\infty)} = \theta'(0)\sqrt{\mathrm{Re}_x} = 0.295635\sqrt{\mathrm{Re}_x}.$$
 
 The heat-transfer constant is for $$\mathrm{Pr} = 0.72$$, integrated here rather than taken from a
 table. The common textbook correlation
 $$0.332\,\mathrm{Pr}^{1/3}$$ gives 0.297565, which is 0.65% off. That is larger than the
-discretization error measured below, so a correlation cannot serve as the reference here.
+discretization error measured above, so a correlation cannot serve as the reference here.
 
 ## References
 
