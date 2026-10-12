@@ -159,39 +159,21 @@ $$u/U_e - f'(\eta)$$ in percent, with the $$\pm 1\%$$ band shaded.*
 #### Mesh convergence
 
 A match with the exact solution on one mesh can be luck, so the case was also solved on a coarser
-and a finer mesh, with half and twice the cells in each direction and the same grading. With each
-refinement, the error curves move less (Figure 6).
+mesh (2,700 cells) and a finer mesh (43,200 cells), with half and twice the cells in each direction
+and the same grading.
 
 ![Mesh convergence along the plate](/images/flatplate/flatplate_convergence.png)
 
 *Error in $$C_f$$ and $$q_w$$ along the plate on the three meshes, labeled by cell count.*
 {: .caption}
 
-The plate drag coefficient $$C_d$$ and the integrated heat flux $$Q$$ summarize each mesh in one
-number. Both integrals run over the whole plate, from the leading edge to $$x = L$$.
+The error curves move less with each refinement, at close to second order. On the mesh used for
+the results above, the remaining mesh error is below 0.2%.
 
-| Mesh | Cells | First cell at the wall | $$C_d \times 10^3$$ | $$C_d$$ mesh error | $$Q$$ (W/m) | $$Q$$ mesh error |
-|---|---|---|---|---|---|---|
-| Coarser | 2,700 | $$3.9 \times 10^{-4}$$ m | 4.1939 | $$-0.53\%$$ | 130.24 | $$-0.37\%$$ |
-| Medium (results above) | 10,800 | $$2.0 \times 10^{-4}$$ m | 4.2086 | $$-0.18\%$$ | 130.58 | $$-0.11\%$$ |
-| Finer | 43,200 | $$1.0 \times 10^{-4}$$ m | 4.2136 | $$-0.06\%$$ | 130.68 | $$-0.03\%$$ |
-| Zero cell size (extrapolated) | | | 4.2162 | | 130.72 | |
-| Exact (Blasius, Pohlhausen) | | | 4.2002 | | 130.68 | |
-
-The mesh error is the difference from the value extrapolated to zero cell size. It falls by a
-factor of about 3 at each refinement for both quantities. Richardson extrapolation [4, 5] gives an
-observed order of accuracy $$p = 1.56$$ for $$C_d$$ and $$1.77$$ for $$Q$$, against a formal order
-of 2. The grid convergence index on the finer mesh, the standard conservative band for its mesh
-error [4], is 0.077% for $$C_d$$ and 0.040% for $$Q$$.
-
-The extrapolated $$Q$$ matches the exact value within its GCI ($$+0.03\%$$). The extrapolated
-$$C_d$$ is 0.38% above Blasius, and no mesh removes this difference. For this reason, the error
-of $$C_d$$ against Blasius grows with refinement ($$-0.15\%$$, $$+0.20\%$$, $$+0.32\%$$): the
-negative mesh error decreases toward zero, and the positive difference remains. Blasius theory
-omits a leading-edge correction of order $$1/\mathrm{Re}_L$$; Imai [7] gives
-$$C_d = 1.328/\sqrt{\mathrm{Re}_L} + 2.326/\mathrm{Re}_L$$, a correction of $$+0.55\%$$ here, with
-the same sign and a similar size. The bend near $$x = 1$$ in Figure 6 suggests a smaller effect of
-the outlet at the end of the plate.
+One difference is still open. At mid-plate, the local $$C_f$$ converges to about 0.6% below
+Blasius, and $$q_w$$ to about 0.2% below Pohlhausen. These differences are not mesh error. The
+next test is a larger domain, with a higher top boundary and the outlet farther downstream of the
+plate.
 
 #### Summary
 
@@ -225,8 +207,8 @@ one only by predicting a number and checking it.
 
 #### Possible improvements
 
-- Rerun on a larger domain, with the plate and the outlet extended past $$x = 1$$ and a higher top
-  boundary, to separate the domain effect from the boundary-layer-theory terms.
+- Rerun on a larger domain, with the outlet farther downstream of the plate and a higher top
+  boundary, to find the cause of the 0.6% difference in $$C_f$$ at mid-plate.
 - Rerun with real air properties at the film temperature (325 K) instead of the air-like values.
 - Extract the velocity profiles on the finer mesh too. A mesh replacement there silently dropped
   the sampling lines.
@@ -271,12 +253,5 @@ discretization error measured above, so a correlation cannot serve as the refere
 3. E. Pohlhausen, *Der Wärmeaustausch zwischen festen Körpern und Flüssigkeiten mit kleiner
    Reibung und kleiner Wärmeleitung*, ZAMM **1** (1921), 115–121. The thermal layer at a constant
    wall temperature.
-4. ASME V&V 20-2009, *Standard for Verification and Validation in Computational Fluid Dynamics and
-   Heat Transfer*. Grid convergence index.
-5. L. Eça and M. Hoekstra, *Evaluation of numerical error estimation based on grid refinement
-   studies with the method of the manufactured solutions*, Computers & Fluids **38** (2009),
-   1580–1591.
-6. NPARC Alliance CFD Verification and Validation Archive, *Laminar Flat Plate: Study #1*
+4. NPARC Alliance CFD Verification and Validation Archive, *Laminar Flat Plate: Study #1*
    (case fplam01), NASA Glenn Research Center. The same case, used as a cross-check.
-7. I. Imai, *Second approximation to the laminar boundary-layer flow over a flat plate*, Journal
-   of the Aeronautical Sciences **24** (1957), 155–156. The leading-edge correction to the plate drag.
