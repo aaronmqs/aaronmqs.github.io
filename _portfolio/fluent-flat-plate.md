@@ -170,23 +170,28 @@ refinement, the error curves move less (Figure 6).
 The plate drag coefficient $$C_d$$ and the integrated heat flux $$Q$$ summarize each mesh in one
 number. Both integrals run over the whole plate, from the leading edge to $$x = L$$.
 
-| Mesh | Cells | First cell at the wall | $$C_d \times 10^3$$ | $$C_d$$ error | $$Q$$ (W/m) | $$Q$$ error |
+| Mesh | Cells | First cell at the wall | $$C_d \times 10^3$$ | $$C_d$$ mesh error | $$Q$$ (W/m) | $$Q$$ mesh error |
 |---|---|---|---|---|---|---|
-| Coarser | 2,700 | $$3.9 \times 10^{-4}$$ m | 4.1939 | $$-0.15\%$$ | 130.24 | $$-0.34\%$$ |
-| Medium (results above) | 10,800 | $$2.0 \times 10^{-4}$$ m | 4.2086 | $$+0.20\%$$ | 130.58 | $$-0.08\%$$ |
-| Finer | 43,200 | $$1.0 \times 10^{-4}$$ m | 4.2136 | $$+0.32\%$$ | 130.68 | $$+0.00\%$$ |
-| Extrapolated to zero cell size | | | 4.2162 | $$+0.38\%$$ | 130.72 | $$+0.03\%$$ |
-| Exact (Blasius, Pohlhausen) | | | 4.2002 | — | 130.68 | — |
+| Coarser | 2,700 | $$3.9 \times 10^{-4}$$ m | 4.1939 | $$-0.53\%$$ | 130.24 | $$-0.37\%$$ |
+| Medium (results above) | 10,800 | $$2.0 \times 10^{-4}$$ m | 4.2086 | $$-0.18\%$$ | 130.58 | $$-0.11\%$$ |
+| Finer | 43,200 | $$1.0 \times 10^{-4}$$ m | 4.2136 | $$-0.06\%$$ | 130.68 | $$-0.03\%$$ |
+| Zero cell size (extrapolated) | | | 4.2162 | | 130.72 | |
+| Exact (Blasius, Pohlhausen) | | | 4.2002 | | 130.68 | |
 
-Richardson extrapolation [4, 5] gives an observed order of accuracy $$p = 1.56$$ for $$C_d$$ and
-$$1.77$$ for $$Q$$, against a formal order of 2. The grid convergence index on the finer mesh,
-the standard conservative band for its mesh error [4], is 0.077% for $$C_d$$ and 0.040% for $$Q$$.
+The mesh error is the difference from the value extrapolated to zero cell size. It falls by a
+factor of about 3 at each refinement for both quantities. Richardson extrapolation [4, 5] gives an
+observed order of accuracy $$p = 1.56$$ for $$C_d$$ and $$1.77$$ for $$Q$$, against a formal order
+of 2. The grid convergence index on the finer mesh, the standard conservative band for its mesh
+error [4], is 0.077% for $$C_d$$ and 0.040% for $$Q$$.
 
-$$Q$$ converges to the exact value within its GCI. $$C_d$$ converges to a value 0.38% above
-Blasius, which is not mesh error. Blasius theory omits a leading-edge correction of order
-$$1/\mathrm{Re}_L$$; Imai [7] gives $$C_d = 1.328/\sqrt{\mathrm{Re}_L} + 2.326/\mathrm{Re}_L$$, a
-correction of $$+0.55\%$$ here, with the same sign and a similar size. The bend near $$x = 1$$ in Figure 6
-suggests a smaller effect of the outlet at the end of the plate.
+The extrapolated $$Q$$ matches the exact value within its GCI ($$+0.03\%$$). The extrapolated
+$$C_d$$ is 0.38% above Blasius, and no mesh removes this difference. For this reason, the error
+of $$C_d$$ against Blasius grows with refinement ($$-0.15\%$$, $$+0.20\%$$, $$+0.32\%$$): the
+negative mesh error decreases toward zero, and the positive difference remains. Blasius theory
+omits a leading-edge correction of order $$1/\mathrm{Re}_L$$; Imai [7] gives
+$$C_d = 1.328/\sqrt{\mathrm{Re}_L} + 2.326/\mathrm{Re}_L$$, a correction of $$+0.55\%$$ here, with
+the same sign and a similar size. The bend near $$x = 1$$ in Figure 6 suggests a smaller effect of
+the outlet at the end of the plate.
 
 #### Summary
 
