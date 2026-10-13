@@ -135,7 +135,7 @@ through the fluid at the wall:
 $$q_w = -k \left.\frac{\partial T}{\partial y}\right|_{y=0}.$$
 
 It is the cooling rate, the number an engineer designs with. Its integral over the plate is the
-total heat transfer, per unit depth of the plate:
+integrated wall heat flux, the heat rate per unit depth of the plate:
 
 $$Q = \int_0^L q_w\,\mathrm{d}x \quad \mathrm{W/m}.$$
 
