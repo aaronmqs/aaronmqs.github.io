@@ -241,23 +241,15 @@ Two differences between the problems explain these values:
   assumes an unbounded stream. This is the probable cause of the $$-0.6\%$$ in $$C_f$$. A larger
   domain would test this.
 
-### Issues found
+### Lessons learned
 
-Several problems produced no error message. I caught each one by predicting a number and
-checking it.
-
-- **"Converged" did not mean converged.** With the default residual criteria, Fluent reported
-  convergence while the local skin friction at the trailing edge was still 17.9% off. A monitor on
-  the drag coefficient caught it: the value still moved in the third significant figure.
-- **An unconverged solution imitated physics.** Before convergence, the edge velocity rose along
-  the plate by an amount that matched a real blockage effect within half a percent. It was an
-  artifact.
-- **Mesh settings were silently overridden.** The option *Blend to Neighbors* is on by default for
-  every edge sizing. It changed a requested 140 columns to 153, with no warning. I found it by
-  factoring the cell count in the mesh statistics.
-- **A wall-spacing error was invisible in the interface.** A grading factor of 20 where 70 was
-  needed made the first wall cell 2.6 times too large. I found it from the exported node
-  coordinates.
+- **Convergence.** The default residual criteria stopped the solver too early for this case. I
+  tightened them and also monitored the drag coefficient until its value stopped changing.
+- **Mesh controls.** In Ansys Meshing, *Blend to Neighbors* is on by default for each edge sizing,
+  and it can change the requested number of divisions. I turned it off to keep the exact cell
+  counts of the structured mesh.
+- **First-cell height.** The *Bias Factor* sets the ratio of the largest to the smallest cell, not
+  the first-cell height. I checked the first-cell height directly from the mesh.
 
 ### Possible improvements
 
