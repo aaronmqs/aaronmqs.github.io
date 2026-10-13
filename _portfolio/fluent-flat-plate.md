@@ -17,7 +17,7 @@ that the mesh error is below 0.2%.
 
 The case is a steady laminar flow over an isothermal flat plate (Figure 1), at $$\mathrm{Re}_L = 10^5$$. The wall is at 350 K in a 300 K stream. The fluid is
 air-like: $$\mathrm{Pr} = 0.72$$, with constant density and viscosity, so the Blasius and
-Pohlhausen similarity solution is exact and not approximate.
+Pohlhausen similarity solution is the exact solution of the boundary-layer equations.
 
 <div class="schematic-pair">
   <img src="/images/flatplate/flatplate_side.svg" alt="Side view of the flat plate: uniform flow from the left, boundary layer growing along the heated plate">
