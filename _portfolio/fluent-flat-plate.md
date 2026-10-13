@@ -177,23 +177,54 @@ A match with the exact solution on one mesh can be luck, so the case was also so
 mesh (2,700 cells) and a finer mesh (43,200 cells), with half and twice the cells in each direction
 and the same grading.
 
+**The mesh error goes to zero.** The mesh error is the difference between the value on a mesh and
+the value extrapolated to an infinitely fine mesh (Richardson extrapolation from the three meshes):
+
+| Quantity | 2,700 cells | 10,800 cells | 43,200 cells | Measured order |
+|---|---|---|---|---|
+| $$C_f$$ at $$x = 0.5$$ | $$-0.36\%$$ | $$-0.09\%$$ | $$-0.02\%$$ | 2.0 |
+| $$q_w$$ at $$x = 0.5$$ | $$-0.37\%$$ | $$-0.11\%$$ | $$-0.03\%$$ | 1.8 |
+| $$C_d$$ | $$-0.53\%$$ | $$-0.18\%$$ | $$-0.06\%$$ | 1.6 |
+| $$Q$$ | $$-0.37\%$$ | $$-0.11\%$$ | $$-0.03\%$$ | 1.8 |
+
+Each refinement divides the mesh error by 3 to 4, close to the second order of the scheme. On the
+mesh used for the results above (10,800 cells), the mesh error is below 0.2%.
+
+**But Fluent and Blasius solve two different problems.** Fluent solves the full Navier–Stokes
+equations in a finite domain. Blasius and Pohlhausen solve the boundary-layer equations for a
+semi-infinite plate in an unbounded stream with zero pressure gradient. So, on an infinitely fine
+mesh, the error against the exact solution does not go to zero. It goes to the difference between
+the two problems:
+
+| Quantity | Error against the exact solution, infinitely fine mesh |
+|---|---|
+| $$C_f$$ at $$x = 0.5$$ | $$-0.61\%$$ |
+| $$q_w$$ at $$x = 0.5$$ | $$-0.20\%$$ |
+| $$C_d$$ | $$+0.38\%$$ |
+| $$Q$$ | $$+0.03\%$$ |
+
 ![Mesh convergence along the plate](/images/flatplate/flatplate_convergence.png)
 
-*Error in $$C_f$$ and $$q_w$$ along the plate on the three meshes, labeled by cell count.*
+*Error in $$C_f$$ and $$q_w$$ against the exact solution along the plate, on the three meshes,
+labeled by cell count. The curves converge, but not to zero.*
 {: .caption}
 
-The error curves move less with each refinement, with a measured order between 1.6 and 2.0. On the mesh used for
-the results above, the remaining mesh error is below 0.2%.
+![Mesh convergence of the plate integrals](/images/flatplate/flatplate_integrated.png)
 
-One difference is still open. At mid-plate, the local $$C_f$$ converges to about 0.6% below
-Blasius, and $$q_w$$ to about 0.2% below Pohlhausen. These differences are not mesh error. The
-next test is a larger domain, with a higher top boundary and the outlet farther downstream of the
-plate.
+*Error in $$C_d$$ and $$Q$$ against the exact solution, on the three meshes, with the fit used for
+the extrapolation. For $$C_d$$, the error grows with refinement: on the coarse mesh, the mesh error
+and the difference between the two problems almost cancel.*
+{: .caption}
 
-The drag coefficient $$C_d$$ behaves differently. Its error is $$-0.15\%$$, $$+0.20\%$$, and
-$$+0.32\%$$ on the three meshes, and extrapolates to $$+0.38\%$$ on an infinitely fine mesh. The
-local $$C_f$$ is below Blasius over most of the plate, but $$C_d$$ also includes the leading edge,
-where the error is large and positive, and that part dominates the integral.
+Two differences between the problems explain these values:
+
+- **The leading edge.** Near the leading edge, $$\mathrm{Re}_x$$ is small and boundary-layer theory
+  does not apply. The plate integrals $$C_d$$ and $$Q$$ include this region, the local values at
+  $$x = 0.5$$ do not.
+- **A weak pressure gradient.** In the finite domain, the edge velocity falls by 0.3% along the
+  plate, from 1.0030 to 1.0003 m/s. This is a weak adverse pressure gradient, and Blasius assumes
+  none. A Falkner–Skan estimate for this gradient and edge velocity gives about $$-0.5\%$$ in
+  $$C_f$$, close to the $$-0.6\%$$ above. A larger domain would test this.
 
 #### Summary
 
@@ -226,7 +257,8 @@ checking it.
 ### Possible improvements
 
 - Rerun on a larger domain, with the outlet farther downstream of the plate and a higher top
-  boundary, to find the cause of the 0.6% difference in $$C_f$$ at mid-plate.
+  boundary, to confirm that the weak pressure gradient causes the 0.6% difference in $$C_f$$ at
+  mid-plate.
 - Rerun with real air properties at the film temperature (325 K) instead of the air-like values.
 - Extract the velocity profiles on the finer mesh too. A mesh replacement there silently dropped
   the sampling lines.
