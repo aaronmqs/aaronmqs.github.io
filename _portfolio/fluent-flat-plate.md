@@ -113,7 +113,8 @@ $$C_f = \frac{\tau_w}{\tfrac{1}{2}\rho U_\infty^2}, \qquad \tau_w = \mu \left.\f
 The shear stress is the force per unit area that the fluid applies along the plate, so its
 integral over the plate is the drag. The average of $$C_f$$ over the plate is the drag coefficient,
 $$C_d = \frac{1}{L}\int_0^L C_f\,\mathrm{d}x$$. Because $$C_f$$ depends on the velocity gradient at the wall, its error shows if the cells next to the
-wall are small enough.
+wall are small enough. The Blasius solution [1, 2] gives
+$$C_f = 0.664/\sqrt{\mathrm{Re}_x}$$, with $$\mathrm{Re}_x = U_\infty x/\nu$$.
 
 Near the leading edge the error is large,
 up to $$+50\%$$ at the first node. It comes from the $$x^{-1/2}$$ singularity of the exact
@@ -140,11 +141,13 @@ integrated wall heat flux, the heat rate per unit depth of the plate:
 $$Q = \int_0^L q_w\,\mathrm{d}x \quad \mathrm{W/m}.$$
 
 Because $$q_w$$ depends on the temperature gradient at the wall, it tests the energy equation.
-With the Pohlhausen solution, the exact wall heat flux is
+With the Pohlhausen solution [3], the exact wall heat flux is
 
 $$q_w = k\,(T_w - T_\infty)\,\theta'(0)\sqrt{\frac{U_\infty}{\nu x}} = \frac{65.339}{\sqrt{x}}\ \mathrm{W/m^2},$$
 
-with $$k = 0.013978$$ W/(m·K), the value that gives $$\mathrm{Pr} = 0.72$$ with Fluent's
+where $$\theta'(0) = 0.2956$$ is the dimensionless wall temperature gradient at
+$$\mathrm{Pr} = 0.72$$, from a numerical solution of the Pohlhausen equation, and
+$$k = 0.013978$$ W/(m·K) is the value that gives $$\mathrm{Pr} = 0.72$$ with Fluent's
 $$c_p = 1006.43$$ J/(kg·K). Its integral is $$Q = 2 \times 65.339\sqrt{L} = 130.68$$ W/m.
 
 For $$x \ge 0.1$$, the error is
@@ -167,7 +170,8 @@ $$0.32\%$$.
 
 ![Velocity profiles](/images/flatplate/flatplate_similarity.png)
 
-*Top: velocity profiles at five stations against the Blasius profile $$f'(\eta)$$. Bottom: error
+*Top: velocity profiles at five stations against the Blasius profile $$f'(\eta)$$, with
+$$\eta = y\sqrt{U_\infty/(\nu x)}$$. Bottom: error
 $$u/U_e - f'(\eta)$$ in percent, with the $$\pm 1\%$$ band shaded.*
 {: .caption}
 
@@ -260,33 +264,6 @@ Two differences between the problems explain these values:
 - Extract the velocity profiles on the finer mesh too. A mesh replacement there silently dropped
   the sampling lines.
 - Next cases: variable properties and compressibility, then a turbulent flat plate.
-
-## The exact solution
-
-For a laminar layer with zero pressure gradient and constant fluid properties, the velocity
-profiles at all stations have the same shape when the wall distance is scaled by the local layer
-thickness. With the similarity variable
-
-$$\eta = y\sqrt{\frac{U_\infty}{\nu x}}, \qquad \frac{u}{U_\infty} = f'(\eta), \qquad \theta(\eta) = \frac{T - T_w}{T_\infty - T_w},$$
-
-the flow equations reduce to two ordinary differential equations, due to Blasius (velocity) and
-Pohlhausen (temperature) [1, 3]:
-
-$$f''' + \tfrac{1}{2} f f'' = 0, \qquad f(0) = f'(0) = 0, \quad f'(\infty) = 1,$$
-
-$$\theta'' + \tfrac{1}{2}\,\mathrm{Pr}\, f\, \theta' = 0, \qquad \theta(0) = 0, \quad \theta(\infty) = 1.$$
-
-I integrated both numerically, and recovered $$f''(0) = 0.332057$$ and, at
-$$\mathrm{Pr} = 0.72$$, $$\theta'(0) = 0.295635$$. The first agrees with the tabulated value [2];
-Blasius himself obtained 0.3317 by hand [1]. The wall values give skin friction and heat transfer
-along the plate, with $$\mathrm{Re}_x = U_\infty x/\nu$$:
-
-$$C_f = \frac{\tau_w}{\tfrac{1}{2}\rho U_\infty^2} = \frac{2 f''(0)}{\sqrt{\mathrm{Re}_x}} = \frac{0.664115}{\sqrt{\mathrm{Re}_x}}, \qquad \mathrm{Nu}_x = \frac{q_w\, x}{k\,(T_w - T_\infty)} = \theta'(0)\sqrt{\mathrm{Re}_x} = 0.295635\sqrt{\mathrm{Re}_x}.$$
-
-The heat-transfer constant is for $$\mathrm{Pr} = 0.72$$, integrated here rather than taken from a
-table. The common textbook correlation
-$$0.332\,\mathrm{Pr}^{1/3}$$ gives 0.297565, which is 0.65% off. That is larger than the
-discretization error measured above, so a correlation cannot serve as the reference here.
 
 ## References
 
