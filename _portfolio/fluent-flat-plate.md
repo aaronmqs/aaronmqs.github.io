@@ -182,7 +182,7 @@ and the same grading.
 *Error in $$C_f$$ and $$q_w$$ along the plate on the three meshes, labeled by cell count.*
 {: .caption}
 
-The error curves move less with each refinement, at close to second order. On the mesh used for
+The error curves move less with each refinement, with a measured order between 1.6 and 2.0. On the mesh used for
 the results above, the remaining mesh error is below 0.2%.
 
 One difference is still open. At mid-plate, the local $$C_f$$ converges to about 0.6% below
