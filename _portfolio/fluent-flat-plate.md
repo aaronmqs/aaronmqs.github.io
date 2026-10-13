@@ -1,11 +1,8 @@
 ---
 title: "Laminar flat plate in Ansys Fluent: verification against Blasius"
-excerpt: "<em>Work in progress.</em> Velocity profiles at five stations collapse onto the exact Blasius solution within 0.32%. Skin friction and wall heat flux are verified the same way on three meshes.<br/><img src='/images/flatplate/flatplate_similarity.png' width='400'>"
+excerpt: "Velocity profiles at five stations collapse onto the exact Blasius solution within 0.32%. Skin friction and wall heat flux are verified the same way on three meshes.<br/><img src='/images/flatplate/flatplate_similarity.png' width='400'>"
 collection: portfolio
 ---
-
-**Work in progress.** This page is not final. The text and the figures can change.
-{: .notice--warning}
 
 {% include toc title="Contents" %}
 
@@ -30,7 +27,14 @@ The quantities of interest are the skin friction $$C_f$$, the wall heat flux $$q
 velocity profile across the boundary layer. The first two integrate to the plate drag and the total
 heat transfer.
 
-All three are measured against the similarity solution.
+All three are measured against the similarity solution. A similar laminar flat-plate case, at
+Mach 0.1 and without heat transfer, is in the NPARC archive [4].
+
+![Fluent velocity contour](/images/flatplate/flatplate_fluent_u.png)
+
+*Streamwise velocity computed in Fluent, near the leading edge (fine mesh, 43,200 cells). The
+boundary layer starts at the leading edge and grows along the plate.*
+{: .caption}
 
 ## The computational model
 
@@ -59,7 +63,7 @@ $$8 \times 10^{-12}$$ in 400 iterations.
 
 ### Mesh
 
-The mesh is structured quadrilaterals: 120 cells along the plate plus 60 ahead of it, times 60
+The mesh was built in **Ansys Meshing** (Workbench) and is structured quadrilaterals: 120 cells along the plate plus 60 ahead of it, times 60
 normal to the wall, so $$(120 + 60) \times 60 = 10{,}800$$ cells. The first cell at the wall is
 $$2.0 \times 10^{-4}$$ m high. Cells are clustered toward the wall and the leading edge.
 
@@ -68,6 +72,7 @@ $$2.0 \times 10^{-4}$$ m high. Cells are clustered toward the wall and the leadi
 | Item | Value |
 |---|---|
 | Software | Ansys Fluent 2025 R2, 2D, steady, laminar, energy equation on |
+| Mesh | Ansys Meshing, mapped quadrilaterals, 10,800 cells |
 | Flow | $$U_\infty = 1$$ m/s, $$\mathrm{Re}_L = 10^5$$, plate length $$L = 1$$ m |
 | Fluid | air-like, constant properties: $$\rho = 1$$ kg/m³, $$\mu = 10^{-5}$$ kg/(m·s), $$\mathrm{Pr} = 0.72$$ |
 | Temperatures | stream 300 K, isothermal wall 350 K |
@@ -87,6 +92,9 @@ in percent. The local errors in $$C_f$$ and $$q_w$$ are judged only for $$x \ge 
 exact solution is singular at the leading edge and no mesh resolves it. The plate integrals
 $$C_d$$ and $$Q$$ include the leading edge.
 
+Each quantity has a pass tolerance, set in the test plan: 2% for $$C_f$$, 3% for $$q_w$$, and
+1% for the velocity profiles.
+
 In the figures below, each marker is a value that Fluent interpolates from the mesh nodes, and
 each node value is an average of the surrounding cells. No marker is at a cell center.
 
@@ -102,9 +110,11 @@ integral over the plate is the drag. The average of $$C_f$$ over the plate is th
 $$C_d = \frac{1}{L}\int_0^L C_f\,\mathrm{d}x$$. Because $$C_f$$ depends on the velocity gradient at the wall, its error shows if the cells next to the
 wall are small enough.
 
-The markers in the figure are the mesh nodes on the wall. Near the leading edge the error is large,
+Near the leading edge the error is large,
 up to $$+50\%$$ at the first node. It comes from the $$x^{-1/2}$$ singularity of the exact
-solution, not from a mesh failure.
+solution, not from a mesh failure. For $$x \ge 0.1$$, the error is between $$+0.08\%$$ and
+$$-1.25\%$$. The largest errors are at the trailing edge, where the outlet is at the end of the
+plate.
 
 ![Skin friction](/images/flatplate/flatplate_cf.png)
 
@@ -132,7 +142,7 @@ $$q_w = k\,(T_w - T_\infty)\,\theta'(0)\sqrt{\frac{U_\infty}{\nu x}} = \frac{65.
 with $$k = 0.013978$$ W/(m·K), the value that gives $$\mathrm{Pr} = 0.72$$ with Fluent's
 $$c_p = 1006.43$$ J/(kg·K). Its integral is $$Q = 2 \times 65.339\sqrt{L} = 130.68$$ W/m.
 
-As for $$C_f$$, the markers are the mesh nodes on the wall. For $$x \ge 0.1$$, the error is
+For $$x \ge 0.1$$, the error is
 between $$-0.27\%$$ and $$-0.54\%$$.
 
 ![Wall heat flux](/images/flatplate/flatplate_qw.png)
@@ -146,8 +156,8 @@ shaded. The first point ($$+48\%$$) is above the range of the bottom plot.*
 Wall values test only the first cells. The profiles test the whole layer.
 
 The velocity is divided by the local edge velocity $$U_e$$, so the comparison tests the shape of
-the profile. Each marker is a point where a vertical sampling line crosses a mesh line. Fluent
-interpolates the value there from the two mesh nodes of the crossed edge. The largest error is
+the profile. Each marker is a point where a vertical sampling line crosses a mesh line. The
+largest error is
 $$0.32\%$$.
 
 ![Velocity profiles](/images/flatplate/flatplate_similarity.png)
@@ -175,6 +185,11 @@ Blasius, and $$q_w$$ to about 0.2% below Pohlhausen. These differences are not m
 next test is a larger domain, with a higher top boundary and the outlet farther downstream of the
 plate.
 
+The drag coefficient $$C_d$$ behaves differently. Its error is $$-0.15\%$$, $$+0.20\%$$, and
+$$+0.32\%$$ on the three meshes, and extrapolates to $$+0.38\%$$ on an infinitely fine mesh. The
+local $$C_f$$ is below Blasius over most of the plate, but $$C_d$$ also includes the leading edge,
+where the error is large and positive, and that part dominates the integral.
+
 #### Summary
 
 | Quantity | Criterion | Computed | Result |
@@ -182,13 +197,13 @@ plate.
 | Skin friction error, $$x \geq 0.1$$ | $$\lvert E \rvert < 2\%$$ | $$+0.08\%$$ to $$-1.25\%$$ | pass |
 | Wall heat flux error, $$x \geq 0.1$$ | $$\lvert E \rvert < 3\%$$ | $$-0.27\%$$ to $$-0.54\%$$ | pass |
 | Velocity profile error, 5 stations | $$< 1\%$$ | $$0.32\%$$ | pass |
-| Plate drag coefficient $$C_d$$ | — | $$4.2086 \times 10^{-3}$$ ($$+0.20\%$$) | |
+| Plate drag coefficient $$C_d$$ | — | $$4.2086 \times 10^{-3}$$ ($$+0.20\%$$; $$+0.38\%$$ extrapolated) | |
 | Integrated wall heat flux $$Q$$ | — | 130.58 W/m ($$-0.08\%$$) | |
 
-### Issues and possible improvements
+### Issues found
 
-This was my first case in Fluent. Several problems produced no error message, and I caught each
-one only by predicting a number and checking it.
+Several problems produced no error message. I caught each one by predicting a number and
+checking it.
 
 - **"Converged" did not mean converged.** With the default residual criteria, Fluent reported
   convergence while the local skin friction at the trailing edge was still 17.9% off. A monitor on
@@ -202,10 +217,8 @@ one only by predicting a number and checking it.
 - **A wall-spacing error was invisible in the interface.** A grading factor of 20 where 70 was
   needed made the first wall cell 2.6 times too large. I found it from the exported node
   coordinates.
-- **Eleven silent exits.** Fluent closed with no message eleven times on this small 2D case, so
-  each restart had to be checked against a known number.
 
-#### Possible improvements
+### Possible improvements
 
 - Rerun on a larger domain, with the outlet farther downstream of the plate and a higher top
   boundary, to find the cause of the 0.6% difference in $$C_f$$ at mid-plate.
@@ -254,4 +267,5 @@ discretization error measured above, so a correlation cannot serve as the refere
    Reibung und kleiner Wärmeleitung*, ZAMM **1** (1921), 115–121. The thermal layer at a constant
    wall temperature.
 4. NPARC Alliance CFD Verification and Validation Archive, *Laminar Flat Plate: Study #1*
-   (case fplam01), NASA Glenn Research Center. The same case, used as a cross-check.
+   (case fplam01), NASA Glenn Research Center. Mach 0.1, $$\mathrm{Re}_L \approx 2 \times 10^5$$,
+   no heat transfer, compared with Blasius.
