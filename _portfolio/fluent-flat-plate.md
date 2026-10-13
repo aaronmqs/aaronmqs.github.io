@@ -187,6 +187,21 @@ the value extrapolated to an infinitely fine mesh (Richardson extrapolation from
 | $$C_d$$ | $$-0.53\%$$ | $$-0.18\%$$ | $$-0.06\%$$ | 1.6 |
 | $$Q$$ | $$-0.37\%$$ | $$-0.11\%$$ | $$-0.03\%$$ | 1.8 |
 
+*How the mesh error is computed.* Each refinement halves the cell size. Take $$C_f$$ at
+$$x = 0.5$$, as the error against Blasius in percent: $$-0.972$$ on the coarse mesh, $$-0.701$$ on
+the medium mesh, $$-0.634$$ on the fine mesh.
+
+1. **Steps between meshes:** coarse to medium $$+0.271$$, medium to fine $$+0.067$$.
+2. **Order:** the step shrinks by $$0.271 / 0.067 = 4.0 = 2^2$$, so the order is $$p = 2$$.
+3. **Remaining steps:** if each next step is 4 times smaller, the steps after the fine mesh add up
+   to $$0.067 \times (\tfrac{1}{4} + \tfrac{1}{16} + \dots) = 0.067 / 3 = 0.022$$.
+4. **Infinitely fine mesh:** $$-0.634 + 0.022 = -0.612$$.
+5. **Mesh error** on each mesh: its value minus $$(-0.612)$$, so $$-0.36$$, $$-0.09$$, and
+   $$-0.02$$, as in the table.
+
+This is Richardson extrapolation. The other rows are computed the same way, each with its own
+measured order.
+
 Each refinement divides the mesh error by 3 to 4, close to the second order of the scheme. On the
 mesh used for the results above (10,800 cells), the mesh error is below 0.2%.
 
