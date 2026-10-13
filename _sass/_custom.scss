@@ -72,8 +72,8 @@ html[data-theme="dark"] {
   border-bottom-color: #fff;
 }
 
-/* The theme disables the menu link of the current section, so on a portfolio
-   item the Portfolio link could not take the reader back to the list */
+/* The theme disables the menu link of the current section, so on a project
+   page the Projects link could not take the reader back to the list */
 .masthead__menu-item.selected a {
   pointer-events: auto;
   cursor: pointer;
