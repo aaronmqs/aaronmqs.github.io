@@ -33,14 +33,15 @@ Mach 0.1 and without heat transfer, is in the NPARC archive [4].
 ![Fluent velocity contour](/images/flatplate/flatplate_fluent_u.png)
 
 *Streamwise velocity computed in Fluent, near the leading edge (fine mesh, 43,200 cells). The
-boundary layer starts at the leading edge and grows along the plate.*
+view is about 1.4 cm wide and shows the first 8 mm of the 1 m plate. The boundary layer starts at
+the leading edge and grows along the plate.*
 {: .caption}
 
 ## The computational model
 
 ### Domain and boundary conditions
 
-Figure 2 shows the computational domain and its boundary conditions.
+Figure 3 shows the computational domain and its boundary conditions.
 
 ![Domain and boundary conditions](/images/flatplate/flatplate_domain.svg)
 
