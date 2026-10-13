@@ -273,10 +273,12 @@ Two differences between the problems explain these values:
    conditions are on page 7 of the translation, in the scaling $$\zeta\zeta'' = -\zeta'''$$; the
    wall shear and the plate drag are on page 18.
 2. L. Howarth, *On the solution of the laminar boundary layer equations*, Proceedings of the Royal
-   Society A **164** (1938), 547–579. The accurate value $$f''(0) = 0.332057$$.
+   Society A **164** (1938), 547–579. An accurate numerical solution of the Blasius equation; its
+   wall value $$f_0''(0) = 1.328242$$ (in Howarth's scaling) gives $$C_f = 0.664/\sqrt{\mathrm{Re}_x}$$.
 3. E. Pohlhausen, *Der Wärmeaustausch zwischen festen Körpern und Flüssigkeiten mit kleiner
-   Reibung und kleiner Wärmeleitung*, ZAMM **1** (1921), 115–121. The thermal layer at a constant
+   Reibung und kleiner Wärmeleitung*, ZAMM **1** (1921), 115–121, doi:10.1002/zamm.19210010205. The thermal layer at a constant
    wall temperature.
-4. NPARC Alliance CFD Verification and Validation Archive, *Laminar Flat Plate: Study #1*
-   (case fplam01), NASA Glenn Research Center. Mach 0.1, $$\mathrm{Re}_L \approx 2 \times 10^5$$,
+4. NPARC Alliance Validation Archive, *Laminar Flat Plate: Study #1* (case fplam01), NASA Glenn
+   Research Center,
+   [grc.nasa.gov/WWW/wind/valid/fplam/fplam01/fplam01.html](https://www.grc.nasa.gov/WWW/wind/valid/fplam/fplam01/fplam01.html). Mach 0.1, $$\mathrm{Re}_L \approx 2 \times 10^5$$,
    no heat transfer, compared with Blasius.
