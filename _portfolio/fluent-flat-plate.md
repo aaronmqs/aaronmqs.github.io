@@ -92,8 +92,9 @@ $$\mathrm{Re}_x = x/10^{-5}$$, with $$x$$ in meters. The Prandtl number is kept 
 ### Solution and quantities of interest
 
 The error in any computed quantity $$\phi$$ is $$E = (\phi - \phi_\mathrm{exact})/\phi_\mathrm{exact}$$,
-in percent. The local errors in $$C_f$$ and $$q_w$$ are judged only for $$x \ge 0.1$$ m, because the
-exact solution is singular at the leading edge and no mesh resolves it. The plate integrals
+in percent. The local errors in $$C_f$$ and $$q_w$$ are judged only for $$x \ge 0.1$$ m
+($$\mathrm{Re}_x \ge 10^4$$). Near the leading edge, $$\mathrm{Re}_x$$ is small, so boundary-layer
+theory does not apply, and its solution is singular at $$x = 0$$. The plate integrals
 $$C_d$$ and $$Q$$ include the leading edge.
 
 Each quantity has a pass tolerance, set in the test plan: 2% for $$C_f$$, 3% for $$q_w$$, and
