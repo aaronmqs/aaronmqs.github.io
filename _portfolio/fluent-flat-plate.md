@@ -236,10 +236,10 @@ Two differences between the problems explain these values:
 - **The leading edge.** Near the leading edge, $$\mathrm{Re}_x$$ is small and boundary-layer theory
   does not apply. The plate integrals $$C_d$$ and $$Q$$ include this region, the local values at
   $$x = 0.5$$ do not.
-- **A weak pressure gradient.** In the finite domain, the edge velocity falls by 0.3% along the
-  plate, from 1.0030 to 1.0003 m/s. This is a weak adverse pressure gradient, which lowers the
-  skin friction, and Blasius assumes none. It is the probable cause of the $$-0.6\%$$ in $$C_f$$.
-  A larger domain would test this.
+- **The finite domain.** The top boundary is only 0.2 m above the plate, and the outlet is at the
+  trailing edge. These boundaries change the flow outside the boundary layer a little, and Blasius
+  assumes an unbounded stream. This is the probable cause of the $$-0.6\%$$ in $$C_f$$. A larger
+  domain would test this.
 
 #### Summary
 
@@ -272,7 +272,7 @@ checking it.
 ### Possible improvements
 
 - Rerun on a larger domain, with the outlet farther downstream of the plate and a higher top
-  boundary, to confirm that the weak pressure gradient causes the 0.6% difference in $$C_f$$ at
+  boundary, to confirm that the finite domain causes the 0.6% difference in $$C_f$$ at
   mid-plate.
 - Rerun with real air properties at the film temperature (325 K) instead of the air-like values.
 - Extract the velocity profiles on the finer mesh too. A mesh replacement there silently dropped
