@@ -241,16 +241,6 @@ Two differences between the problems explain these values:
   assumes an unbounded stream. This is the probable cause of the $$-0.6\%$$ in $$C_f$$. A larger
   domain would test this.
 
-#### Summary
-
-| Quantity | Criterion | Computed | Result |
-|---|---|---|---|
-| Skin friction error, $$x \geq 0.1$$ | $$\lvert E \rvert < 2\%$$ | $$+0.08\%$$ to $$-1.25\%$$ | pass |
-| Wall heat flux error, $$x \geq 0.1$$ | $$\lvert E \rvert < 3\%$$ | $$-0.27\%$$ to $$-0.54\%$$ | pass |
-| Velocity profile error, 5 stations | $$< 1\%$$ | $$0.32\%$$ | pass |
-| Plate drag coefficient $$C_d$$ | — | $$4.2086 \times 10^{-3}$$ ($$+0.20\%$$; $$+0.38\%$$ extrapolated) | |
-| Integrated wall heat flux $$Q$$ | — | 130.58 W/m ($$-0.08\%$$) | |
-
 ### Issues found
 
 Several problems produced no error message. I caught each one by predicting a number and
