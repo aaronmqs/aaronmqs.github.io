@@ -1,6 +1,6 @@
 ---
 title: "Laminar flat plate in Ansys Fluent: verification against Blasius"
-excerpt: "Velocity profiles at five stations collapse onto the exact Blasius solution within 0.32%. Skin friction and wall heat flux are verified the same way on three meshes.<br/><img src='/images/flatplate/flatplate_similarity.png' width='400'>"
+excerpt: "Velocity profiles at five stations collapse onto the exact Blasius solution within 0.32%. Skin friction and wall heat flux are verified the same way on three meshes.<br/><img src='/images/flatplate/flatplate_fluent_u.png' width='400'>"
 collection: portfolio
 ---
 
@@ -10,6 +10,10 @@ collection: portfolio
 
 I set up, solved, and verified a steady laminar flat-plate boundary layer with heat transfer in
 **Ansys Fluent**.
+
+**Result:** skin friction, wall heat flux, and velocity profiles all agree with the exact solution
+within their tolerances (largest errors 1.25%, 0.54%, and 0.32%). A study on three meshes confirms
+that the mesh error is below 0.2%.
 
 The case is a steady laminar flow over an isothermal flat plate (Figure 1), at $$\mathrm{Re}_L = 10^5$$. The wall is at 350 K in a 300 K stream. The fluid is
 air-like: $$\mathrm{Pr} = 0.72$$, with constant density and viscosity, so the Blasius and
@@ -24,11 +28,9 @@ Pohlhausen similarity solution is exact and not approximate.
 {: .caption}
 
 The quantities of interest are the skin friction $$C_f$$, the wall heat flux $$q_w$$, and the
-velocity profile across the boundary layer. The first two integrate to the plate drag and the total
-heat transfer.
-
-All three are measured against the similarity solution. A similar laminar flat-plate case, at
-Mach 0.1 and without heat transfer, is in the NPARC archive [4].
+velocity profile across the boundary layer, all measured against the similarity solution. A
+similar laminar flat-plate case, at Mach 0.1 and without heat transfer, is in the NPARC
+archive [4].
 
 ![Fluent velocity contour](/images/flatplate/flatplate_fluent_u.png)
 
