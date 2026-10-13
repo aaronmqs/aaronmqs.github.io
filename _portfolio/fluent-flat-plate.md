@@ -237,9 +237,9 @@ Two differences between the problems explain these values:
   does not apply. The plate integrals $$C_d$$ and $$Q$$ include this region, the local values at
   $$x = 0.5$$ do not.
 - **A weak pressure gradient.** In the finite domain, the edge velocity falls by 0.3% along the
-  plate, from 1.0030 to 1.0003 m/s. This is a weak adverse pressure gradient, and Blasius assumes
-  none. A Falkner–Skan estimate for this gradient and edge velocity gives about $$-0.5\%$$ in
-  $$C_f$$, close to the $$-0.6\%$$ above. A larger domain would test this.
+  plate, from 1.0030 to 1.0003 m/s. This is a weak adverse pressure gradient, which lowers the
+  skin friction, and Blasius assumes none. It is the probable cause of the $$-0.6\%$$ in $$C_f$$.
+  A larger domain would test this.
 
 #### Summary
 
