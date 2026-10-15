@@ -1,31 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" width="900" height="220">
-<defs>
-<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f5fa8"/></marker>
+<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#111111" stroke-width="0.8"/></pattern>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#111111"/></marker>
 </defs>
-<style>text{font-family:Helvetica,Arial,sans-serif;font-size:17px;fill:#0b2545}
-.s{font-size:14px;fill:#6b7a90} .i{font-style:italic}</style>
+<style>text{font-family:"Times New Roman",Times,"Nimbus Roman",serif;font-size:18px;fill:#111111}.s{font-size:15px;fill:#111111} .i{font-style:italic} .b{font-weight:bold}</style>
 <rect width="900" height="220" rx="10" fill="#ffffff"/>
 
 <!-- true scale, 1.55 px/mm in x and r; axis at y=110; x from -75.5 to 457.2 mm -->
 <!-- upper half: the computational domain -->
-<polygon points="60,110 60,60.8 76.7,60.8 138.9,70.6 885.7,70.6 885.7,110" fill="#cfe0f3"/>
+<polygon points="60,110 60,60.8 76.7,60.8 138.9,70.6 885.7,70.6 885.7,110" fill="#ffffff"/>
 <!-- lower half: mirror image, not computed -->
-<polygon points="60,110 60,159.2 76.7,159.2 138.9,149.4 885.7,149.4 885.7,110" fill="#f2f6fb"/>
+<polygon points="60,110 60,159.2 76.7,159.2 138.9,149.4 885.7,149.4 885.7,110" fill="#ffffff"/>
 
 <!-- model body: sharp cowl lip, then the duct wall -->
-<polygon points="76.7,60.8 138.9,70.6 885.7,70.6 885.7,58 138.9,58 76.7,60.8" fill="#dde3ec"/>
-<polygon points="76.7,159.2 138.9,149.4 885.7,149.4 885.7,162 138.9,162 76.7,159.2" fill="#dde3ec"/>
-<polyline points="76.7,60.8 138.9,70.6 885.7,70.6" fill="none" stroke="#c0591c" stroke-width="3"/>
-<polyline points="76.7,159.2 138.9,149.4 885.7,149.4" fill="none" stroke="#c0591c" stroke-width="3"/>
+<polygon points="76.7,60.8 138.9,70.6 885.7,70.6 885.7,58 138.9,58 76.7,60.8" fill="url(#hatch)"/>
+<polygon points="76.7,159.2 138.9,149.4 885.7,149.4 885.7,162 138.9,162 76.7,159.2" fill="url(#hatch)"/>
+<polyline points="76.7,60.8 138.9,70.6 885.7,70.6" fill="none" stroke="#111111" stroke-width="1.8"/>
+<polyline points="76.7,159.2 138.9,149.4 885.7,149.4" fill="none" stroke="#111111" stroke-width="1.8" stroke-dasharray="7 4"/>
 
 <!-- axis of symmetry -->
-<line x1="52" y1="110" x2="893" y2="110" stroke="#6b7a90" stroke-width="2" stroke-dasharray="14 5 3 5"/>
+<line x1="52" y1="110" x2="893" y2="110" stroke="#111111" stroke-width="1.3" stroke-dasharray="14 5 3 5"/>
 
 <!-- free stream -->
-<line x1="10" y1="76" x2="52" y2="76" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
-<line x1="10" y1="96" x2="52" y2="96" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
-<line x1="10" y1="124" x2="52" y2="124" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
-<line x1="10" y1="144" x2="52" y2="144" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="10" y1="76" x2="52" y2="76" stroke="#111111" stroke-width="1.3" marker-end="url(#ah)"/>
+<line x1="10" y1="96" x2="52" y2="96" stroke="#111111" stroke-width="1.3" marker-end="url(#ah)"/>
+<line x1="10" y1="124" x2="52" y2="124" stroke="#111111" stroke-width="1.3" marker-end="url(#ah)"/>
+<line x1="10" y1="144" x2="52" y2="144" stroke="#111111" stroke-width="1.3" marker-end="url(#ah)"/>
 <text x="10" y="40"><tspan class="i">M</tspan><tspan dy="4" font-size="12">∞</tspan><tspan dy="-4"> = 5.7</tspan></text>
 
 <!-- parts -->

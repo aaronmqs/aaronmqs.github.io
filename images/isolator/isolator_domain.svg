@@ -1,71 +1,70 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="900" height="440">
-<defs>
-<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f5fa8"/></marker>
-<marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0b2545"/></marker>
+<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#111111" stroke-width="0.8"/></pattern>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#111111"/></marker>
+<marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#111111"/></marker>
 </defs>
-<style>text{font-family:Helvetica,Arial,sans-serif;font-size:19px;fill:#0b2545}
-.s{font-size:16px;fill:#6b7a90} .i{font-style:italic} .b{font-weight:bold}</style>
+<style>text{font-family:"Times New Roman",Times,"Nimbus Roman",serif;font-size:20px;fill:#111111}.s{font-size:17px;fill:#111111} .i{font-style:italic} .b{font-weight:bold}</style>
 <rect width="900" height="440" rx="10" fill="#ffffff"/>
 
 <!-- fluid region: x scale 3.64 px/mm, radial scale x1.5 (5.46 px/mm); axis at y=300 -->
-<polygon points="106.3,300 106.3,126.6 145.7,126.6 291.7,161.3 600,161.3 600,300" fill="#f2f6fb"/>
-<polygon points="640,161.3 775.4,161.3 775.4,300 640,300" fill="#f2f6fb"/>
+<polygon points="106.3,300 106.3,126.6 145.7,126.6 291.7,161.3 600,161.3 600,300" fill="#ffffff"/>
+<polygon points="640,161.3 775.4,161.3 775.4,300 640,300" fill="#ffffff"/>
 
 <!-- model body above the wall (not computed) -->
-<polygon points="145.7,126.6 291.7,161.3 600,161.3 600,108 145.7,108" fill="#dde3ec"/>
-<polygon points="640,161.3 775.4,161.3 775.4,108 640,108" fill="#dde3ec"/>
+<polygon points="145.7,126.6 291.7,161.3 600,161.3 600,108 145.7,108" fill="url(#hatch)"/>
+<polygon points="640,161.3 775.4,161.3 775.4,108 640,108" fill="url(#hatch)"/>
 
 <!-- inflow -->
-<line x1="106.3" y1="126.6" x2="106.3" y2="300" stroke="#1f5fa8" stroke-width="4"/>
-<line x1="56" y1="150" x2="98" y2="150" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
-<line x1="56" y1="190" x2="98" y2="190" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
-<line x1="56" y1="230" x2="98" y2="230" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
-<line x1="56" y1="270" x2="98" y2="270" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="106.3" y1="126.6" x2="106.3" y2="300" stroke="#111111" stroke-width="1.8"/>
+<line x1="56" y1="150" x2="98" y2="150" stroke="#111111" stroke-width="1.3" marker-end="url(#ah)"/>
+<line x1="56" y1="190" x2="98" y2="190" stroke="#111111" stroke-width="1.3" marker-end="url(#ah)"/>
+<line x1="56" y1="230" x2="98" y2="230" stroke="#111111" stroke-width="1.3" marker-end="url(#ah)"/>
+<line x1="56" y1="270" x2="98" y2="270" stroke="#111111" stroke-width="1.3" marker-end="url(#ah)"/>
 <text x="24" y="52">supersonic inflow</text>
 <text x="24" y="74" class="s"><tspan class="i">M</tspan><tspan dy="4" font-size="12">∞</tspan><tspan dy="-4"> = 5.7</tspan></text>
 
 <!-- upstream region: zero radial velocity -->
-<line x1="106.3" y1="126.6" x2="145.7" y2="126.6" stroke="#6b7a90" stroke-width="4" stroke-dasharray="8 5"/>
-<line x1="126" y1="122" x2="150" y2="96" stroke="#6b7a90" stroke-width="0.8"/>
+<line x1="106.3" y1="126.6" x2="145.7" y2="126.6" stroke="#111111" stroke-width="1.8" stroke-dasharray="8 5"/>
+<line x1="126" y1="122" x2="150" y2="96" stroke="#111111" stroke-width="0.8"/>
 <text x="154" y="94" class="s">zero radial velocity</text>
 
 <!-- walls -->
-<polyline points="145.7,126.6 291.7,161.3 600,161.3" fill="none" stroke="#c0591c" stroke-width="5"/>
-<line x1="640" y1="161.3" x2="775.4" y2="161.3" stroke="#c0591c" stroke-width="5"/>
+<polyline points="145.7,126.6 291.7,161.3 600,161.3" fill="none" stroke="#111111" stroke-width="1.8"/>
+<line x1="640" y1="161.3" x2="775.4" y2="161.3" stroke="#111111" stroke-width="1.8"/>
 <text x="450" y="146" text-anchor="middle">no-slip isothermal wall</text>
 
 <!-- 9 degree angle at the cowl lip -->
-<line x1="145.7" y1="126.6" x2="240" y2="126.6" stroke="#0b2545" stroke-width="0.8" stroke-dasharray="4 4"/>
-<path d="M 215,126.6 A 69.3,69.3 0 0 1 213.2,142.7" fill="none" stroke="#0b2545" stroke-width="1"/>
+<line x1="145.7" y1="126.6" x2="240" y2="126.6" stroke="#111111" stroke-width="0.8" stroke-dasharray="4 4"/>
+<path d="M 215,126.6 A 69.3,69.3 0 0 1 213.2,142.7" fill="none" stroke="#111111" stroke-width="1"/>
 <text x="219" y="141" class="s">9°</text>
 
 <!-- outflow -->
-<line x1="775.4" y1="161.3" x2="775.4" y2="300" stroke="#2e7d5b" stroke-width="4"/>
+<line x1="775.4" y1="161.3" x2="775.4" y2="300" stroke="#111111" stroke-width="1.8"/>
 <text x="788" y="222">supersonic</text>
 <text x="788" y="244">outflow</text>
 
 <!-- symmetry axis -->
-<line x1="106.3" y1="300" x2="600" y2="300" stroke="#6b7a90" stroke-width="3" stroke-dasharray="14 5 3 5"/>
-<line x1="640" y1="300" x2="775.4" y2="300" stroke="#6b7a90" stroke-width="3" stroke-dasharray="14 5 3 5"/>
+<line x1="106.3" y1="300" x2="600" y2="300" stroke="#111111" stroke-width="1.8" stroke-dasharray="14 5 3 5"/>
+<line x1="640" y1="300" x2="775.4" y2="300" stroke="#111111" stroke-width="1.8" stroke-dasharray="14 5 3 5"/>
 <text x="707" y="324" text-anchor="middle" class="s">symmetry axis, <tspan class="i">r</tspan> = 0</text>
 
 <!-- break: the isolator is shortened -->
 <rect x="600" y="104" width="40" height="200" fill="#ffffff"/>
-<line x1="594" y1="172" x2="606" y2="150" stroke="#0b2545" stroke-width="1.4"/>
-<line x1="634" y1="172" x2="646" y2="150" stroke="#0b2545" stroke-width="1.4"/>
-<line x1="594" y1="311" x2="606" y2="289" stroke="#0b2545" stroke-width="1.4"/>
-<line x1="634" y1="311" x2="646" y2="289" stroke="#0b2545" stroke-width="1.4"/>
+<line x1="594" y1="172" x2="606" y2="150" stroke="#111111" stroke-width="1.4"/>
+<line x1="634" y1="172" x2="646" y2="150" stroke="#111111" stroke-width="1.4"/>
+<line x1="594" y1="311" x2="606" y2="289" stroke="#111111" stroke-width="1.4"/>
+<line x1="634" y1="311" x2="646" y2="289" stroke="#111111" stroke-width="1.4"/>
 
 <!-- stations -->
-<line x1="145.7" y1="126.6" x2="145.7" y2="352" stroke="#0b2545" stroke-width="0.8" stroke-dasharray="3 4"/>
+<line x1="145.7" y1="126.6" x2="145.7" y2="352" stroke="#111111" stroke-width="0.8" stroke-dasharray="3 4"/>
 <text x="140" y="350" text-anchor="end" class="s">capture plane</text>
 <text x="140" y="370" text-anchor="end" class="s"><tspan class="i">x</tspan> = −64.7 mm</text>
 
-<line x1="291.7" y1="161.3" x2="291.7" y2="352" stroke="#0b2545" stroke-width="0.8" stroke-dasharray="3 4"/>
+<line x1="291.7" y1="161.3" x2="291.7" y2="352" stroke="#111111" stroke-width="0.8" stroke-dasharray="3 4"/>
 <text x="286" y="350" text-anchor="end" class="s">shoulder</text>
 <text x="286" y="370" text-anchor="end" class="s"><tspan class="i">x</tspan> ≈ −24.6 mm</text>
 
-<line x1="381.2" y1="161.3" x2="381.2" y2="352" stroke="#0b2545" stroke-width="2" stroke-dasharray="7 4"/>
+<line x1="381.2" y1="161.3" x2="381.2" y2="352" stroke="#111111" stroke-width="1.3" stroke-dasharray="7 4"/>
 <text x="388" y="248" class="b">A</text>
 <text x="387" y="350">isolator entrance, <tspan class="i">x</tspan> = 0</text>
 <text x="387" y="370" class="s">averaging plane <tspan class="i">A</tspan></text>
@@ -73,9 +72,9 @@
 <text x="775.4" y="350" text-anchor="end" class="s"><tspan class="i">x</tspan> = 457.2 mm</text>
 
 <!-- radii -->
-<line x1="30" y1="126.6" x2="30" y2="300" stroke="#0b2545" stroke-width="1" marker-start="url(#ak)" marker-end="url(#ak)"/>
+<line x1="30" y1="126.6" x2="30" y2="300" stroke="#111111" stroke-width="1" marker-start="url(#ak)" marker-end="url(#ak)"/>
 <text x="22" y="213" text-anchor="middle" class="s" transform="rotate(-90 22 213)"><tspan class="i">r</tspan> = 31.75 mm</text>
-<line x1="520" y1="161.3" x2="520" y2="300" stroke="#0b2545" stroke-width="1" marker-start="url(#ak)" marker-end="url(#ak)"/>
+<line x1="520" y1="161.3" x2="520" y2="300" stroke="#111111" stroke-width="1" marker-start="url(#ak)" marker-end="url(#ak)"/>
 <text x="528" y="236" class="s"><tspan class="i">r</tspan> = 25.4 mm</text>
 
 <text x="880" y="420" text-anchor="end" class="s">radial scale × 1.5; isolator shortened</text>

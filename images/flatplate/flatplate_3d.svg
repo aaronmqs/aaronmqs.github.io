@@ -1,23 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="520" height="280">
-<defs>
-<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f5fa8"/></marker>
-<marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0b2545"/></marker>
+<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#111111" stroke-width="0.8"/></pattern>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#111111"/></marker>
+<marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#111111"/></marker>
 </defs>
-<style>text{font-family:Helvetica,Arial,sans-serif;font-size:21px;fill:#0b2545}
-.s{font-size:18px;fill:#6b7a90} .i{font-style:italic}</style>
+<style>text{font-family:"Times New Roman",Times,"Nimbus Roman",serif;font-size:22px;fill:#111111}.s{font-size:19px;fill:#111111} .i{font-style:italic} .b{font-weight:bold}</style>
 <rect width="520" height="280" rx="10" fill="#ffffff"/>
-<polygon points="100.0,225.0 350.0,225.0 350.0,233.0 100.0,233.0" fill="#e3a57a" stroke="#c0591c" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="350.0,225.0 432.5,165.0 432.5,173.0 350.0,233.0" fill="#d98d5c" stroke="#c0591c" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="100.0,225.0 350.0,225.0 432.5,165.0 182.5,165.0" fill="#f6c9a4" stroke="#c0591c" stroke-width="1.5" stroke-linejoin="round"/>
-<line x1="13.8" y1="197.0" x2="388.8" y2="197.0" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
-<line x1="41.2" y1="177.0" x2="416.2" y2="177.0" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
-<line x1="68.8" y1="157.0" x2="443.8" y2="157.0" stroke="#1f5fa8" stroke-width="2" marker-end="url(#ah)"/>
+<polygon points="100.0,225.0 350.0,225.0 350.0,233.0 100.0,233.0" fill="url(#hatch)" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="350.0,225.0 432.5,165.0 432.5,173.0 350.0,233.0" fill="url(#hatch)" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="100.0,225.0 350.0,225.0 432.5,165.0 182.5,165.0" fill="#ffffff" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="13.8" y1="197.0" x2="388.8" y2="197.0" stroke="#111111" stroke-width="1.3" marker-end="url(#ah)"/>
+<line x1="41.2" y1="177.0" x2="416.2" y2="177.0" stroke="#111111" stroke-width="1.3" marker-end="url(#ah)"/>
+<line x1="68.8" y1="157.0" x2="443.8" y2="157.0" stroke="#111111" stroke-width="1.3" marker-end="url(#ah)"/>
 <text x="68.8" y="145.0"><tspan class="i">U</tspan><tspan dy="4" font-size="14">∞</tspan><tspan dy="-4">, </tspan><tspan class="i">T</tspan><tspan dy="4" font-size="14">∞</tspan></text>
 <text x="157.2" y="223.4" class="s">heated surface, <tspan class="i">T</tspan><tspan dy="3" font-size="13">w</tspan></text>
 <text x="92.0" y="231.0" text-anchor="end" class="s">leading</text><text x="92.0" y="250.0" text-anchor="end" class="s">edge</text>
-<line x1="100.0" y1="255.0" x2="350.0" y2="255.0" stroke="#0b2545" stroke-width="1" marker-start="url(#ak)" marker-end="url(#ak)"/>
+<line x1="100.0" y1="255.0" x2="350.0" y2="255.0" stroke="#111111" stroke-width="1" marker-start="url(#ak)" marker-end="url(#ak)"/>
 <text x="225.0" y="279.0" text-anchor="middle" class="i">L</text>
-<line x1="372.0" y1="233.0" x2="454.5" y2="173.0" stroke="#0b2545" stroke-width="1" marker-start="url(#ak)" marker-end="url(#ak)"/>
+<line x1="372.0" y1="233.0" x2="454.5" y2="173.0" stroke="#111111" stroke-width="1" marker-start="url(#ak)" marker-end="url(#ak)"/>
 <text x="427.2" y="217.0" class="s">span</text>
 <text x="508" y="30" text-anchor="end" class="s">span: infinite (2D model)</text>
 </svg>
