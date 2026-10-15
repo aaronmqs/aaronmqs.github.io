@@ -132,6 +132,14 @@ html {
   padding-right: 0;
 }
 
+/* the same right margin as the content pages (the theme gives .page a 2-of-12
+   suffix but not .archive), so the list column starts where Home's text does */
+@media screen and (min-width: 57.8125em) {
+  .archive {
+    padding-right: 16.9491525424%;
+  }
+}
+
 /* No footer (GitHub/Feed links, credits, sitemap) */
 .page__footer {
   display: none;
