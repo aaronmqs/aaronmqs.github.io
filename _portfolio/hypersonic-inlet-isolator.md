@@ -88,7 +88,7 @@ the isolator: **scroll sideways to see the whole length.**
 </div>
 
 *Mach number. The conical shock from the inlet leading edge reflects from the axis and from the
-wall along the whole isolator. Adapted from [1], © 2026 American Institute of Aeronautics and Astronautics.*
+wall along the whole isolator. The solution of [1].*
 {: .caption}
 
 <div class="hscroll-fig">
@@ -98,7 +98,7 @@ wall along the whole isolator. Adapted from [1], © 2026 American Institute of A
   <img class="cbar" src="/images/isolator/isolator_pressure_cbar.png" alt="Pressure color scale, 1 to 40 times the free-stream pressure">
 </div>
 
-*Static pressure divided by the free-stream pressure (log scale). Adapted from [1], © 2026 American Institute of Aeronautics and Astronautics.*
+*Static pressure divided by the free-stream pressure (log scale). The solution of [1].*
 {: .caption}
 
 The main flow features are:
