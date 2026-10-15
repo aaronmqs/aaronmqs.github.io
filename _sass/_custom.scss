@@ -134,6 +134,35 @@ html {
   margin: 0 auto;
 }
 
+/* Long, thin figure (e.g. a full isolator): the plot scrolls sideways at a
+   readable height, and its color bar stays in view on the right */
+.hscroll-fig {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.3em;
+  margin: 1em 0 0.4em 0;
+}
+
+.hscroll {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  border: 1px solid rgba(11, 37, 69, 0.2);
+}
+
+.hscroll img {
+  display: block;
+  height: 300px;
+  width: auto;
+  max-width: none;
+}
+
+.hscroll-fig .cbar {
+  flex: none;
+  height: 300px;
+  width: auto;
+}
+
 .schematic-pair {
   max-width: 900px;
   margin-left: auto;
