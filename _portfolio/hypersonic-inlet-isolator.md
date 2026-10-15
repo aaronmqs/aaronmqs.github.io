@@ -28,6 +28,12 @@ diameter is 63.5 mm and the isolator diameter is 50.8 mm. The free stream is at 
 total temperature of 429.96 K, a static pressure of 506.48 Pa, and a unit Reynolds number of
 7.1 × 10⁶ /m.
 
+![The inlet/isolator on a plane through the axis](/images/isolator/isolator_overview.svg)
+
+*The inlet and isolator at true scale, cut through the axis. The flow is axisymmetric, so only
+the upper half is computed; the lower half is its mirror image.*
+{: .caption}
+
 The coordinate $$x$$ is the one used in the paper: it starts at the **isolator entrance**, 64.7 mm
 downstream of the capture plane. The isolator entrance is not the shoulder, where the conical
 wall ends: the shoulder is about 25 mm upstream of it.
@@ -64,7 +70,7 @@ the isolator: **scroll sideways to see the whole length.**
 </div>
 
 *Mach number. The conical shock from the inlet leading edge reflects from the axis and from the
-wall along the whole isolator.*
+wall along the whole isolator. Adapted from [1], © 2026 American Institute of Aeronautics and Astronautics.*
 {: .caption}
 
 <div class="hscroll-fig">
@@ -74,7 +80,7 @@ wall along the whole isolator.*
   <img class="cbar" src="/images/isolator/isolator_pressure_cbar.png" alt="Pressure color scale, 1 to 40 times the free-stream pressure">
 </div>
 
-*Static pressure divided by the free-stream pressure (log scale).*
+*Static pressure divided by the free-stream pressure (log scale). Adapted from [1], © 2026 American Institute of Aeronautics and Astronautics.*
 {: .caption}
 
 The main flow features are:
@@ -109,7 +115,7 @@ $$\bar{M}$$ changes by 0.27% and $$\bar{p}$$ by 0.81%.
 *Mass-weighted Mach number (left) and pressure (right) at the isolator entrance, against the
 number of degrees of freedom. The marker shape and color give the mesh, the label gives the
 polynomial degree. The count includes the five fields of the solution (four flow variables and
-the artificial viscosity).*
+the artificial viscosity). Data from [1], © 2026 American Institute of Aeronautics and Astronautics.*
 {: .caption}
 
 ## Reference
