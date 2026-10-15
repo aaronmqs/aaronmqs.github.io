@@ -118,6 +118,22 @@ html[data-theme="dark"] {
   max-width: 100%;
 }
 
+/* Figures stay a readable size when the side columns are hidden: no wider
+   than 900px, never taller than the window, centered in the text column */
+.page__content p > img {
+  display: block;
+  width: auto;
+  max-width: unquote("min(100%, 900px)");
+  max-height: 80vh;
+  margin: 0 auto;
+}
+
+.schematic-pair {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Figure captions: smaller, muted, and numbered, so they do not read as body text */
 .page__content {
   counter-reset: figure;
