@@ -101,6 +101,18 @@ wall along the whole isolator. The solution of [1].*
 *Static pressure divided by the free-stream pressure (log scale). The solution of [1].*
 {: .caption}
 
+<div class="hscroll-fig">
+  <div class="hscroll">
+    <img src="/images/isolator/isolator_av.png" alt="Artificial viscosity in the inlet and isolator">
+  </div>
+  <img class="cbar" src="/images/isolator/isolator_av_cbar.png" alt="Artificial viscosity color scale, 0 to 1 times its maximum">
+</div>
+
+*Artificial viscosity divided by its maximum. The viscosity is added only in thin bands along the
+shocks; elsewhere it is close to zero, so the smooth regions of the flow are not smeared. The
+solution of [1].*
+{: .caption}
+
 The main flow features are:
 
 - The **conical shock** from the inlet leading edge reflects through the isolator.
