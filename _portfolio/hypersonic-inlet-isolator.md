@@ -23,16 +23,19 @@ regions inside the duct, and the flow conditions at the isolator entrance.
 
 ### Geometry and domain
 
-The model is a conical inlet with a 9° half-angle, followed by a straight isolator. The capture
-diameter is 63.5 mm and the isolator diameter is 50.8 mm. The free stream is at Mach 5.7, with a
+The model has two main parts, bolted together. The **inlet** is 64.7 mm long: a cone with a 9°
+half-angle narrows the duct from the capture diameter of 63.5 mm to the isolator diameter of
+50.8 mm, and a short straight duct (about 25 mm) follows. The **isolator** is the straight,
+instrumented section after the joint, which carries the pressure-sensitive paint and the pressure
+transducers; its first 457.2 mm are in the computation. The free stream is at Mach 5.7, with a
 total temperature of 429.96 K, a static pressure of 506.48 Pa, and a unit Reynolds number of
 7.1 × 10⁶ /m.
 
 ![Three-dimensional view of the inlet and isolator](/images/isolator/isolator_3d.svg)
 
-*Three-dimensional view of the model. The air enters the conical inlet, which narrows to the
-isolator diameter at the shoulder (dashed ring), and flows on through the straight isolator. The
-outer shape is schematic, and the isolator is drawn shorter than it is.*
+*Three-dimensional view of the model. The air enters the inlet, whose cone ends at the shoulder
+(dashed ring), and passes the joint into the straight isolator. The outer shape is schematic, and
+the isolator is drawn shorter than it is.*
 {: .caption}
 
 ![The inlet/isolator on a plane through the axis](/images/isolator/isolator_overview.svg)
@@ -41,9 +44,9 @@ outer shape is schematic, and the isolator is drawn shorter than it is.*
 the upper half is computed; the lower half is its mirror image.*
 {: .caption}
 
-The coordinate $$x$$ is the one used in the paper: it starts at the **isolator entrance**, 64.7 mm
-downstream of the capture plane. The isolator entrance is not the shoulder, where the conical
-wall ends: the shoulder is about 25 mm upstream of it.
+The coordinate $$x$$ is the one used in the paper: it starts at the **isolator entrance**, the
+joint between the inlet and the isolator, 64.7 mm downstream of the capture plane. The shoulder,
+where the cone ends, is still inside the inlet, about 25 mm upstream of the joint.
 
 ![Computational domain and boundary conditions](/images/isolator/isolator_domain.svg)
 

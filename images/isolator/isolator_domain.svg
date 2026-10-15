@@ -31,7 +31,7 @@
 <!-- walls -->
 <polyline points="145.7,126.6 291.7,161.3 600,161.3" fill="none" stroke="#111111" stroke-width="1.8"/>
 <line x1="640" y1="161.3" x2="775.4" y2="161.3" stroke="#111111" stroke-width="1.8"/>
-<text x="450" y="146" text-anchor="middle">no-slip isothermal wall</text>
+<text x="490" y="146" text-anchor="middle">no-slip isothermal wall</text>
 
 <!-- 9 degree angle at the cowl lip -->
 <line x1="145.7" y1="126.6" x2="240" y2="126.6" stroke="#111111" stroke-width="0.8" stroke-dasharray="4 4"/>
@@ -78,4 +78,15 @@
 <text x="528" y="236" class="s"><tspan class="i">r</tspan> = 25.4 mm</text>
 
 <text x="880" y="420" text-anchor="end" class="s">radial scale × 1.5; isolator shortened</text>
+<!-- spans of the two parts: the inlet runs from the lip to the joint at x = 0 -->
+<line x1="145.7" y1="72" x2="381.2" y2="72" stroke="#111111" stroke-width="0.9"/>
+<line x1="145.7" y1="66" x2="145.7" y2="78" stroke="#111111" stroke-width="0.9"/>
+<line x1="381.2" y1="66" x2="381.2" y2="78" stroke="#111111" stroke-width="0.9"/>
+<line x1="381.2" y1="72" x2="600" y2="72" stroke="#111111" stroke-width="0.9"/>
+<line x1="640" y1="72" x2="775.4" y2="72" stroke="#111111" stroke-width="0.9"/>
+<line x1="775.4" y1="66" x2="775.4" y2="78" stroke="#111111" stroke-width="0.9"/>
+<text x="263.5" y="62" text-anchor="middle" class="s">inlet</text>
+<text x="578" y="62" text-anchor="middle" class="s">isolator</text>
+<!-- joint between inlet and isolator -->
+<line x1="381.2" y1="104" x2="381.2" y2="161.3" stroke="#111111" stroke-width="1.3"/>
 </svg>
