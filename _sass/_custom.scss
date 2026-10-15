@@ -106,18 +106,30 @@ html {
   }
 }
 
+/* rem, not em: inside a heading, em is the heading's own (larger) size.
+   On list pages (Projects, Publications) the .archive box floats right, so
+   its children are capped and centered, not the box itself. */
 .page__inner-wrap,
-.archive {
-  max-width: 46em;
+.archive > * {
+  max-width: 46rem;
 }
 
 /* ".page .page__inner-wrap": the theme floats the column left with that
    selector, so a plain ".page__inner-wrap" rule cannot center it */
-.page .page__inner-wrap,
-body.sidebar-hidden .archive {
+.page .page__inner-wrap {
   float: none;
   margin-left: auto;
   margin-right: auto;
+}
+
+.archive > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* list items keep space on the right for a contents box these pages lack */
+.archive .list__item {
+  padding-right: 0;
 }
 
 /* No footer (GitHub/Feed links, credits, sitemap) */

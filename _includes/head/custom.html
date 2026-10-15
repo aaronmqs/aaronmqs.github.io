@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
       x = r.right + 4;
       /* the text column, not the .page box: the column is centered inside
          the box, and the box edge lies under the profile column */
-      var col = document.querySelector('.page__inner-wrap') || main;
+      var col = document.querySelector('.page__inner-wrap, .archive > *') || main;
       if (col) {
         x = Math.min(x, col.getBoundingClientRect().left - 22);
       }
