@@ -77,8 +77,9 @@ averaging plane $$A$$ at the isolator entrance is used for the approach conditio
 
 ## Results
 
-The contours below show the flow on a plane through the axis. The figures are long and thin, like
-the isolator: **scroll sideways to see the whole length.**
+The contours below show the flow on a plane through the axis. Only the upper half is computed;
+the lower half is its mirror image about the axis (dash-dot line). The figures are long and thin,
+like the isolator: **scroll sideways to see the whole length.**
 
 <div class="hscroll-fig">
   <div class="hscroll">

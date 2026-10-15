@@ -216,14 +216,14 @@ html {
 
 .hscroll img {
   display: block;
-  height: 300px;
+  height: 512px;                   /* mirrored contours: same mm per px as the old 300 px half */
   width: auto;
   max-width: none;
 }
 
 .hscroll-fig .cbar {
   flex: none;
-  height: 300px;
+  height: 512px;                   /* as tall as the contour beside it */
   width: auto;
 }
 
