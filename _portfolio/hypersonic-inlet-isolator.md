@@ -78,8 +78,18 @@ averaging plane $$A$$ at the isolator entrance is used for the approach conditio
 ## Results
 
 The contours below show the flow on a plane through the axis. Only the upper half is computed;
-the lower half is its mirror image about the axis (dash-dot line). The figures are long and thin,
-like the isolator: **scroll sideways to see the whole length.**
+the lower half is its mirror image about the axis (dash-dot line). The first figure shows the
+three fields over the whole length at once.
+
+![Mach number, pressure, and artificial viscosity over the whole inlet and isolator](/images/isolator/isolator_fields_full.png)
+
+*Mach number (top), static pressure divided by the free-stream pressure on a log scale (middle),
+and artificial viscosity divided by its maximum (bottom), over the whole computed length. The
+solution of [1].*
+{: .caption}
+
+The next figures show each field at a larger scale. They are long and thin, like the isolator:
+**scroll sideways to see the whole length.**
 
 <div class="hscroll-fig">
   <div class="hscroll">
