@@ -189,8 +189,29 @@ html {
 .hscroll {
   flex: 1 1 auto;
   min-width: 0;
-  overflow-x: auto;
+  overflow-x: scroll;              /* always shown, so the reader sees there is more */
   border: 1px solid rgba(11, 37, 69, 0.2);
+  scrollbar-width: auto;           /* Firefox */
+  scrollbar-color: #333333 #e2e2e2;
+}
+
+/* Chrome, Edge, Safari: a thick, dark bar on a light track */
+.hscroll::-webkit-scrollbar {
+  height: 14px;
+}
+
+.hscroll::-webkit-scrollbar-track {
+  background: #e2e2e2;
+}
+
+.hscroll::-webkit-scrollbar-thumb {
+  background: #333333;
+  border: 3px solid #e2e2e2;
+  border-radius: 7px;
+}
+
+.hscroll::-webkit-scrollbar-thumb:hover {
+  background: #000000;
 }
 
 .hscroll img {
