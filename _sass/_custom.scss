@@ -117,6 +117,29 @@ body.sidebar-hidden .archive {
   margin-right: auto;
 }
 
+/* On a wide screen the profile column and the contents box both sit in the
+   margins (both are fixed), so the text column is centered on the window
+   itself. Below 1280px there is not room for that, and the column stays
+   centered in the space between the two. */
+@media screen and (min-width: 80em) {
+  .page,
+  .archive,
+  .page:has(.sidebar__right),
+  body.sidebar-hidden .page:has(.sidebar__right) {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .archive {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /* No footer (GitHub/Feed links, credits, sitemap) */
 .page__footer {
   display: none;
