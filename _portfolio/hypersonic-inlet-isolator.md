@@ -28,6 +28,13 @@ diameter is 63.5 mm and the isolator diameter is 50.8 mm. The free stream is at 
 total temperature of 429.96 K, a static pressure of 506.48 Pa, and a unit Reynolds number of
 7.1 × 10⁶ /m.
 
+![Three-dimensional view of the inlet and isolator](/images/isolator/isolator_3d.svg)
+
+*Three-dimensional view of the model. The air enters the conical inlet, which narrows to the
+isolator diameter at the shoulder (dashed ring), and flows on through the straight isolator. The
+outer shape is schematic, and the isolator is drawn shorter than it is.*
+{: .caption}
+
 ![The inlet/isolator on a plane through the axis](/images/isolator/isolator_overview.svg)
 
 *The inlet and isolator at true scale, cut through the axis. The flow is axisymmetric, so only
