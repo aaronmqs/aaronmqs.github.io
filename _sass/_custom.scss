@@ -97,6 +97,26 @@ html {
   scroll-padding-top: 5.5em;
 }
 
+/* Reading size like a paper: 16px text on every screen (the theme uses 18px
+   from 768px up), and a text column of about 75 characters, centered in the
+   space between the profile column and the contents box, with white margins */
+@media screen and (min-width: 48em) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.page__inner-wrap,
+.archive {
+  max-width: 46em;
+}
+
+.page__inner-wrap,
+body.sidebar-hidden .archive {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* No footer (GitHub/Feed links, credits, sitemap) */
 .page__footer {
   display: none;
