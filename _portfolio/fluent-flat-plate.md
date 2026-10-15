@@ -2,6 +2,7 @@
 title: "Laminar flat plate in Ansys Fluent: verification against Blasius"
 excerpt: "Velocity profiles at five stations collapse onto the exact Blasius solution within 0.32%. Skin friction and wall heat flux are verified the same way on three meshes.<br/><img src='/images/flatplate/flatplate_fluent_u.png' width='400'>"
 collection: portfolio
+order: 2
 ---
 
 {% include toc title="Contents" %}

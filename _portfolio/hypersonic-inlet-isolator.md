@@ -2,6 +2,7 @@
 title: "Mach 5.7 axisymmetric inlet/isolator: high-order CFD"
 excerpt: "Steady viscous simulation of a hypersonic inlet/isolator with a high-order discontinuous Galerkin solver on 11.4 million degrees of freedom, run in parallel with MPI. Published in the Journal of Propulsion and Power (2026).<br/><img src='/images/isolator/isolator_thumb.png' width='400'>"
 collection: portfolio
+order: 1
 ---
 
 {% include toc title="Contents" %}
