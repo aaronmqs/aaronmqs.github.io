@@ -6,6 +6,13 @@ collection: portfolio
 
 {% include toc title="Contents" %}
 
+**Published in:** A. N. Bustard, B. L. Bemis, A. Marques, M. J. Zahr, and T. J. Juliano,
+*Global time-resolved measurements of inlet/isolator unstart induced by mass injection*, Journal
+of Propulsion and Power (2026), [doi:10.2514/1.B40160](https://arc.aiaa.org/doi/10.2514/1.B40160).<br>
+**Experiments:** the [Hypersonic Aerodynamics Lab](https://hyperlab.nd.edu/) (Prof. Thomas J.
+Juliano), University of Notre Dame. **Simulations:** my contribution, described on this page.
+{: .notice}
+
 ## The problem
 
 An inlet/isolator is the front part of a dual-mode scramjet engine. The inlet captures the air and
@@ -13,7 +20,7 @@ compresses it. The isolator is a straight duct that separates the inlet from the
 pressure in the combustor becomes too high, a shock train moves upstream through the isolator and
 the inlet *unstarts*: it no longer captures the flow.
 
-My colleagues at Notre Dame tested an axisymmetric inlet/isolator model at Mach 5.7 and measured
+The Hypersonic Aerodynamics Lab tested an axisymmetric inlet/isolator model at Mach 5.7 and measured
 the pressure on the inner wall of the isolator with fast pressure-sensitive paint [1]. Paint gives
 the pressure on the wall only. After the experiments, **I computed the steady flow inside the
 model** to give the off-wall context of the measurements: the shocks, expansions, and separated
@@ -123,7 +130,7 @@ $$\bar{M}$$ changes by 0.27% and $$\bar{p}$$ by 0.81%.
 ![hp convergence](/images/isolator/isolator_hp_convergence.png)
 
 *Mass-weighted Mach number (left) and pressure (right) at the isolator entrance, against the
-number of degrees of freedom. The marker shape and color give the mesh, the label gives the
+number of degrees of freedom. The marker shape and fill give the mesh, the label gives the
 polynomial degree. The count includes the five fields of the solution (four flow variables and
 the artificial viscosity). Data from [1], © 2026 American Institute of Aeronautics and Astronautics.*
 {: .caption}
