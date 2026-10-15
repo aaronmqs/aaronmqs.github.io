@@ -91,6 +91,12 @@ html[data-theme="dark"] {
   border-bottom-color: $navy-light;
 }
 
+/* A jump to a heading (contents box, # links) stops below the fixed menu bar,
+   not under it */
+html {
+  scroll-padding-top: 5.5em;
+}
+
 /* No footer (GitHub/Feed links, credits, sitemap) */
 .page__footer {
   display: none;
