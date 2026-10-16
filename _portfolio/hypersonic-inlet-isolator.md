@@ -21,10 +21,9 @@ compresses it. The isolator is a straight duct that separates the inlet from the
 pressure in the combustor becomes too high, a shock train moves upstream through the isolator and
 the inlet *unstarts*: it no longer captures the flow.
 
-The Hypersonic Aerodynamics Lab tested an axisymmetric inlet/isolator model at Mach 5.7 and measured
-the pressure on the inner wall of the isolator with fast pressure-sensitive paint [1]. Paint gives
-the pressure on the wall only. After the experiments, **I computed the steady flow inside the
-model** to give the off-wall context of the measurements: the shocks, expansions, and separated
+The [Hypersonic Aerodynamics Lab](https://hyperlab.nd.edu/) tested an axisymmetric inlet/isolator model at Mach 5.7 and measured
+the pressure on the inner wall of the isolator with fast pressure-sensitive paint [[1](#ref-1)]. Paint gives
+the pressure on the wall only. **I computed the steady flow inside the model** to give the off-wall context of the measurements: the shocks, expansions, and separated
 regions inside the duct, and the flow conditions at the isolator entrance.
 
 ## The computational model
@@ -85,7 +84,7 @@ three fields over the whole length at once.
 
 *Mach number (top), static pressure divided by the free-stream pressure on a log scale (middle),
 and artificial viscosity divided by its maximum (bottom), over the whole computed length. The
-solution of [1].*
+solution of [[1](#ref-1)].*
 {: .caption}
 
 The next figures show each field at a larger scale. They are long and thin, like the isolator:
@@ -99,7 +98,7 @@ The next figures show each field at a larger scale. They are long and thin, like
 </div>
 
 *Mach number. The conical shock from the inlet leading edge reflects from the axis and from the
-wall along the whole isolator. The solution of [1].*
+wall along the whole isolator. The solution of [[1](#ref-1)].*
 {: .caption}
 
 <div class="hscroll-fig">
@@ -109,7 +108,7 @@ wall along the whole isolator. The solution of [1].*
   <img class="cbar" src="/images/isolator/isolator_pressure_cbar.png" alt="Pressure color scale, 1 to 40 times the free-stream pressure">
 </div>
 
-*Static pressure divided by the free-stream pressure (log scale). The solution of [1].*
+*Static pressure divided by the free-stream pressure (log scale). The solution of [[1](#ref-1)].*
 {: .caption}
 
 <div class="hscroll-fig">
@@ -121,7 +120,7 @@ wall along the whole isolator. The solution of [1].*
 
 *Artificial viscosity divided by its maximum. The viscosity is added only in thin bands along the
 shocks; elsewhere it is close to zero, so the smooth regions of the flow are not smeared. The
-solution of [1].*
+solution of [[1](#ref-1)].*
 {: .caption}
 
 The main flow features are:
@@ -156,12 +155,12 @@ $$\bar{M}$$ changes by 0.27% and $$\bar{p}$$ by 0.81%.
 *Mass-weighted Mach number (left) and pressure (right) at the isolator entrance, against the
 number of degrees of freedom. The marker shape and fill give the mesh, the label gives the
 polynomial degree. The count includes the five fields of the solution (four flow variables and
-the artificial viscosity). Data from [1], © 2026 American Institute of Aeronautics and Astronautics.*
+the artificial viscosity). Data from [[1](#ref-1)], © 2026 American Institute of Aeronautics and Astronautics.*
 {: .caption}
 
 ## Reference
 
-1. A. N. Bustard, B. L. Bemis, A. Marques, M. J. Zahr, and T. J. Juliano, *Global time-resolved
+1. <a id="ref-1"></a>A. N. Bustard, B. L. Bemis, A. Marques, M. J. Zahr, and T. J. Juliano, *Global time-resolved
    measurements of inlet/isolator unstart induced by mass injection*, Journal of Propulsion and
    Power (2026), [doi:10.2514/1.B40160](https://arc.aiaa.org/doi/10.2514/1.B40160). The
    simulations on this page are in Section IV.

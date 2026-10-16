@@ -32,7 +32,7 @@ Pohlhausen similarity solution is the exact solution of the boundary-layer equat
 The quantities of interest are the skin friction $$C_f$$, the wall heat flux $$q_w$$, and the
 velocity profile across the boundary layer, all measured against the similarity solution. A
 similar laminar flat-plate case, at Mach 0.1 and without heat transfer, is in the NPARC
-archive [4].
+archive [[4](#ref-4)].
 
 ![Fluent velocity contour](/images/flatplate/flatplate_fluent_u.png)
 
@@ -114,7 +114,7 @@ $$C_f = \frac{\tau_w}{\tfrac{1}{2}\rho U_\infty^2}, \qquad \tau_w = \mu \left.\f
 The shear stress is the force per unit area that the fluid applies along the plate, so its
 integral over the plate is the drag. The average of $$C_f$$ over the plate is the drag coefficient,
 $$C_d = \frac{1}{L}\int_0^L C_f\,\mathrm{d}x$$. Because $$C_f$$ depends on the velocity gradient at the wall, its error shows if the cells next to the
-wall are small enough. The Blasius solution [1, 2] gives
+wall are small enough. The Blasius solution [[1](#ref-1), [2](#ref-2)] gives
 $$C_f = 0.664/\sqrt{\mathrm{Re}_x}$$, with $$\mathrm{Re}_x = U_\infty x/\nu$$.
 
 Near the leading edge the error is large,
@@ -142,7 +142,7 @@ integrated wall heat flux, the heat rate per unit depth of the plate:
 $$Q = \int_0^L q_w\,\mathrm{d}x \quad \mathrm{W/m}.$$
 
 Because $$q_w$$ depends on the temperature gradient at the wall, it tests the energy equation.
-With the Pohlhausen solution [3], the exact wall heat flux is
+With the Pohlhausen solution [[3](#ref-3)], the exact wall heat flux is
 
 $$q_w = k\,(T_w - T_\infty)\,\theta'(0)\sqrt{\frac{U_\infty}{\nu x}} = \frac{65.339}{\sqrt{x}}\ \mathrm{W/m^2},$$
 
@@ -268,18 +268,18 @@ Two differences between the problems explain these values:
 
 ## References
 
-1. H. Blasius, *Grenzschichten in Flüssigkeiten mit kleiner Reibung*, Zeitschrift für Mathematik
+1. <a id="ref-1"></a>H. Blasius, *Grenzschichten in Flüssigkeiten mit kleiner Reibung*, Zeitschrift für Mathematik
    und Physik **56** (1908), 1–37. English translation: *The Boundary Layers in Fluids with Little
    Friction*, NACA Technical Memorandum 1256, 1950. The velocity equation and its boundary
    conditions are on page 7 of the translation, in the scaling $$\zeta\zeta'' = -\zeta'''$$; the
    wall shear and the plate drag are on page 18.
-2. L. Howarth, *On the solution of the laminar boundary layer equations*, Proceedings of the Royal
+2. <a id="ref-2"></a>L. Howarth, *On the solution of the laminar boundary layer equations*, Proceedings of the Royal
    Society A **164** (1938), 547–579. An accurate numerical solution of the Blasius equation; its
    wall value $$f_0''(0) = 1.328242$$ (in Howarth's scaling) gives $$C_f = 0.664/\sqrt{\mathrm{Re}_x}$$.
-3. E. Pohlhausen, *Der Wärmeaustausch zwischen festen Körpern und Flüssigkeiten mit kleiner
+3. <a id="ref-3"></a>E. Pohlhausen, *Der Wärmeaustausch zwischen festen Körpern und Flüssigkeiten mit kleiner
    Reibung und kleiner Wärmeleitung*, ZAMM **1** (1921), 115–121, doi:10.1002/zamm.19210010205. The thermal layer at a constant
    wall temperature.
-4. NPARC Alliance Validation Archive, *Laminar Flat Plate: Study #1* (case fplam01), NASA Glenn
+4. <a id="ref-4"></a>NPARC Alliance Validation Archive, *Laminar Flat Plate: Study #1* (case fplam01), NASA Glenn
    Research Center,
    [grc.nasa.gov/WWW/wind/valid/fplam/fplam01/fplam01.html](https://www.grc.nasa.gov/WWW/wind/valid/fplam/fplam01/fplam01.html). Mach 0.1, $$\mathrm{Re}_L \approx 2 \times 10^5$$,
    no heat transfer, compared with Blasius.
